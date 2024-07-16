@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Hive Platform{% endblock %}</title>
+    <link href="{% static 'src/css/base.css' %}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+     <!-- Navigation -->
+     <header class="bg-white shadow">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="{% static 'images/logo/CashHivelogo.png' %}" alt="Hive Logo" class="h-10 mr-3">
+                
+            </div>
+            <div class="flex items-center space-x-10">
+                    <nav class="hidden items-center md:flex space-x-10">
+                        <a href="#" class="text-gray-700 hover:text-yellow-500">For&nbsp;Talents</a>
+                        <a href="#" class="text-gray-700  hover:text-yellow-500 " >Dev&nbsp;community</a>
+                        <a href="#" class="text-gray-700  hover:text-yellow-500">About&nbsp;Us</a>
+                        <a href="#" class="text-gray-700  hover:text-yellow-500">Employers</a>
+                    </nav>
+                    <a href="#" class="text-gray-700  hover:text-yellow-500">Log&nbsp;in</a>
+                    <a href="#" class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600">Sign&nbsp;up</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    {% block content %}{% endblock %}
+
+    <!-- Footer -->
+    <footer class="bg-white py-8 mt-12 shadow-inner">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between space-y-4 md:space-y-0">
+                <div>
+                    <h3 class="text-xl font-bold text-gray-700">Hive</h3>
+                    <ul class="mt-2 space-y-2">
+                        <li><a href="#" class="text-gray-600 hover:text-yellow-500">For Talents</a></li>
+                        <li class="flex items-center">
+                            <img src="{% static 'images/logo/new11.png' %}" alt="Raven Logo" class="h-6 w-6 mr-2">
+                            <a href="#" class="text-gray-600 hover:text-yellow-500">Raven</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold text-gray-700">About Us</h3>
+                    <ul class="mt-2 space-y-2">
+                        <li><a href="#" class="text-gray-600 hover:text-yellow-500">Careers (Become an ambassador)</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-yellow-500">FAQ</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-yellow-500">Terms of service</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-yellow-500">Privacy and policies</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-yellow-500">Donate</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold text-gray-700">Community</h3>
+                    <ul class="mt-2 space-y-2">
+                        <li><a href="#" class="text-gray-600 hover:text-yellow-500">Dev community</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold text-gray-700">Join us, let’s socialize</h3>
+                    <ul class="mt-2 space-y-2">
+                        <li><a href="#" class="text-gray-600 hover:text-yellow-500">LinkedIn</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-yellow-500">YouTube</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-yellow-500">GitHub</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-yellow-500">Facebook</a></li>
+                        <li><a href="mailto:hell@hive.community" class="text-gray-600 hover:text-yellow-500">hell@hive.community</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+   
+</body>
+</html>
