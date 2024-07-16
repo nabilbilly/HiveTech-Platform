@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{% comment %} # Ezekiel worked on this  {% endcomment %}
+
+{% load static %}
+{% block title %}Hive Dev Community page{% endblock %}
+
+{% block content %}
+
+<div class="max-w-screen-lg mx-auto">
+    <div class="flex items-center justify-center mb-6">
+        <h1 class="text-3xl text-black-800" style="font-size: 50px; font-weight: bold;">Join our Community</h1>
+        <img src="{% static 'images/logo/CashHive1.png' %}" class="ml-4 h-20 w-20" alt="Image Description" />
+    </div>
+</div>
+
+
+<div class="grid grid-cols-3 gap-3 max-w-screen-lg mx-auto">
+    <!-- University of Cape Coast image -->
+    <div class="border-4 border-black rounded-lg shadow-md overflow-hidden">
+        <a href="#">
+            <img class="object-cover w-full h-full" src="{% static 'images/DevCommunity/image 15.png' %}" alt="University of Cape Coast" />
+        </a>
+    </div>
+
+    <!-- KNUST image -->
+    <div class="border-4 border-black rounded-lg shadow-md overflow-hidden">
+        <a href="#">
+            <img class="object-cover w-full h-full" src="{% static 'images/DevCommunity/image 16.png' %}" alt="KNUST" />
+        </a>
+    </div>
+
+    <!-- UNIVERSITY OF GHANA image -->
+    <div class="border-4 border-black rounded-lg shadow-md overflow-hidden">
+        <a href="#">
+            <img class="object-cover w-full h-full" src="{% static 'images/DevCommunity/image 17.png' %}" alt="UNIVERSITY OF GHANA" />
+        </a>
+    </div>
+
+    <!-- CAPE COAST TECHNICAL UNIVERSITY image -->
+    <div class="border-4 border-black rounded-lg shadow-md overflow-hidden">
+        <a href="#">
+            <img class="object-cover w-full h-full" src="{% static 'images/DevCommunity/image 20.png' %}" alt="CAPE COAST TECHNICAL UNIVERSITY" />
+        </a>
+    </div>
+
+    <!-- CENTRAL UNIVERSITY image -->
+    <div class="border-4 border-black rounded-lg shadow-md overflow-hidden">
+        <a href="#">
+            <img class="object-cover w-full h-full" src="{% static 'images/DevCommunity/image 19.png' %}" alt="CENTRAL UNIVERSITY" />
+        </a>
+    </div>
+
+    <!-- HO TECHNICAL UNIVERSITY image -->
+    <div class="border-10 border-black rounded-lg shadow-md overflow-hidden">
+        <a href="#">
+            <img class="object-contain w-full h-full" src="{% static 'images/DevCommunity/Frame 624873.png' %}" alt="HO TECHNICAL UNIVERSITY" />
+        </a>
+    </div>
+
+    <!-- ? image -->
+    <div class="border-4 border-black rounded-lg shadow-md overflow-hidden">
+        <a href="#">
+            <img class="object-cover w-full h-full" src="{% static 'images/DevCommunity/image 21.png' %}" alt="" />
+        </a>
+    </div>
+
+    <!-- ? image -->
+    <div class="border-4 border-black rounded-lg shadow-md overflow-hidden">
+        <a href="#">
+            <img class="object-cover w-full h-full" src="{% static 'images/DevCommunity/image 22.png' %}" alt="" />
+        </a>
+    </div>
+
+    <!-- ? image -->
+    <div class="border-4 border-black rounded-lg shadow-md overflow-hidden">
+        <a href="#">
+            <img class="object-cover w-full h-full" src="{% static 'images/DevCommunity/image 23.png' %}" alt="" />
+        </a>
+    </div>
+
+    <!-- ? image -->
+    <div class="border-4 border-black rounded-lg shadow-md overflow-hidden">
+        <a href="#">
+            <img class="object-cover w-full h-full" src="{% static 'images/DevCommunity/image24.png' %}" alt="" />
+        </a>
+    </div>
+</div>
+
+{% endblock %}
