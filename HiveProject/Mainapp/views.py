@@ -6,5 +6,5 @@ from django.shortcuts import render
 def Talentpage(request):
     return render(request,'base.html')
 
-def dev_community_view(request):
+def DevCommunityView(request):
     return render(request, 'DevCommunity.html')
