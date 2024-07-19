@@ -4,3 +4,6 @@ from django.shortcuts import render
 
 def SignUp(request):
     return render(request, "Accounts/Signup.html")
+
+def Login(request):
+    return render(request, "Accounts/login.html")
