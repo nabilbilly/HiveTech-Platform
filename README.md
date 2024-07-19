@@ -53,6 +53,12 @@ Raven-Hive-platform/
 4. **Install the dependencies:**
 
     ```bash
+    pip freeze > requirements.txt
+
+    ```bash
+    python -m pip install --upgrade pip
+
+    ```bash
     pip install -r requirements.txt
     ```
 
