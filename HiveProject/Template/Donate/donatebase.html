@@ -13,7 +13,7 @@
 <body>
      <!-- Navigation -->
      <header class="bg-white shadow">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+        <div class="container mx-auto py-3 flex justify-between items-center">
             <div class="flex items-center">
                 <img src="{% static 'images/logo/CashHivelogo.png' %}" alt="Hive Logo" class="h-10 mr-3">
                 
@@ -35,9 +35,28 @@
     {% block content %}{% endblock %}
 
     <!-- Footer -->
-    <footer class="bg-white py-8 mt-12 shadow-inner">
-        <div class="container mx-auto px-4">
-           
+    <footer class="bg-white shadow-inner">
+        <div class="absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 border-2 p-2 border-black rounded-md bg-white "><p class="text-xl font-bold ">Payment Methods</p></div>
+        <div class="container mx-auto px-4 py-10">
+            <div class="flex gap-x-48">
+                <div>
+                    <p class="text-xl font-bold">Wallets</p>
+                    <div class="flex gap-5">
+                        <img class="h-16 rounded-xl" src="{% static 'images/Donate/img3.png' %}" alt="MTN">
+                        <img class="h-16 rounded-xl" src="{% static 'images/Donate/img2.png' %}" alt="Telecel">
+                        <img class="h-16 rounded-xl" src="{% static 'images/Donate/img4.png' %}" alt="AirtelTigo">
+                        <img class="h-16 rounded-xl border" src="{% static 'images/Donate/img5.png' %}" alt="Raven">
+                    </div>
+                </div>
+                <!-- <div class="border-x-2 border-black border-2 absolute transform -translate-x-1/2 -translate-y-1/2 left-1/2 ml-24 h-full bottom-0"></div> -->
+                <div>
+                    <p class="text-xl font-bold">Cards</p>
+                    <div class="flex gap-5">
+                        <img class="h-16 rounded-xl" src="{% static 'images/Donate/img1.png' %}" alt="Visa">
+                        <img class="h-16 rounded-xl" src="{% static 'images/Donate/img6.png' %}" alt="Master Card">
+                    </div>
+                </div>
+            </div>
         </div>
     </footer>
    
