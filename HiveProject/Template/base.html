@@ -15,7 +15,7 @@
      <header class="bg-white shadow">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center">
-                <img src="{% static 'images/logo/CashHivelogo.png' %}" alt="Hive Logo" class="h-10 mr-3">
+                <a href="{% url 'Talent-page' %}"> <img src="{% static 'images/logo/CashHivelogo.png' %}" alt="Hive Logo" class="h-10 mr-3"> </a>
                 
             </div>
             <div class="flex items-center space-x-10">
@@ -25,8 +25,8 @@
                         <a href="#" class="text-gray-700  hover:text-yellow-500" style="text-decoration: none;">About&nbsp;Us</a>
                         <a href="#" class="text-gray-700  hover:text-yellow-500" style="text-decoration: none;">Employers</a>
                     </nav>
-                    <a href="#" class="text-gray-700  hover:text-yellow-500" style="text-decoration: none;">Log&nbsp;in</a>
-                    <a href="#" class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600" style="text-decoration: none;">Sign&nbsp;up</a>
+                    <a href="{% url 'Login'%}" class="text-gray-700  hover:text-yellow-500" style="text-decoration: none;">Log&nbsp;in</a>
+                    <a href="{% url 'SignUp' %}" class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600" style="text-decoration: none;">Sign&nbsp;up</a>
                 </div>
             </div>
         </div>
@@ -41,7 +41,7 @@
                 <div>
                     <h3 class="text-xl font-bold text-gray-700">Hive</h3>
                     <ul class="mt-2 space-y-2">
-                        <li><a href="#" class="text-gray-600 hover:text-yellow-500">For Talents</a></li>
+                        <li><a href="{% url 'Talent-page' %}" class="text-gray-600 hover:text-yellow-500">For Talents</a></li>
                         <li class="flex items-center">
                             <img src="{% static 'images/logo/new11.png' %}" alt="Raven Logo" class="h-6 w-6 mr-2">
                             <a href="#" class="text-gray-600 hover:text-yellow-500">Raven</a>
@@ -61,7 +61,7 @@
                 <div>
                     <h3 class="text-xl font-bold text-gray-700">Community</h3>
                     <ul class="mt-2 space-y-2">
-                        <li><a href="#" class="text-gray-600 hover:text-yellow-500">Dev community</a></li>
+                        <li><a href="{% url 'DevCommunity-Page' %}" class="text-gray-600 hover:text-yellow-500">Dev community</a></li>
                     </ul>
                 </div>
                 <div>
@@ -77,6 +77,6 @@
             </div>
         </div>
     </footer>
-   
+  
 </body>
 </html>
