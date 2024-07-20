@@ -114,4 +114,6 @@ Raven-Hive-platform/
 - **Others:**
   - Git
   - Virtualenv
+  - jira
+    
 
