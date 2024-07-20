@@ -8,3 +8,6 @@ def Talentpage(request):
 
 def DevCommunityView(request):
     return render(request, 'DevCommunity.html')
+
+def DonatePage(request):
+    return render(request, 'Donate/donatepage.html')
