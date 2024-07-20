@@ -8,3 +8,7 @@ def Talentpage(request):
 
 def dev_community_view(request):
     return render(request, 'DevCommunity.html')
+
+
+def Aboutuspage(request):
+    return render(request, 'about.html')

@@ -2,7 +2,4 @@
 @tailwind components;
 @tailwind utilities;
 
-.custom-text {
-    @apply text-4xl font-bold leading-tight text-left font-poppins;
-    margin-top: 30px;
-  }
+
