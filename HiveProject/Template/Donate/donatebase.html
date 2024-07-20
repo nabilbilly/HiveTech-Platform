@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Hive Platform{% endblock %}</title>
+    <link href="{% static 'src/css/base.css' %}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+     <!-- Navigation -->
+     <header class="bg-white shadow">
+        <div class="container mx-auto py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="{% static 'images/logo/CashHivelogo.png' %}" alt="Hive Logo" class="h-10 mr-3">
+                
+            </div>
+            <div class="flex items-center space-x-10">
+                    <nav class="hidden items-center md:flex space-x-10">
+                        <a href="{% url 'Talent-page' %}" class="text-gray-700 hover:text-yellow-500" style="text-decoration: none;">For&nbsp;Talents</a>
+                        <a href="{% url 'DevCommunity-Page' %}" class="text-gray-700  hover:text-yellow-500 " style="text-decoration: none;" >Dev&nbsp;community</a>
+                        <a href="#" class="text-gray-700  hover:text-yellow-500" style="text-decoration: none;">About&nbsp;Us</a>
+                        <a href="#" class="text-gray-700  hover:text-yellow-500" style="text-decoration: none;">Employers</a>
+                    </nav>
+                    <a href="{% url 'Login'%}" class="text-gray-700  hover:text-yellow-500" style="text-decoration: none;">Log&nbsp;in</a>
+                    <a href="{% url 'SignUp'%}" class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600" style="text-decoration: none;">Sign&nbsp;up</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    {% block content %}{% endblock %}
+
+    <!-- Footer -->
+    <footer class="bg-white shadow-inner">
+        <div class="absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 border-2 p-2 pt-3 border-black  rounded-md bg-white "><p class="text-xl text-center font-bold ">Payment Methods</p></div>
+        <div class="container mx-auto px-4 py-10">
+            <div class="flex gap-x-48">
+                <div>
+                    <p class="text-xl font-bold">Wallets</p>
+                    <div class="flex gap-5">
+                        <img class="h-16 rounded-xl" src="{% static 'images/Donate/img3.png' %}" alt="MTN">
+                        <img class="h-16 rounded-xl" src="{% static 'images/Donate/img2.png' %}" alt="Telecel">
+                        <img class="h-16 rounded-xl" src="{% static 'images/Donate/img4.png' %}" alt="AirtelTigo">
+                        <img class="h-16 rounded-xl border" src="{% static 'images/Donate/img5.png' %}" alt="Raven">
+                    </div>
+                </div>
+                <!-- <div class="border-x-2 border-black border-2 absolute transform -translate-x-1/2 -translate-y-1/2 left-1/2 ml-24 h-full bottom-0"></div> -->
+                <div>
+                    <p class="text-xl font-bold">Cards</p>
+                    <div class="flex gap-5">
+                        <img class="h-16 rounded-xl" src="{% static 'images/Donate/img1.png' %}" alt="Visa">
+                        <img class="h-16 rounded-xl" src="{% static 'images/Donate/img6.png' %}" alt="Master Card">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+   
+</body>
+</html>
