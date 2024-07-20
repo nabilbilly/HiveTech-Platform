@@ -7,3 +7,15 @@ def SignUp(request):
 
 def Login(request):
     return render(request, "Accounts/login.html")
+
+def ForgotPasswordEmail(request):
+    return render(request, "Accounts/ForgotPasswordEmail.html")
+
+def VerificationCode(request):
+    return render(request, "Accounts/VerificationCode.html")
+
+def PasswordReset(request):
+    return render(request, "Accounts/PasswordReset.html")
+
+
+

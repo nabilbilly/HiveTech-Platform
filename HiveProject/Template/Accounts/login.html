@@ -20,7 +20,18 @@
                 <h2 class="text-2xl font-bold text-center">Join Hive</h2>
                 <img src="{% static 'images/logo/CashHive1.png' %}" alt="logo" class="h-12 md:h-14 lg:h-15 mr-2">
             </div>
-            <h5 class="text-sm text-gray-700 text-center ">Create a Honeypot account and let companies <br> apply directly to you.</h5>
+            {% comment %} <div class="">
+            <h5 class="text-sm text-gray-700 text-center ">Create a Honeypot account and let&nbsp;companies </h5>
+            <h5 class="text-sm text-gray-700 text-center "> apply directly to you.</h5>
+            </div> {% endcomment %}
+            <div class="sm:flex sm:flex-row sm:items-center sm:justify-center">
+                <h5 class="text-sm text-gray-700 text-center sm:text-left sm:mr-2">
+                    Create a Honeypot account and let&nbsp;companies
+                </h5>
+                <h5 class="text-sm text-gray-700 text-center sm:text-left sm:ml-2">
+                    apply directly to you.
+                </h5>
+            </div>
             <br>
             <form action="#">
                 
@@ -33,26 +44,26 @@
                     <input type="password" id="password" class="w-full p-2 border rounded" placeholder="">
                 </div>
                 <div class="flex items-right justify-end mb-2">
-                    <a href="#" class="underline text-black">Forgot password?</a>
+                    <a href="{% url 'ForgotPasswordEmail'%}" class="underline text-black">Forgotten Password?</a>
                 </div>
                 <div class="flex mb-4">
                     <input type="checkbox" id="terms" class="mr-2 mb-2">
                     <label for="terms" class="text-gray-700">Remmeber me</label>
                 </div>
                 
-                <button type="submit" class="w-full bg-yellow-500 text-white py-2 rounded border-2 border-black hover:bg-yellow-600">Sign Up</button>
+                <button type="submit" class="w-full bg-yellow-500 text-white py-2 rounded border-2 border-black hover:bg-yellow-600">Log in</button>
             </form>
-            <p class="mt-4 text-center text-gray-700">Already have an account? <a href="#" class="underline text-yellow-500">Sign Up</a></p>
+            <p class="mt-4 text-center text-gray-700">Already have an account? <a href="{% url 'SignUp'%}" class="underline text-yellow-500">Sign Up</a></p>
             <p class=" text-center text-gray-700"><span class=" font-bold">© 2024 Hive.</span> <br> <a href="#" class="underline text-black">Privacy,</a> <a href="#" class="underline text-black"> Terms</a> and <a href="#" class="underline text-black">Legal</a></p> 
             
         </div>
         <!-- Carousel -->
         <div class="mt-10 md:mt-0 w-full md:w-1/2 bg-black p-6" style="height: 70%;">
             <div class="flex items-center justify-center mb-1">
-                <h2 class="text-2xl text-white text-center font-bold">Ready to get started?</h2>
+                <h2 class="text-lg sm:text-base md:text-xl lg:text-2xl xl:text-3xl text-white text-center font-bold">Ready to get started?</h2>
                 <img src="{% static 'images/logo/CashHive1.png' %}" alt="logo" class="h-12 md:h-13 lg:h-15 mb-2">
             </div>
-            <h2 class="text-sm text-white text-center mb-6 mr-12">Here is how you Log in to Hive</h2>
+            <h2 class="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-white text-center mb-6 sm:mb-3 md:mb-4 lg:mb-5 xl:mb-6 mr-12">Here is how you Log in to Hive</h2>
 
             <div class="relative w-full h-80 bg-black rounded-lg overflow-hidden">
                 <div class="slider relative w-full h-full">
