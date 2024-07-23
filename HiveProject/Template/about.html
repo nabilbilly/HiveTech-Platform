@@ -9,15 +9,15 @@
 
 <div class="container mx-auto px-4 lg:px-20">
     <!-- Section with Two Images -->
-    <div class="flex items-start my-10">
+    <div class="flex items-start my-12">
         <!-- Image 1 (covers half the size of Image 2) -->
         <div class="w-auto pr-4">
-            <img src="static/images/AboutUs/image 25.png" alt="Image 1" class="mt-4 rounded-lg max-w-full h-auto">
+            <img src="{% static 'images/AboutUs/image 25.png' %}" alt="Image 1" class="mt-4 rounded-lg max-w-full h-auto">
         </div>
     
         <!-- Image 2 and the new image below it -->
         <div class="w-auto pl-4">
-            <img src="static/images/AboutUs/Life at Hive.png" alt="Image 2" class="mt-4 rounded-lg max-w-full h-auto">
+            <img src="{% static 'images/AboutUs/Life at Hive.png' %}" alt="Image 2" class="mt-4 rounded-lg max-w-full h-auto">
             
         </div>
     </div>
@@ -27,9 +27,9 @@
     <!-- Section with Text Content -->
     <div class="flex justify-between items-start my-10">
         <!-- Our Story -->
-        <div class="w-1/2 pr-4">
-            <h1 class="text-4xl font-extrabold dark:text-white">Our Story</h1>
-            <p class="my-2 text-lg text-black-900">
+        <div class="w-1/2 px-10">
+            <h1 class="text-4xl text-black font-extrabold dark:text-white" style="font-size: 40px;font-weight: 700; font-family: 'Poppins', sans-serif;line-height: 72px;">Our Story</h1>
+            <p class="my-2  text-lg text-black-900" style=" padding-right:85px;">
                 At Hive, companies seek out talented
                 students. We help students from
                 diverse backgrounds become tech-savvy professionals, whether that's
@@ -43,9 +43,10 @@
         </div>
 
         <!-- What is Hive? -->
-        <div class="w-1/2 pl-4">
-            <h2 class="text-4xl font-extrabold dark:text-white">What is Hive?</h2>
-            <p class="my-2 text-lg text-black-500">
+        <div class="w-1/2 pl-4 mb-12">
+            <h2 class="text-4xl text-black font-extrabold dark:text-white"  style="font-size: 35px;font-weight: 700; font-family: 'Poppins', sans-serif;line-height: 72px;">What is Hive?</h2>
+            {% comment %} <p class="my-2 text-lg text-black-500" style=" padding-right:169px"> {% endcomment %}
+                <p class="my-2 text-lg text-black-500 pr-40 md:pr-32 lg:pr-24 xl:pr-20 2xl:pr-16">
                 Hive.network, simply Hive, is the non-profit arm of the financial technology
                 company incorporated in San Francisco with operations in Africa,
                 Ravenhive. At Hive, our mission is to
@@ -58,19 +59,19 @@
     </div>
 
     <!-- Powered by Section -->
-    <div class="flex justify-center items-center mt-15">
-        <span class="text-4xl font-extrabold text-black">Powered by</span>
-        <img src="static/images/logo/ravenhive.png" alt="Powered by Image" class="h-15 w-auto ml-2">
+    <div class="flex justify-center items-center mt-20 mb-12">
+        <span class="text-4xl  font-extrabold text-black">Powered by</span>
+        <img src="{% static 'images/logo/ravenhive.png' %}" alt="Powered by Image" class="h-12 w-auto ml-2">
     </div>
 
     <!-- App Image Section -->
     <div class="flex justify-center items-center mt-8">
-        <img src="static/images/AboutUs/app.png" alt="App Image">
+        <img src="{% static 'images/AboutUs/app.png' %}" alt="App Image">
     </div>
 
     <!-- Get app Button Section -->
     <div class="flex justify-center items-center mt-10">
-        <button type="button" class="bg-yellow-500 border-2 border-black rounded-lg text-black font-bold px-8 py-4 text-center text-lg m-1 cursor-pointer">
+        <button type="button" class=" border-2 border-black rounded-lg text-black font-bold px-8 py-4 text-center text-lg m-1 cursor-pointer"  style="text-decoration: none; background:#FDCE02;">
             Get the Raven app
           </button>
     </div>
@@ -92,7 +93,7 @@
         <!-- Image Section -->
         <div class="w-1/2 pl-4 mt-5" >
             <div class="bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                <img class="rounded-lg w-full h-auto object-cover" src="static/images/AboutUs/image 27.png" alt="Additional Image">
+                <img class="rounded-lg w-full h-auto object-cover" src="{% static 'images/AboutUs/image 27.png' %}" alt="Additional Image">
             </div>
         </div>
     </div>
@@ -107,22 +108,22 @@
 
         <!-- Sign Up Button -->
         <div class="flex justify-center items-center mt-10">
-            <button type="button" class="bg-yellow-500 border-2 border-black rounded-lg text-black font-bold px-8 py-4 text-center text-lg m-1 cursor-pointer">
+            <button type="button" class=" border-2 border-black rounded-lg text-black font-bold px-8 py-4 text-center text-lg m-1 cursor-pointer"  style="text-decoration: none; background:#FDCE02;">
                 Sign Up for Hive Jobs
               </button>
         </div>
 
         <!-- Multiple Image Sections -->
         <div class="flex justify-center w-full mt-5">
-            <img src="static/images/AboutUs/yellow shirt.png" alt="Yellow Shirt" class="max-w-full h-auto rounded-lg">
+            <img src="{% static 'images/AboutUs/yellow shirt.png' %}" alt="Yellow Shirt" class="max-w-full h-auto rounded-lg">
         </div>
 
         <div class="flex justify-center w-full mt-5">
-            <img src="static/images/AboutUs/black shirt.png" alt="Black Shirt" class="max-w-full h-auto rounded-lg">
+            <img src="{% static 'images/AboutUs/black shirt.png' %}" alt="Black Shirt" class="max-w-full h-auto rounded-lg">
         </div>
 
         <div class="flex justify-center w-full mt-5">
-            <img src="static/images/AboutUs/blue shirt.png" alt="Blue Shirt" class="max-w-full h-auto rounded-lg">
+            <img src="{% static 'images/AboutUs/blue shirt.png' %}" alt="Blue Shirt" class="max-w-full h-auto rounded-lg">
         </div>
     </div>
 </div>

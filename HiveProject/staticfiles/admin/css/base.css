@@ -125,7 +125,7 @@ a.section:link, a.section:visited {
 }
 
 a.section:focus, a.section:hover {
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 /* GLOBAL DEFAULTS */
