@@ -1,0 +1,206 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block content %}
+
+<section class="hero-section py-0">
+  <div class="w-full" >
+    <div class="flex flex-wrap">
+      <div class="w-full md:w-1/2 flex flex-col items-start">
+        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold ml-10 mt-16 mb-3" style="margin-left:80px;">
+          <span class="font-normal leading-10">Choose a</span> 
+          <span class="block text-black text-3xl sm:text-5xl md:text-5xl lg:text-6xl mt-2 font-bold">
+            Job You Love
+          </span>
+        </h1>
+      
+        <p class="mt-4 mb-3 ml-20 text-lg md:text-xl font-light" style="font-family: Poppins; margin-bottom:0; ">
+          Hive.network is Africa's student<br>
+          developer focused platform to meet<br>
+          global opportunities. Create profile<br>
+          and let your dream company reach<br>
+          out to you.
+        </p>
+      
+        <button class="ml-12 text-white mb-10 border-2 border-black" style="background:#FDCE02; padding:10px 20px; border-radius:10px; margin-left:80px;">
+          <a href="#" class="font-bold text-black no-underline hover:text-black hover:no-underline" style="text-decoration: none;">Find Me a Job</a>
+        </button>
+      </div>
+      
+
+      <div class="w-full md:w-1/2 mb-12" >
+        <img src="{% static 'images/TalentPage/rectangle_hive.png' %}" alt="Hero Image" class="w-full" />
+      </div>
+    </div>
+  </div>
+
+  <section class="py-2 bg-gray-100">
+    <div class="container mx-auto text-black font-bold">
+      <p>Over 2000 Companies are Hiring on Honeypot</p>
+    </div>
+  </section>
+
+
+  <section class="py-6 bg-gray-300">
+    <div class="container mx-auto max-w-screen-lg h-20"></div>
+  </section>
+
+  <section class="py-5">
+    <div class="container mx-auto flex flex-wrap">
+      <div class="w-full md:w-1/2">
+        <img src="{% static 'images/TalentPage/image 24.png' %}" alt="Step 1" class="rounded-md w-full" />
+      </div>
+
+      <div class="w-full md:w-1/2 px-5 py-3">
+        <h4 class="text-black text-3xl md:text-4xl font-bold">
+          Join an Engineering <br />Team in
+          <span style="color: #FDCE02; font-weight: bold;">Your Ideal Role</span>
+        </h4>
+        <p class="mt-4">
+          Pass our screening and you will be put in touch with your Talent
+          Success Advisor, who positions you to receive the best offers.
+        </p>
+        <button class="  font-bold rounded border-2 border-black hover:bg-yellow-600 mt-4 px-5 py-2.5" style="background:#FDCE02;">
+          <a href="#" class=" text-black no-underline hover:text-black hover:no-underline" >Sign Up for Hive Jobs</a>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-5">
+    <div class="container mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
+        <!-- Left Side: Text -->
+        <div class="flex flex-col justify-center px-4">
+          <h2 class="text-2xl font-bold mb-4">A Simple and Quick Sign Up Process!</h2>
+          
+          <div class="flex flex-col space-y-1">
+            <div class="flex items-start space-x-4 py-3">
+              <div class="text-center text-black text-2xl font-bold py-2 rounded border-2 border-black hover:bg-yellow-600 w-12 h-12 flex items-center justify-center" style="background:#FDCE02;">
+                1
+              </div>
+              <div>
+                <h4 class="text-xl font-bold">Create a Profile</h4>
+                <p class="mt-2">
+                  It's your chance to tell us whatyou <br>
+                  want in your next role - and it takes <br>
+                  less than 5 minutes.
+                </p>
+              </div>
+            </div>
+
+            <div class="flex items-start space-x-4 py-3">
+              <div class="text-center text-black text-2xl font-bold py-2  rounded border-2 border-black hover:bg-yellow-600 w-12 h-12 flex items-center justify-center" style="background:#FDCE02;">
+                2
+              </div>
+              <div>
+                <h4 class="text-xl font-bold">Complete our Screening</h4>
+                <p class="mt-2">
+                  Pass our screening and you will be <br>
+                  put in touch with your Talent Success <br>
+                  Advisor, who positions you to receive <br>
+                  the best offers.
+                </p>
+              </div>
+            </div>
+
+            <div class="flex items-start space-x-4 py-3">
+              <div class="text-center text-black text-2xl font-bold py-2 rounded border-2 border-black hover:bg-yellow-600 w-12 h-12 flex items-center justify-center" style="background:#FDCE02;">
+                3
+              </div>
+              <div>
+                <h4 class="text-xl font-bold">Become Visible and Get Offers</h4>
+                <p class="mt-2">
+                  Become visible on Honeypot so that <br>
+                  companies can find your profile and <br>
+                  make you offers with salary and tech<br>
+                  stack up front.
+                </p>
+              </div>
+            </div>
+
+            <div class="flex items-start space-x-4 py-3">
+              <div class="text-center text-black text-2xl font-bold py-2 rounded border-2 border-black hover:bg-yellow-600 w-12 h-12 flex items-center justify-center" style="background:#FDCE02;">
+                4
+              </div>
+              <div>
+                <h4 class="text-xl font-bold">Get Hired</h4>
+                <p class="mt-2">
+                  Interview with companies that interest<br>
+                  you! And choose the one you like the <br>
+                  best.
+                </p>
+              </div>
+            </div>
+            <div class="flex items-start space-x-4 pt-6 pb-12">
+              <button class=" text-white border-2 border-black" style="background:#FDCE02; padding:10px 20px; border-radius:10px;">
+                <a href="#" class="font-bold text-black no-underline hover:text-black hover:no-underline " style="text-decoration: none;">Sign Up for Hive Jobs</a>
+              </button>
+              
+            </div>
+          </div>
+        </div>
+        
+        <!-- Right Side: Image -->
+        <div class="w-full flex justify-center md:justify-end">
+          <img src="{% static 'images/TalentPage/fun-bee-50154769 1.png' %}" alt="" class="w-full h-auto max-w-xs" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="py-3">
+    <div class="container mx-auto flex flex-wrap">
+      <div class="w-full md:w-1/2">
+        <img src="{% static 'images/TalentPage/image 26.png' %}" alt="Step 1" class="rounded-md w-full" />
+      </div>
+      <div class="w-full md:w-1/2 px-5 py-3">
+        <h4 class="text-black text-3xl md:text-4xl font-bold">
+          Join an Engineering <br />Team in <span style="color: #FDCE02; font-weight: bold;">Your Ideal Role</span>
+        </h4>
+        <p class="mt-4">
+          Pass our screening and you will be put in touch with your Talent
+          Success Advisor, who positions you to receive the best offers.
+        </p>
+        {% comment %} <button class="bg-yellow-500 text-white py-2 px-4 rounded border-2 border-black hover:bg-yellow-600 mt-4">
+          <a href="#" class="no-underline">Sign Up for Hive Jobs</a>
+        </button> {% endcomment %}
+        <button class="  font-bold rounded border-2 border-black hover:bg-yellow-600 mt-4 px-5 py-2.5" style="background:#FDCE02;">
+          <a href="#" class=" text-black no-underline hover:text-black hover:no-underline" >Sign Up for Hive Jobs</a>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-3 suport-section">
+    <div class="container ">
+      <div class="row">
+          <img src="{% static 'images/TalentPage/fun-bee-50154769 1.png' %}" alt="">
+      </div>
+
+      <div class="row" id="support" style="background:#FDCE02;">
+          <div >
+            <p>Free career suport and guidance</p>
+          </div>
+      </div>
+
+      <div class="row">
+
+        <div class="col-4">
+          <h3>1000+</h3>
+          <p style="color: white;">Community members</p>
+        </div>
+
+        <div class="col-4">
+          <h3>150+</h3>
+          <p style="color: white;">Companies to provide Jobs</p>
+        </div>
+
+        <div class="col-4">
+          <h3>10+</h3>
+          <p style="color: white;">Avaliable in universities</p>
+        </div>
+    </div>
+  </section>
+</section>
+{% endblock %}

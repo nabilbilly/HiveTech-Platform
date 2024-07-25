@@ -15,33 +15,25 @@
 <main class="container mx-auto px-4 py-12">
     <div class="flex flex-col md:flex-row md:space-x-0">
         <!-- Log in Form -->
-        <div class="bg-white p-8 rounded-sm shadow-lg w-full md:w-1/2">
+        <div class="bg-white p-8 rounded-sm  overflow-y-auto w-full md:w-1/2 " style="height:540px">
             <div class="flex items-center justify-center mb-0">
                 <h2 class="text-2xl font-bold text-center">Join Hive</h2>
                 <img src="{% static 'images/logo/CashHive1.png' %}" alt="logo" class="h-12 md:h-14 lg:h-15 mr-2">
             </div>
-            {% comment %} <div class="">
-            <h5 class="text-sm text-gray-700 text-center ">Create a Honeypot account and let&nbsp;companies </h5>
-            <h5 class="text-sm text-gray-700 text-center "> apply directly to you.</h5>
-            </div> {% endcomment %}
-            <div class="sm:flex sm:flex-row sm:items-center sm:justify-center">
+            
                 <h5 class="text-sm text-gray-700 text-center sm:text-left sm:mr-2">
-                    Create a Honeypot account and let&nbsp;companies
+                    Create a Honeypot account and let&nbsp;companies <br> apply directly to you.
                 </h5>
-                <h5 class="text-sm text-gray-700 text-center sm:text-left sm:ml-2">
-                    apply directly to you.
-                </h5>
-            </div>
             <br>
             <form action="#">
                 
                 <div class="mb-4">
                     <label for="email" class="block font-bold text-black-700">Email Address</label>
-                    <input type="email" id="email" class="w-full p-2 border rounded" placeholder="">
+                    <input type="email" id="email" class="w-full p-2 border-2 rounded" placeholder="">
                 </div>
                 <div class="mb-4">
                     <label for="password" class="block font-bold text-black-700">Enter your password</label>
-                    <input type="password" id="password" class="w-full p-2 border rounded" placeholder="">
+                    <input type="password" id="password" class="w-full p-2 border-2 rounded" placeholder="">
                 </div>
                 <div class="flex items-right justify-end mb-2">
                     <a href="{% url 'ForgotPasswordEmail'%}" class="underline text-black">Forgotten Password?</a>
@@ -51,7 +43,7 @@
                     <label for="terms" class="text-gray-700">Remmeber me</label>
                 </div>
                 
-                <button type="submit" class="w-full bg-yellow-500 text-white py-2 rounded border-2 border-black hover:bg-yellow-600">Log in</button>
+                <button type="submit" class="w-full bg-yellow-400 text-black font-bold py-2 rounded border-2 border-black hover:bg-yellow-500">Log in</button>
             </form>
             <p class="mt-4 text-center text-gray-700">Already have an account? <a href="{% url 'SignUp'%}" class="underline text-yellow-500">Sign Up</a></p>
             <p class=" text-center text-gray-700"><span class=" font-bold">© 2024 Hive.</span> <br> <a href="#" class="underline text-black">Privacy,</a> <a href="#" class="underline text-black"> Terms</a> and <a href="#" class="underline text-black">Legal</a></p> 

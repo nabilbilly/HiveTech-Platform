@@ -15,7 +15,8 @@
 <main class="container mx-auto px-4 py-12">
     <div class="flex flex-col md:flex-row md:space-x-0">
         <!-- Sign Up Form -->
-        <div class="bg-white p-8 rounded-sm shadow-lg w-full md:w-1/2">
+        {% comment %} <div class="bg-white p-8 rounded-sm shadow-lg w-full md:w-1/2"> {% endcomment %}
+        <div class="bg-white p-8 rounded-sm  overflow-y-auto w-full md:w-1/2 " style="height:540px">
             <div class="flex items-center justify-center mb-0">
                 <h2 class="text-2xl font-bold text-center">Join Hive</h2>
                 <img src="{% static 'images/logo/CashHive1.png' %}" alt="logo" class="h-12 md:h-14 lg:h-15 mr-2">
@@ -25,19 +26,19 @@
             <form action="#">
                 <div class="mb-4">
                     <label for="firstName" class="block font-bold text-black-300">Tell us about your first name</label>
-                    <input type="text" id="firstName" class="w-full p-2 border rounded" placeholder="">
+                    <input type="text" id="firstName" class="w-full p-2 border-2 rounded" placeholder="">
                 </div>
                 <div class="mb-4">
                     <label for="lastName" class="block font-bold text-black-300">Last Name</label>
-                    <input type="text" id="lastName" class="w-full p-2 border rounded" placeholder="">
+                    <input type="text" id="lastName" class="w-full p-2 border-2 rounded" placeholder="">
                 </div>
                 <div class="mb-4">
                     <label for="email" class="block font-bold text-black-700">Email Address</label>
-                    <input type="email" id="email" class="w-full p-2 border rounded" placeholder="">
+                    <input type="email" id="email" class="w-full p-2 border-2 rounded" placeholder="">
                 </div>
                 <div class="mb-4">
                     <label for="password" class="block font-bold text-black-700">Let's create your password</label>
-                    <input type="password" id="password" class="w-full p-2 border rounded" placeholder="">
+                    <input type="password" id="password" class="w-full p-2 border-2 rounded" placeholder="">
                 </div>
                 <div class="flex mb-4">
                     <input type="checkbox" id="terms" class="mr-2 mb-4">
@@ -47,7 +48,7 @@
                     <input type="checkbox" id="newsletter" class="mr-2 mb-4">
                     <label for="newsletter" class="text-gray-700">Yes, I want to subscribe to the Hive newsletter and occasional marketing communications.</label>
                 </div>
-                <button type="submit" class="w-full bg-yellow-500 text-white py-2 rounded border-2 border-black hover:bg-yellow-600">Sign Up</button>
+                <button type="submit" class="w-full bg-yellow-400 font-bold text-white py-2 rounded border-2 border-black hover:bg-yellow-500">Sign Up</button>
             </form>
           
             <p class="mt-4 text-center text-gray-700">Already have an account? <a href="{% url 'Login'%}" class="underline text-yellow-500">Log in</a></p>

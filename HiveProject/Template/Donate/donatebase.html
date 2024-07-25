@@ -21,8 +21,8 @@
             <div class="flex items-center space-x-10">
                     <nav class="hidden items-center md:flex space-x-10">
                         <a href="{% url 'Talent-page' %}" class="text-gray-700 hover:text-yellow-500" style="text-decoration: none;">For&nbsp;Talents</a>
-                        <a href="{% url 'DevCommunity-Page' %}" class="text-gray-700  hover:text-yellow-500 " style="text-decoration: none;" >Dev&nbsp;community</a>
-                        <a href="#" class="text-gray-700  hover:text-yellow-500" style="text-decoration: none;">About&nbsp;Us</a>
+                        <a href="{% url 'DevCommunity-page' %}" class="text-gray-700  hover:text-yellow-500 " style="text-decoration: none;" >Dev&nbsp;community</a>
+                        <a href="{% url 'About_us-page' %}" class="text-gray-700  hover:text-yellow-500" style="text-decoration: none;">About&nbsp;Us</a>
                         <a href="#" class="text-gray-700  hover:text-yellow-500" style="text-decoration: none;">Employers</a>
                     </nav>
                     <a href="{% url 'Login'%}" class="text-gray-700  hover:text-yellow-500" style="text-decoration: none;">Log&nbsp;in</a>
@@ -34,9 +34,11 @@
 
     {% block content %}{% endblock %}
 
-    <!-- Footer -->
+     {% comment %} <!-- Footer -->
     <footer class="bg-white shadow-inner">
-        <div class="absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 border-2 p-2 pt-3 border-black  rounded-md bg-white "><p class="text-xl text-center font-bold ">Payment Methods</p></div>
+        <div class="absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 border-2 p-2  pt-3 border-black rounded-md bg-white z-10">
+            <p class="text-xl text-center font-bold">Payment Methods</p>
+        </div>
         <div class="container mx-auto px-4 py-10">
             <div class="flex gap-x-48">
                 <div>
@@ -48,7 +50,9 @@
                         <img class="h-16 rounded-xl border" src="{% static 'images/Donate/img5.png' %}" alt="Raven">
                     </div>
                 </div>
-                <!-- <div class="border-x-2 border-black border-2 absolute transform -translate-x-1/2 -translate-y-1/2 left-1/2 ml-24 h-full bottom-0"></div> -->
+                <div class="absolute left-1/2 transform -translate-x-1/2 -translate-y-1/3 w-0 h-40" >
+                    <div class="border-l-2 border-black h-full transform translate-y-12"></div>
+                </div>
                 <div>
                     <p class="text-xl font-bold">Cards</p>
                     <div class="flex gap-5">
@@ -58,7 +62,46 @@
                 </div>
             </div>
         </div>
+    </footer>  {% endcomment %}
+
+    <footer class="bg-white shadow-inner relative">
+        <div class="absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 border-2 p-2 sm:p-3 md:p-4 lg:p-5 border-black rounded-md bg-white z-10">
+            <p class="text-sm sm:text-base md:text-lg lg:text-xl text-center font-bold">Payment Methods</p>
+        </div>        
+        <div class="container mx-auto px-4 pt-10">
+            <div class="flex flex-col md:flex-row md:justify-center md:gap-x-24">
+                <!-- Wallets Section -->
+                <div class="flex flex-col items-center md:items-start md:w-1/2 mb-8 md:mb-0">
+                    <p class="text-xl font-bold text-center md:text-left">Wallets</p>
+                    {% comment %} <div class="flex flex-wrap gap-3 justify-center md:justify-start mt-3">
+                        <img class="h-8 md:h-16 rounded-xl" src="{% static 'images/Donate/img3.png' %}" alt="MTN">
+                        <img class="h-8 md:h-16 rounded-xl" src="{% static 'images/Donate/img2.png' %}" alt="Telecel">
+                        <img class="h-8 md:h-16 rounded-xl" src="{% static 'images/Donate/img4.png' %}" alt="AirtelTigo">
+                        <img class="h-8 md:h-16 rounded-xl border" src="{% static 'images/Donate/img5.png' %}" alt="Raven">
+                    </div> {% endcomment %}
+                    <div class="flex gap-3">
+                        <img class="h-9 rounded-xl" src="{% static 'images/Donate/img3.png' %}" alt="MTN">
+                        <img class="h-9 rounded-xl" src="{% static 'images/Donate/img2.png' %}" alt="Telecel">
+                        <img class="h-9 rounded-xl" src="{% static 'images/Donate/img4.png' %}" alt="AirtelTigo">
+                        <img class="h-9 rounded-xl border" src="{% static 'images/Donate/img5.png' %}" alt="Raven">
+                    </div>
+                </div>
+                <!-- Cards Section -->
+                <div class="flex flex-col items-center md:items-start md:w-1/2">
+                    {% comment %} <p class="text-xl font-bold text-center ml-14 md:ml-2 md:text-left">Cards</p> {% endcomment %}
+                    <p class="text-xl font-bold text-center ml-6 sm:ml-6 md:ml-4 lg:ml-14 md:text-left">Cards</p>
+                    <div class="flex flex-wrap gap-5 justify-center md:justify-start mt-1 ml-14">
+                        <img class="h-8 md:h-12 rounded-xl" src="{% static 'images/Donate/img1.png' %}" alt="Visa">
+                        <img class="h-8 md:h-12 rounded-xl" src="{% static 'images/Donate/img6.png' %}" alt="Master Card">
+                    </div>
+                </div>
+                <div class="absolute left-1/2 transform -translate-x-1/2 -translate-y-1/3 w-0 h-full hidden md:block">
+                    <div class="border-l-2 border-black h-full"></div>
+                </div>
+            </div>
+        </div>
     </footer>
-   
+    
+
 </body>
 </html>
