@@ -15,7 +15,8 @@
 <main class="container mx-auto px-4 py-12">
     <div class="flex flex-col md:flex-row md:space-x-0">
         <!-- Verification Code Form -->
-        <div class="bg-white p-8 rounded-sm shadow-lg w-full md:w-1/2">
+        {% comment %} <div class="bg-white p-8 rounded-sm shadow-lg w-full md:w-1/2"> {% endcomment %}
+        <div class="bg-white p-8 rounded-sm  overflow-y-auto w-full md:w-1/2 " style="height:540px">
             <div class="flex items-center justify-center mb-0">
                 <h2 class="text-2xl font-bold text-center">Join Hive</h2>
                 <img src="{% static 'images/logo/CashHive1.png' %}" alt="logo" class="h-12 md:h-14 lg:h-15 mr-2">
@@ -33,7 +34,7 @@
                 </div>
                 
                 <br><br><br>
-                <button type="submit" class="w-full bg-yellow-500 text-white py-2 rounded border-2 border-black hover:bg-yellow-600 mt-12"><a href="{% url 'PasswordReset'%}" class="text-black no-underline">Continue </a></button>
+                <button type="submit" class="w-full bg-yellow-400 font-bold text-white py-2 rounded border-2 border-black hover:bg-yellow-500 mt-12"><a href="{% url 'PasswordReset'%}" class="text-black no-underline">Continue </a></button>
             </form>
             
             <p class=" text-center text-gray-700 mt-3"><span class=" font-bold">© 2024 Hive.</span> <br> <a href="#" class="underline text-black">Privacy,</a> <a href="#" class="underline text-black"> Terms</a> and <a href="#" class="underline text-black">Legal</a></p> 
