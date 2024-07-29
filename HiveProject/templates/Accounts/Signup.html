@@ -22,7 +22,7 @@
             </div>
             <h5 class="text-sm text-gray-700 text-center mb-2">Create a Hive account and let companies apply directly to you.</h5>
             <br>
-            <form method="post" action="{% url 'SignUp' %}">
+            <form method="post" action="#">
                 {% csrf_token %}
                 {% if messages %}
                 <ul class="messages mb-4">

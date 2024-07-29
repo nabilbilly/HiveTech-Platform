@@ -29,7 +29,7 @@
                 </h5>
             </div>
             <br>
-            <form method="post" action="{% url 'Login' %}">
+            <form method="post" action="#">
                 {% csrf_token %}
                 {% if messages %}
                 <ul class="messages mb-4">

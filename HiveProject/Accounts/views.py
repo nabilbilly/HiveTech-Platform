@@ -24,7 +24,7 @@ def SignUp(request):
             user.save()
             login(request, user)
             messages.success(request, 'Signup successful! Welcome to Hive.')
-            return redirect('home')
+            return redirect('Login')
         else:
             # Display all form errors
             for field in form.errors:
@@ -41,10 +41,10 @@ def SignUp(request):
     return render(request, "Accounts/Signup.html", {'form': form})
 
 def Login(request):
-    page = 'login'
+    page = 'Login'
     
-    if request.user.is_authenticated:
-        return redirect('home')
+    # if request.user.is_authenticated:
+    #     return redirect('Login')
     
     if request.method == "POST":
         email = request.POST.get('email').lower()
@@ -60,12 +60,17 @@ def Login(request):
         
         if user is not None:
             login(request, user)
-            return redirect('home')
+            return redirect('Home')
         else:
             messages.error(request, 'Username or Password does not exist')
     
     context = {'page': page}
     return render(request, "Accounts/login.html", context)
+
+def Home(request):
+    return render(request, "Accounts/home.html")
+
+
 
 def LogoutUser(request):
     logout(request)
