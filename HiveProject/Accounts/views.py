@@ -19,22 +19,19 @@ def SignUp(request):
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
-            user = form.save(commit=False)
-            user.username = user.email
-            user.save()
-            login(request, user)
-            messages.success(request, 'Signup successful! Welcome to Hive.')
-            return redirect('Login')
+            email = form.cleaned_data.get('email')
+            if User.objects.filter(email=email).exists():
+                messages.error(request, 'Email already exists.')
+            else:
+                user = form.save(commit=False)
+                user.username = user.email
+                user.is_active = False  # Deactivate account until email is confirmed
+                user.save()
+                return redirect('Login')
         else:
-            # Display all form errors
-            for field in form.errors:
-                for error in form.errors[field]:
-                    if field == 'password2' and error == 'Passwords do not match':
-                        messages.error(request, "Passwords do not match")
-                    elif field == 'password1' and error == 'Passwords do not match':
-                         messages.error(request, "Passwords do not match")
-                    else:
-                        messages.error(request, f"{form.fields[field].label}: {error}")
+            for field, errors in form.errors.items():
+                for error in errors:
+                    messages.error(request, f"{form.fields[field].label}: {error}")
     else:
         form = CustomUserCreationForm()
     
@@ -42,9 +39,6 @@ def SignUp(request):
 
 def Login(request):
     page = 'Login'
-    
-    # if request.user.is_authenticated:
-    #     return redirect('Login')
     
     if request.method == "POST":
         email = request.POST.get('email').lower()
@@ -56,21 +50,18 @@ def Login(request):
             messages.error(request, 'User does not exist')
             return render(request, "Accounts/login.html", {'page': page})
 
-        user = authenticate(request, email=user.email, password=password)
+        user = authenticate(request, username=user.username, password=password)
         
         if user is not None:
             login(request, user)
             return redirect('Home')
         else:
-            messages.error(request, 'Username or Password does not exist')
+            messages.error(request, 'Invalid email or password')
     
-    context = {'page': page}
-    return render(request, "Accounts/login.html", context)
+    return render(request, "Accounts/login.html", {'page': page})
 
 def Home(request):
     return render(request, "Accounts/home.html")
-
-
 
 def LogoutUser(request):
     logout(request)
