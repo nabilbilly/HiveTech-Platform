@@ -25,21 +25,49 @@
                     Create a Honeypot account and let&nbsp;companies <br> apply directly to you.
                 </h5>
             <br>
-            <form action="#">
-                
-                <div class="mb-4">
+            <form method='post'>
+                {% csrf_token %}   
+               
+                <ul class="messages mb-4">
+                    {% if messages %}
+                        {% for message in messages %}
+                            <li>
+                                <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                                    <strong class="font-bold">{{ message }}</strong>
+                                    <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
+                                        <svg class="fill-current h-6 w-6 text-red-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                            <title>Close</title>
+                                            <path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"/>
+                                        </svg>
+                                    </span>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    {% endif %}
+                </ul>
+               
+
+                {% comment %} <div class="mb-4">
                     <label for="email" class="block font-bold text-black-700">Email Address</label>
-                    <input type="email" id="email" class="w-full p-2 border-2 rounded" placeholder="">
+                    <input type="email" name='email' id="email" class="w-full p-2 border-2 rounded" placeholder="">
                 </div>
                 <div class="mb-4">
                     <label for="password" class="block font-bold text-black-700">Enter your password</label>
-                    <input type="password" id="password" class="w-full p-2 border-2 rounded" placeholder="">
+                    <input type="password" id="password"  name="password" class="w-full p-2 border-2 rounded" placeholder="">
+                </div> {% endcomment %}
+                <div class="mb-4">
+                    <label for="email" class="block font-bold text-black-700">Email Address</label>
+                    <input type="email" name="email" id="email" class="w-full p-2 border-2 rounded" placeholder="">
+                </div>
+                <div class="mb-4">
+                    <label for="password" class="block font-bold text-black-700">Enter your password</label>
+                    <input type="password" id="password" name="password" class="w-full p-2 border-2 rounded" placeholder="">
                 </div>
                 <div class="flex items-right justify-end mb-2">
                     <a href="{% url 'ForgotPasswordEmail'%}" class="underline text-black">Forgotten Password?</a>
                 </div>
                 <div class="flex mb-4">
-                    <input type="checkbox" id="terms" class="mr-2 mb-2">
+                    <input type="checkbox" id="terms" class="mr-2 mb-2" required>
                     <label for="terms" class="text-gray-700">Remmeber me</label>
                 </div>
                 
@@ -93,5 +121,21 @@
         </div>
     </div>
 </main>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Select all close buttons
+        var closeButtons = document.querySelectorAll('.messages .fill-current');
+
+        closeButtons.forEach(function(button) {
+            button.addEventListener('click', function() {
+                // Find the closest message container and hide it
+                var messageContainer = this.closest('div[role="alert"]');
+                if (messageContainer) {
+                    messageContainer.style.display = 'none';
+                }
+            });
+        });
+    });
+</script>
 {% endblock %}
 

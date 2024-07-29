@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Mainapp',
+    'Accounts',
 ]
 
 MIDDLEWARE = [
@@ -81,6 +82,15 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# # settings.py
+# AUTHENTICATION_BACKENDS = [
+#     'Accounts.authentication.EmailBackend',
+#     'django.contrib.auth.backends.ModelBackend',  # Keep the default backend for other auth methods
+# ]
+
+# # settings.py
+# AUTH_USER_MODEL = 'Accounts.MyUser'
 
 
 # Password validation
