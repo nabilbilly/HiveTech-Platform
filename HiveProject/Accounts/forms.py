@@ -9,11 +9,11 @@ class CustomUserCreationForm(UserCreationForm):
 
     def __init__(self, *args, **kwargs):
         super(CustomUserCreationForm, self).__init__(*args, **kwargs)
-        self.fields['first_name'].widget.attrs.update({'class': 'w-full p-2 border rounded'})
-        self.fields['last_name'].widget.attrs.update({'class': 'w-full p-2 border rounded'})
-        self.fields['email'].widget.attrs.update({'class': 'w-full p-2 border rounded'})
-        self.fields['password1'].widget.attrs.update({'class': 'w-full p-2 border rounded'})
-        self.fields['password2'].widget.attrs.update({'class': 'w-full p-2 border rounded'})
+        self.fields['first_name'].widget.attrs.update({'class': 'w-full p-2 border-2 border-black rounded'})
+        self.fields['last_name'].widget.attrs.update({'class': 'w-full p-2 border-2 border-black rounded'})
+        self.fields['email'].widget.attrs.update({'class': 'w-full p-2 border-2 border-black rounded'})
+        self.fields['password1'].widget.attrs.update({'class': 'w-full p-2 border-2 border-black rounded'})
+        self.fields['password2'].widget.attrs.update({'class': 'w-full p-2 border-2 border-black rounded'})
 
         for fieldname in ['first_name', 'last_name', 'email', 'password1', 'password2']:
             self.fields[fieldname].label_tag = lambda cls: forms.BoundField.label_tag(self.fields[fieldname], attrs={'class': 'block font-bold text-black-300'})

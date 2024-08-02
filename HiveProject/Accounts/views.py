@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, auth
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -26,7 +26,7 @@ def SignUp(request):
             else:
                 user = form.save(commit=False)
                 user.username = user.email
-                user.is_active = False  # Deactivate account until email is confirmed
+                user.is_active = True  #False Deactivate account until email is confirmed
                 user.save()
                 return redirect('Login')
         else:
@@ -61,12 +61,36 @@ def Login(request):
     
     return render(request, "Accounts/login.html", {'page': page})
 
+# def Login(request):
+#     page = 'Login'
+    
+#     if request.method == "POST":
+#         email = request.POST.get('email').lower()
+#         password = request.POST.get('password')
+        
+#         try:
+#             user = User.objects.get(email=email)
+#         except User.DoesNotExist:
+#             messages.error(request, 'User does not exist')
+#             return render(request, "Accounts/login.html", {'page': page})
+
+#         user = authenticate(request, username=user.username, password=password)
+        
+#         if user is not None:
+#             login(request, user)
+#             return redirect('Home')
+#         else:
+#             messages.error(request, 'Invalid email or password')
+    
+#     return render(request, "Accounts/login.html", {'page': page})
+
 def Home(request):
     return render(request, "Accounts/home.html")
 
-def LogoutUser(request):
-    logout(request)
-    return redirect('home')
+@login_required(login_url='/')
+def logout(request):
+    auth.logout(request)
+    return redirect('/')
 
     
 
