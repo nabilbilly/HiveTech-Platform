@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Hive Platform{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'src/css/talent_page.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    {% block extra_css %}{% endblock %}
+    <style>
+        .responsive-menu {
+            display: none;
+            flex-direction: column;
+            width: 100%;
+            background-color: white;
+            position: absolute;
+            top: 60px;
+            /* Adjust based on your header height */
+            left: 0;
+            z-index: 10;
+        }
+
+        .responsive-menu.active {
+            display: flex;
+        }
+
+        .responsive-menu a {
+            padding: 16px;
+            text-align: center;
+            display: block;
+            color: black;
+            font-weight: 600;
+        }
+
+        .responsive-menu a:hover {
+            background-color: #f5f5f5;
+            /* Light background for hover effect */
+        }
+        /* Custom radio button styles */
+.custom-radio {
+    appearance: none;
+    border-radius: 50%;
+    border: 2px solid #e5e7eb; /* Gray border */
+    width: 1rem; /* Size of the radio button */
+    height: 1rem;
+    position: relative;
+    outline: none;
+    cursor: pointer;
+}
+
+.custom-radio:checked {
+    background-color: #f59e0b; /* Yellow background */
+    border-color: #f59e0b; /* Yellow border */
+}
+
+.custom-radio:checked::before {
+    content: "";
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    width: 50%;
+    height: 50%;
+    border-radius: 50%;
+    background-color: white; /* Inner dot */
+}
+
+
+/* Container to ensure the sliders overlap correctly */
+.relative {
+    position: relative;
+}
+
+/* Track background */
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+}
+
+/* Slider track */
+input[type="range"]::-webkit-slider-runnable-track {
+    height: 2px;
+    background: #f59e0b; /* Yellow color for the track */
+}
+
+/* Slider handle */
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    background: #f59e0b; /* Yellow color for the handle */
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* Firefox styles */
+input[type="range"]::-moz-range-track {
+    height: 2px;
+    background: #f59e0b; /* Yellow color for the track */
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    background: #f59e0b; /* Yellow color for the handle */
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* Edge styles */
+input[type="range"]::-ms-track {
+    height: 2px;
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+}
+
+input[type="range"]::-ms-fill-lower {
+    background: #f59e0b; /* Yellow color for the track */
+}
+
+input[type="range"]::-ms-fill-upper {
+    background: #f59e0b; /* Yellow color for the track */
+}
+
+input[type="range"]::-ms-thumb {
+    width: 16px;
+    height: 16px;
+    background: #f59e0b; /* Yellow color for the handle */
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+
+
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <header class="bg-white bottom-border" style="border-bottom: 2px solid black;">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <a href="{% url 'Talent-page' %}">
+                    <img src="{% static 'images/logo/CashHivelogo.png' %}" alt="Hive Logo" class="h-10 mr-3">
+                </a>
+            </div>
+            <div class="flex items-center space-x-6">
+                <nav class="hidden md:flex space-x-6 mr-12 nav-links">
+                    <a href="#" class="text-black font-semibold hover:text-yellow-500"
+                        style="text-decoration: none;">Overview</a>
+                    <a href="#" class="text-black font-semibold hover:text-yellow-500"
+                        style="text-decoration: none;">Balance</a>
+                    <a href="#" class="text-black font-semibold hover:text-yellow-500"
+                        style="text-decoration: none;">Team Workspace</a>
+                    <a href="#" class="bg-yellow-500 text-black font-semibold rounded-lg px-4 py-2 hover:bg-yellow-600"
+                        style="text-decoration: none;">Job Search</a>
+                </nav>
+                <div class="flex items-center space-x-2">
+                    <a href="#" class="text-black">
+                        <img src="{% static 'images/icons/bell.png' %}" alt="Notification Bell"
+                            class="h-10 w-10">
+                    </a>
+                    <a href="#" class="text-black">
+                        <img src="{% static 'images/icons/bell.png' %}" alt="Notification Bell"
+                            class="h-10 w-10">
+                    </a>
+                    <a href="#" class="text-black">
+                        <img src="{% static 'images/icons/image.png' %}" alt="User Profile"
+                            class="h-10 w-10 rounded-full">
+                    </a>
+                </div>
+                <!-- Hamburger Menu Button -->
+                <button id="hamburger-icon" class="block md:hidden flex items-center cursor-pointer">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <!-- Responsive Menu Toggle -->
+        <div id="responsive-menu" class="responsive-menu">
+            <a href="#" class="text-black font-semibold hover:text-yellow-500"
+                style="text-decoration: none;">Overview</a>
+            <a href="#" class="text-black font-semibold hover:text-yellow-500"
+                style="text-decoration: none;">Balance</a>
+            <a href="#" class="text-black font-semibold hover:text-yellow-500" style="text-decoration: none;">Team
+                Workspace</a>
+            <a href="#" class="bg-yellow-500 text-black font-semibold rounded-lg px-4 py-2 hover:bg-yellow-600"
+                style="text-decoration: none;">Job Search</a>
+        </div>
+    </header>
+
+    {% block content %}{% endblock %}
+
+    <script>
+        document.getElementById('hamburger-icon').addEventListener('click', function () {
+            const menu = document.getElementById('responsive-menu');
+            menu.classList.toggle('active');
+        });
+
+        const minSlider = document.getElementById('min-slider');
+            const maxSlider = document.getElementById('max-slider');
+            const minValue = document.getElementById('min-value');
+            const maxValue = document.getElementById('max-value');
+
+            // Update the values based on the sliders
+            function updateSliderValues() {
+                if (parseInt(minSlider.value) > parseInt(maxSlider.value)) {
+                    minSlider.value = maxSlider.value;
+                }
+                minValue.textContent = `$${minSlider.value}/hr`;
+                maxValue.textContent = `$${maxSlider.value}/hr`;
+            }
+
+            // Add event listeners to sliders
+            minSlider.addEventListener('input', updateSliderValues);
+            maxSlider.addEventListener('input', updateSliderValues);
+
+    </script>
+</body>
+
+</html>

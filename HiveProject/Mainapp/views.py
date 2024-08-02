@@ -16,3 +16,7 @@ def Aboutuspage(request):
     return render(request, 'About.html')
 
 
+
+def job_view(request):
+    return render(request, 'Job/jobpage.html')
+
