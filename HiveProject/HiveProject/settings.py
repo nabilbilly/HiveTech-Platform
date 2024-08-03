@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Mainapp',
+    'Accounts',
 ]
 
 MIDDLEWARE = [
@@ -56,7 +57,7 @@ ROOT_URLCONF = 'HiveProject.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'Template')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -81,6 +82,15 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# # settings.py
+# AUTHENTICATION_BACKENDS = [
+#     'Accounts.authentication.EmailBackend',
+#     'django.contrib.auth.backends.ModelBackend',  # Keep the default backend for other auth methods
+# ]
+
+# # settings.py
+# AUTH_USER_MODEL = 'Accounts.MyUser'
 
 
 # Password validation
@@ -128,7 +138,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-LOGIN_REDIRECT_URL = "/"
+LOGIN_REDIRECT_URL = "Home"
 LOGOUT_REDIRECT_URL = "/"
 
 # Default primary key field type
