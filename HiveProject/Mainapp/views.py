@@ -13,6 +13,6 @@ def DonatePage(request):
     return render(request, 'Donate/donatepage.html')
 
 def Aboutuspage(request):
-    return render(request, 'About.html')
+    return render(request, 'about.html')
 
 

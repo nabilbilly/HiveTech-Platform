@@ -62,10 +62,10 @@
     <p class="mb-4">Are you sure you want to Logout?</p>
     <div class="flex justify-end">
       <button id="cancelButton" class="bg-gray-500 text-white px-4 py-2 rounded mr-2">Cancel</button>
-      <form action="{% url 'logout' %}" method="post">
-        {% csrf_token %}
-        <button type="submit" id="confirmButton" class="bg-yellow-300 text-BLACK px-4 py-2 rounded">Confirm</button>
-      </form>
+      <a href="{% url 'Talent-page' %}" class=" text-black font-semibold  hover:bg-yellow-600" style="text-decoration: none; background:#FDCE02;padding:10px 20px 10px 20px;border-radius:10px;"
+      onmouseover="this.style.color='black'; this.style.backgroundColor='#FDCE02'; "  onmouseout="this.style.color='black'; this.style.backgroundColor='#FDCE02';">
+      Log&nbsp;out
+     </a>
       
     </div>
   </div>

@@ -21,8 +21,8 @@
           out to you.
         </p>
       
-        <button class="ml-12 text-white mb-10 border-2 border-black" style="background:#FDCE02; padding:10px 20px; border-radius:10px; margin-left:80px;">
-          <a href="#" class="font-bold text-black no-underline hover:text-black hover:no-underline" style="text-decoration: none;">Find Me a Job</a>
+        <button class="ml-12 text-white mb-10 border-2 border-black" style="background:#FDCE02; padding:10px 20px; border-radius:10px; margin-left:80px;" id="openModal">
+          <span class="font-bold text-black no-underline hover:text-black hover:no-underline" style="text-decoration: none;">Find Me a Job</span>
         </button>
       </div>
       
@@ -60,7 +60,7 @@
           Success Advisor, who positions you to receive the best offers.
         </p>
         <button class="  font-bold rounded border-2 border-black hover:bg-yellow-600 mt-4 px-5 py-2.5" style="background:#FDCE02;">
-          <a href="#" class=" text-black no-underline hover:text-black hover:no-underline" >Sign Up for Hive Jobs</a>
+          <a href="{% url 'SignUp' %}" class=" text-black no-underline hover:text-black hover:no-underline" >Sign Up for Hive Jobs</a>
         </button>
       </div>
     </div>
@@ -133,7 +133,7 @@
             </div>
             <div class="flex items-start space-x-4 pt-6 pb-12">
               <button class=" text-white border-2 border-black" style="background:#FDCE02; padding:10px 20px; border-radius:10px;">
-                <a href="#" class="font-bold text-black no-underline hover:text-black hover:no-underline " style="text-decoration: none;">Sign Up for Hive Jobs</a>
+                <a href="{% url 'SignUp' %}" class="font-bold text-black no-underline hover:text-black hover:no-underline " style="text-decoration: none;">Sign Up for Hive Jobs</a>
               </button>
               
             </div>
@@ -149,7 +149,7 @@
   </section>
 
 
-  <section class="py-3">
+  <section class="py-4 pb-7">
     <div class="container mx-auto flex flex-wrap">
       <div class="w-full md:w-1/2">
         <img src="{% static 'images/TalentPage/image 26.png' %}" alt="Step 1" class="rounded-md w-full" />
@@ -162,11 +162,9 @@
           Pass our screening and you will be put in touch with your Talent
           Success Advisor, who positions you to receive the best offers.
         </p>
-        {% comment %} <button class="bg-yellow-500 text-white py-2 px-4 rounded border-2 border-black hover:bg-yellow-600 mt-4">
-          <a href="#" class="no-underline">Sign Up for Hive Jobs</a>
-        </button> {% endcomment %}
+       
         <button class="  font-bold rounded border-2 border-black hover:bg-yellow-600 mt-4 px-5 py-2.5" style="background:#FDCE02;">
-          <a href="#" class=" text-black no-underline hover:text-black hover:no-underline" >Sign Up for Hive Jobs</a>
+          <a href="{% url 'SignUp' %}" class=" text-black no-underline hover:text-black hover:no-underline" >Sign Up for Hive Jobs</a>
         </button>
       </div>
     </div>
@@ -202,5 +200,44 @@
         </div>
     </div>
   </section>
+
+
+  {% comment %} Modal Popup manu {% endcomment %}
+  <div id="confirmModal" class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 hidden">
+    <div class="bg-white p-6 rounded shadow-lg">
+      <h2 class="text-xl font-bold mb-4">Hey! Ready to go? 🌍✨</h2>
+      <p class="mb-4">🌟Sign up now to Hive.network and:</p>
+      <p class="8">
+        <li>Discover top job opportunities worldwide 🌟</li>
+        <li>Get personalized job matches just for you 📈</li>
+        <li>Connect with leading employers and grow your network 🌐</li>
+      </p>
+      
+      <div class="flex justify-end mt-8">
+        <button id="cancelButton" class="bg-gray-500 font-semibold text-black px-4 py-2 mr-2" style="text-decoration: none;padding:10px 20px 10px 20px;border-radius:10px;box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);">Cancel</button>
+        <a href="{% url 'SignUp' %}" class=" text-black font-semibold  hover:bg-yellow-600" style="text-decoration: none; background:#FDCE02;padding:10px 20px 10px 20px;border-radius:10px;"
+         onmouseover="this.style.color='black'; this.style.backgroundColor='#FDCE02'; "  onmouseout="this.style.color='black'; this.style.backgroundColor='#FDCE02';">
+         Sign&nbsp;up
+        </a>
+        
+      </div>
+    </div>
+  </div>
+  
+  <script>
+  document.getElementById('openModal').addEventListener('click', function() {
+      document.getElementById('confirmModal').classList.remove('hidden');
+    });
+    
+    document.getElementById('cancelButton').addEventListener('click', function() {
+      document.getElementById('confirmModal').classList.add('hidden');
+    });
+    
+    document.getElementById('confirmButton').addEventListener('click', function() {
+      // Add your confirmation action here
+      document.getElementById('confirmModal').classList.add('hidden');
+    });
+    
+  </script>
 </section>
 {% endblock %}
