@@ -15,4 +15,5 @@ def DonatePage(request):
 def Aboutuspage(request):
     return render(request, 'about.html')
 
-
+def Employerspage(request):
+    return render(request, 'employers.html')
