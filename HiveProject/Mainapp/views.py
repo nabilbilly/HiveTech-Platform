@@ -12,7 +12,6 @@ def DevCommunityView(request):
 def DonatePage(request):
     return render(request, 'Donate/donatepage.html')
 
-def Aboutuspage(request):
-    return render(request, 'About.html')
-
+def AboutUsPage(request):
+    return render(request, 'about.html')
 
