@@ -1,6 +1,10 @@
 from pathlib import Path
 import os
 from django.core.management.utils import get_random_secret_key
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -104,10 +108,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = os.environ.get('EMAIL_HOST', 'smtp.gmail.com')
 EMAIL_PORT = int(os.environ.get('EMAIL_PORT', 587))
-EMAIL_USE_TLS = os.environ.get('EMAIL_USE_TLS', 'True') == 'True'
-EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', 'Kueprotocol@example.com')
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', 'jysw dlhx brhl xcni')
-DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', 'kueprotocol@example.com')
+# EMAIL_USE_TLS = os.environ.get('EMAIL_USE_TLS', 'False') == 'False'
+EMAIL_USE_SSL = os.getenv('EMAIL_USE_SSL', 'True') == 'True'
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', 'your_email@gmail.com')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', 'your_app_password')
+DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', 'your_email@gmail.com')
 
 # Cache configuration for OTP storage
 CACHES = {
@@ -118,3 +123,12 @@ CACHES = {
 
 # Session configuration
 SESSION_ENGINE = 'django.contrib.sessions.backends.cached_db'
+
+
+# send_mail(
+#     'Test Subject',
+#     'This is a test message.',
+#     'your_email@gmail.com',  # From email
+#     ['gardnerjonathan52@gmail.com'],  # To email
+#     fail_silently=False,
+# )

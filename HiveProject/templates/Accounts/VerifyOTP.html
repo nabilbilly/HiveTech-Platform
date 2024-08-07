@@ -47,15 +47,19 @@
             </div>
             <h5 class="text-sm text-gray-700 text-center">Please enter the code we emailed you.</h5>
             <br>
-            {% if messages %}
-                {% for message in messages %}
-                    <div class="{% if message.tags %}{{ message.tags }}{% endif %} text-center mb-4">
-                        {{ message }}
-                    </div>
-                {% endfor %}
-            {% endif %}
-            <form method="POST" action="{% url 'verify_otp' user_id=user_id %}">
-                {% csrf_token %}
+            
+            <form method="POST" action="{% url 'VerifyOTP' user_id=user_id %}">
+            {% csrf_token %}
+                {% if messages %}
+                <ul class="messages mb-4">
+                    {% for message in messages %}
+                        <li class="message w-full bg-danger text-white py-2 rounded border-2 border-black hover:bg-yellow-600 {{ message.tags }} relative">
+                            {{ message }}
+                            <button type="button" class="close-btn absolute top-0 right-0 mt-2 mr-2 text-white text-xl">&times;</button>
+                        </li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
                 <div class="flex items-center justify-center space-x-2 mb-12">
                     <input type="text" name="otp_1" maxlength="1" class="otp-input w-12 h-12 border-2 border-gray-400 rounded text-center text-xl" required>
                     <input type="text" name="otp_2" maxlength="1" class="otp-input w-12 h-12 border-2 border-gray-400 rounded text-center text-xl" required>
