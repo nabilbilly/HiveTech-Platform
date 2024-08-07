@@ -1,4 +1,4 @@
-#!/home/malware/Desktop/main_project/HiveTech-Platform/venv/bin/python
+#!/home/malware/Desktop/main_project/HiveTech-Platform/venv/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys

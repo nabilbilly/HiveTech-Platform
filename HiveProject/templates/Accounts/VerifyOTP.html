@@ -48,7 +48,7 @@
             <h5 class="text-sm text-gray-700 text-center">Please enter the code we emailed you.</h5>
             <br>
             
-            <form method="POST" action="{% url 'VerifyOTP' user_id=user_id %}">
+            <form method="POST" action="{% url 'verify-otp' user_id=user_id %}">
             {% csrf_token %}
                 {% if messages %}
                 <ul class="messages mb-4">

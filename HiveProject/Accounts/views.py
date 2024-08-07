@@ -17,6 +17,7 @@ import re
 import random
 from django.core.cache import cache
 
+
 def is_password_strong(password):
     if len(password) < 8:
         return False
@@ -29,6 +30,8 @@ def is_password_strong(password):
     if not re.search(r"[!@#$%^&*()_+]", password):
         return False
     return True
+
+
 def verify_email(request, uidb64, token):
     try:
         uid = force_str(urlsafe_base64_decode(uidb64))
@@ -45,6 +48,7 @@ def verify_email(request, uidb64, token):
         messages.error(request, 'The verification link is invalid or has expired.')
         return redirect('SignUp')
 
+
 def send_verification_email(user, request):
     token = default_token_generator.make_token(user)
     uid = urlsafe_base64_encode(force_bytes(user.pk))
@@ -59,6 +63,7 @@ def send_verification_email(user, request):
     to_email = [user.email]
 
     send_mail(subject, message, from_email, to_email, fail_silently=False, html_message=message)
+
 
 def SignUp(request):
     if request.method == 'POST':
@@ -102,6 +107,7 @@ def SignUp(request):
 
     return render(request, "Accounts/Signup.html", {'form': form})
 
+
 def Login(request):
     # if request.user.is_authenticated:
     #     return redirect('home')
@@ -130,9 +136,11 @@ def Login(request):
 
     return render(request, "Accounts/login.html")
 
+
 @login_required
 def Home(request):
     return render(request, "Accounts/home.html")
+
 
 @login_required
 def LogoutUser(request):
@@ -142,13 +150,23 @@ def LogoutUser(request):
 def generate_otp():
     return str(random.randint(100000, 999999))
 
+
+
 def send_otp_email(user, otp):
     subject = 'Password Reset OTP'
-    message = render_to_string('Accounts/password_reset_otp.html', {
+    context = {
         'user': user,
         'otp': otp,
-    })
-    send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [user.email], fail_silently=False, html_message=message)
+    }
+    message = render_to_string('Accounts/password_reset_otp.html', context)
+    send_mail(
+        subject,
+        message,
+        settings.DEFAULT_FROM_EMAIL,
+        [user.email],
+        fail_silently=False,
+        html_message=message
+    )
 
 def ForgotPasswordEmail(request):
     if request.method == 'POST':
@@ -168,6 +186,7 @@ def ForgotPasswordEmail(request):
         return redirect('Login')
     return render(request, "Accounts/ForgotPasswordEmail.html")
 
+
 def VerifyOTP(request, user_id):
     if request.method == 'POST':
         entered_otp = request.POST.get('otp')
@@ -176,26 +195,29 @@ def VerifyOTP(request, user_id):
 
         if stored_otp and entered_otp == stored_otp:
             cache.delete(cache_key)
-            return redirect('PasswordReset', user_id=user_id)
+            return redirect('reset_password', user_id=user_id)
         else:
             messages.error(request, 'Invalid or expired OTP. Please try again.')
 
-    return render(request, "Accounts/VerifyOTP.html")
+    return render(request, "Accounts/VerifyOTP.html", {'user_id': user_id})
+
+
 
 def PasswordReset(request, user_id):
     user = User.objects.get(id=user_id)
     if request.method == 'POST':
         new_password = request.POST.get('new_password')
         confirm_password = request.POST.get('confirm_password')
-        
+
         if new_password == confirm_password:
-            user.set_password(new_password)
-            user.save()
-            messages.success(request, 'Your password has been reset successfully. You can now log in with your new password.')
-            return redirect('Login')
+            if is_password_strong(new_password):
+                user.set_password(new_password)
+                user.save()
+                messages.success(request, 'Your password has been reset successfully. You can now log in with your new password.')
+                return redirect('Login')
+            else:
+                messages.error(request, 'Password is too weak. It must be at least 8 characters long and contain uppercase, lowercase, numbers, and special characters.')
         else:
             messages.error(request, 'Passwords do not match. Please try again.')
-    
+
     return render(request, "Accounts/PasswordReset.html", {'user': user})
-
-
