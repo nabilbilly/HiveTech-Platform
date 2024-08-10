@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Mainapp',
+    'Accounts',
 ]
 
 MIDDLEWARE = [
@@ -60,12 +61,32 @@ TEMPLATES = [
 WSGI_APPLICATION = 'HiveProject.wsgi.application'
 
 # Database
+# https://docs.djangoproject.com/en/5.0/ref/settings/#databases
+
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+# # settings.py
+# AUTHENTICATION_BACKENDS = [
+#     'Accounts.authentication.EmailBackend',
+#     'django.contrib.auth.backends.ModelBackend',  # Keep the default backend for other auth methods
+# ]
+
+# # settings.py
+# AUTH_USER_MODEL = 'Accounts.MyUser'
+
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
@@ -99,7 +120,11 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-LOGIN_REDIRECT_URL = "/"
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+LOGIN_REDIRECT_URL = "Home"
 LOGOUT_REDIRECT_URL = "/"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

@@ -3,15 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Email Verification</title>
+    <title>Activate Your Hive.network Account</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            background: #f4f4f4;
+            padding: 10px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .header img {
+            max-height: 50px; /* Adjust as needed */
+        }
+        .content {
+            margin: 20px 0;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: black;
+            background-color: #FDCE02;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .footer {
+            margin: 20px 0;
+            font-size: 14px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome to Hive!</h1>
-    <p>Hi {{ user.username }},</p>
-    <p>Thank you for signing up. Please click the link below to verify your email address:</p>
-    <p><a href="{{ verification_link }}">Verify Email</a></p>
-    <p>If you did not sign up for this account, please ignore this email.</p>
-    <p>Best regards,</p>
-    <p>The Hive Team</p>
+    <div class="container">
+        <div class="header">
+            <img src="../../static/images/logo/CashHive1.png" alt="Hive.network Logo">
+            <h1>Hive.network</h1>
+        </div>
+        <div class="content">
+            <p>Hi {{ user.username }},</p>
+            <p>Thank you for signing up with Hive.network! We’re excited to have you on board.</p>
+            <p>To complete your registration and activate your account, please click the link below:</p>
+            <p><a  href="{{ verification_link }}" class="button">Activate Your Account</a></p>
+            <p>If the link doesn’t work, you can copy and paste the following URL into your browser:</p>
+            <p><a  href="{{ verification_link }}" class="button">Activate Your Account</a></p>
+        </div>
+        <div class="footer">
+            <p>If you encounter any issues or need assistance, feel free to contact our support team at <a href="mailto:teamhive@hivenetwork.xyz">teamhive@hivenetwork.xyz</a>.</p>
+            <p>Welcome to the Hive.network community!</p>
+            <p>Best regards,<br>The Hive.network Team</p>
+        </div>
+    </div>
 </body>
 </html>

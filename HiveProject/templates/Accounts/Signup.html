@@ -21,22 +21,32 @@
                 <h2 class="text-2xl font-bold text-center">Join Hive</h2>
                 <img src="{% static 'images/logo/CashHive1.png' %}" alt="logo" class="h-12 md:h-14 lg:h-15 mr-2">
             </div>
-            <h5 class="text-sm text-gray-700 text-center mb-2">Create a Hive account and let companies apply directly to you.</h5>
+            <h5 class="text-sm text-gray-700 text-center mb-2">Create a Hive account and let companies <br> apply directly to you.</h5>
             <br>
             <form method="post" >
                 {% csrf_token %}
                 {% if messages %}
                 <ul class="messages mb-4">
                     {% for message in messages %}
-                        <li class="message w-full bg-danger text-white py-2 rounded border-2 border-black hover:bg-yellow-600 {{ message.tags }} relative">
-                            {{ message }}
-                            <button type="button" class="close-btn absolute top-0 right-0 mt-2 mr-2 text-white text-xl">&times;</button>
-                        </li>
+                    <li class="bg-yellow-50 border border-yellow-400 rounded text-yellow-800 text-sm flex items-center justify-between p-2 mb-2 relative">
+                        <div class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
+                            </svg>
+                            <p class="flex-1 mt-3">
+                                <span class="font-bold">Info:</span>
+                                {{ message }}
+                            </p>
+                        </div>
+                        <button type="button" class="ml-3 text-yellow-800 hover:text-yellow-600" aria-label="Close" onclick="removeMessage(this)" >
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round"nstroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                        </button>
+                    </li>
                     {% endfor %}
                 </ul>
                 {% endif %}
                 <div class="mb-4">
-                    <label for="firstName" class="block font-bold text-black-300">Tell us about your first name</label>
+                    <label for="firstName" class="block font-bold  text-black-300">Tell us about your first name</label>
                     {{ form.first_name }}
                 </div>
                 <div class="mb-4">
@@ -56,14 +66,14 @@
                     {{ form.password2 }}
                 </div>
                 <div class="flex mb-4">
-                    <input type="checkbox" id="terms" class="mr-2 mb-4">
+                    <input type="checkbox" id="terms" class="mr-2 mb-4" required>
                     <label for="terms" class="text-gray-700">By signing up you agree to the <a href="#" class="underline text-black">Terms of Service</a> and the <a href="#" class="underline text-black hover:text-yellow">Privacy Policy</a></label>
                 </div>
                 <div class="flex mb-4">
-                    <input type="checkbox" id="newsletter" class="mr-2 mb-4">
+                    <input type="checkbox" id="newsletter" class="mr-2 mb-4" required>
                     <label for="newsletter" class="text-gray-700">Yes, I want to subscribe to the Hive newsletter and occasional marketing communications.</label>
                 </div>
-                <button type="submit" class="w-full bg-yellow-400 font-bold text-white py-2 rounded border-2 border-black hover:bg-yellow-500">Sign Up</button>
+                <button type="submit" class="w-full bg-yellow-400 font-bold text-black py-2 rounded border-2 border-black hover:bg-yellow-500">Sign Up</button>
             </form>
           
             <p class="mt-4 text-center text-gray-700">Already have an account? <a href="{% url 'Login' %}" class="underline text-yellow-500">Log in</a></p>
@@ -115,14 +125,12 @@
     </div>
 </main>
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const closeButtons = document.querySelectorAll('.close-btn');
-        closeButtons.forEach(button => {
-            button.addEventListener('click', function () {
-                const message = this.parentElement;
-                message.style.display = 'none';
-            });
-        });
-    });
+    function removeMessage(button) {
+        // Find the closest <li> element to the clicked button and remove it
+        const messageItem = button.closest('li');
+        if (messageItem) {
+            messageItem.remove();
+        }
+    }
 </script>
 {% endblock %}

@@ -12,21 +12,50 @@
 </head>
 <body>
      <!-- Navigation -->
-     <header class="bg-white shadow">
-        <div class="container mx-auto py-3 flex justify-between items-center">
+     <header class="bg-white bottom-border" style="border-bottom: 2px solid black;">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center">
-                <img src="{% static 'images/logo/CashHivelogo.png' %}" alt="Hive Logo" class="h-10 mr-3">
+                <a href="{% url 'Talent-page' %}"> <img src="{% static 'images/logo/CashHivelogo.png' %}" alt="Hive Logo" class="h-10 " style="margin-right:10px"> </a>
                 
             </div>
-            <div class="flex items-center space-x-10">
-                    <nav class="hidden items-center md:flex space-x-10">
-                        <a href="{% url 'Talent-page' %}" class="text-gray-700 hover:text-yellow-500" style="text-decoration: none;">For&nbsp;Talents</a>
-                        <a href="{% url 'DevCommunity-page' %}" class="text-gray-700  hover:text-yellow-500 " style="text-decoration: none;" >Dev&nbsp;community</a>
-                        <a href="{% url 'About_us-page' %}" class="text-gray-700  hover:text-yellow-500" style="text-decoration: none;">About&nbsp;Us</a>
-                        <a href="#" class="text-gray-700  hover:text-yellow-500" style="text-decoration: none;">Employers</a>
-                    </nav>
-                    <a href="{% url 'Login'%}" class="text-gray-700  hover:text-yellow-500" style="text-decoration: none;">Log&nbsp;in</a>
-                    <a href="{% url 'SignUp'%}" class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600" style="text-decoration: none;">Sign&nbsp;up</a>
+            <div class="flex items-center space-x-3 ">
+                <nav class="hidden items-center md:flex space-x-12 mr-8 ">
+
+                    <a href="{% url 'Talent-page' %}" class="text-black font-semibold " 
+                        style="text-decoration: none; position: relative; display: inline-block; transition: all 0.3s ease;"
+                        onmouseover="this.style.color='black'; this.style.backgroundColor='#FDCE02'; this.style.padding='10px 20px 10px 20px'; this.style.borderRadius='10px'; this.style.opacity='1';"
+                        onmouseout="this.style.color='black'; this.style.backgroundColor='transparent'; this.style.padding='0'; this.style.borderRadius='0'; this.style.opacity='1';">
+                        For&nbsp;Talents
+                    </a>
+
+                    <a href="{% url 'DevCommunity-page' %}" class="text-black font-semibold " 
+                        style="text-decoration: none; position: relative; display: inline-block; transition: all 0.3s ease;"
+                        onmouseover="this.style.color='black'; this.style.backgroundColor='#FDCE02'; this.style.padding='10px 20px 10px 20px'; this.style.borderRadius='10px'; this.style.opacity='1';"
+                        onmouseout="this.style.color='black'; this.style.backgroundColor='transparent'; this.style.padding='0'; this.style.borderRadius='0'; this.style.opacity='1';">
+                        Dev&nbsp;community
+                    </a>
+
+                    <a href="{% url 'About_us-page' %}" class="text-black font-semibold " 
+                        style="text-decoration: none; position: relative; display: inline-block; transition: all 0.3s ease;"
+                        onmouseover="this.style.color='black'; this.style.backgroundColor='#FDCE02'; this.style.padding='10px 20px 10px 20px'; this.style.borderRadius='10px'; this.style.opacity='1';"
+                        onmouseout="this.style.color='black'; this.style.backgroundColor='transparent'; this.style.padding='0'; this.style.borderRadius='0'; this.style.opacity='1';">
+                        About&nbsp;Us
+                    </a>
+
+                    <a href="#" class="text-black font-semibold " 
+                        style="text-decoration: none; position: relative; display: inline-block; transition: all 0.3s ease;"
+                        onmouseover="this.style.color='black'; this.style.backgroundColor='#FDCE02'; this.style.padding='10px 20px 10px 20px'; this.style.borderRadius='10px'; this.style.opacity='1';"
+                        onmouseout="this.style.color='black'; this.style.backgroundColor='transparent'; this.style.padding='0'; this.style.borderRadius='0'; this.style.opacity='1';">
+                            Employers
+                    </a>
+                </nav>            
+                    
+                    {% comment %} <a href="{% url 'Login'%}" class="text-gray-700 font-semibold hover:text-yellow-500" style="text-decoration: none;">Log&nbsp;in</a> {% endcomment %}
+                    <a href="{% url 'Login'%}" class=" bg-white text-black font-semibold  hover:text-black" style="text-decoration: none;padding:10px 20px 10px 20px;border-radius:10px;box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);">Log&nbsp;in</a>
+                    <a href="{% url 'SignUp' %}" class=" text-black font-semibold  hover:bg-yellow-600" style="text-decoration: none; background:#FDCE02;padding:10px 20px 10px 20px;border-radius:10px;"
+                     onmouseover="this.style.color='black'; this.style.backgroundColor='#FDCE02'; "  onmouseout="this.style.color='black'; this.style.backgroundColor='#FDCE02';">
+                     Sign&nbsp;up
+                    </a>
                 </div>
             </div>
         </div>
@@ -34,51 +63,17 @@
 
     {% block content %}{% endblock %}
 
-     {% comment %} <!-- Footer -->
-    <footer class="bg-white shadow-inner">
-        <div class="absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 border-2 p-2  pt-3 border-black rounded-md bg-white z-10">
-            <p class="text-xl text-center font-bold">Payment Methods</p>
-        </div>
-        <div class="container mx-auto px-4 py-10">
-            <div class="flex gap-x-48">
-                <div>
-                    <p class="text-xl font-bold">Wallets</p>
-                    <div class="flex gap-5">
-                        <img class="h-16 rounded-xl" src="{% static 'images/Donate/img3.png' %}" alt="MTN">
-                        <img class="h-16 rounded-xl" src="{% static 'images/Donate/img2.png' %}" alt="Telecel">
-                        <img class="h-16 rounded-xl" src="{% static 'images/Donate/img4.png' %}" alt="AirtelTigo">
-                        <img class="h-16 rounded-xl border" src="{% static 'images/Donate/img5.png' %}" alt="Raven">
-                    </div>
-                </div>
-                <div class="absolute left-1/2 transform -translate-x-1/2 -translate-y-1/3 w-0 h-40" >
-                    <div class="border-l-2 border-black h-full transform translate-y-12"></div>
-                </div>
-                <div>
-                    <p class="text-xl font-bold">Cards</p>
-                    <div class="flex gap-5">
-                        <img class="h-16 rounded-xl" src="{% static 'images/Donate/img1.png' %}" alt="Visa">
-                        <img class="h-16 rounded-xl" src="{% static 'images/Donate/img6.png' %}" alt="Master Card">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>  {% endcomment %}
+     
 
     <footer class="bg-white shadow-inner relative">
-        <div class="absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 border-2 p-2 sm:p-3 md:p-4 lg:p-5 border-black rounded-md bg-white z-10">
-            <p class="text-sm sm:text-base md:text-lg lg:text-xl text-center font-bold">Payment Methods</p>
-        </div>        
+        <div class="absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 border-2 p-2 sm:p-3 md:p-4 lg:p-5 border-black rounded-md bg-white z-10 max-w-full md:max-w-xs lg:max-w-sm">
+            <p class="text-sm sm:text-base md:text-lg lg:text-xl pt-3 text-center font-bold">Payment Methods</p>
+        </div>
         <div class="container mx-auto px-4 pt-10">
             <div class="flex flex-col md:flex-row md:justify-center md:gap-x-24">
                 <!-- Wallets Section -->
                 <div class="flex flex-col items-center md:items-start md:w-1/2 mb-8 md:mb-0">
                     <p class="text-xl font-bold text-center md:text-left">Wallets</p>
-                    {% comment %} <div class="flex flex-wrap gap-3 justify-center md:justify-start mt-3">
-                        <img class="h-8 md:h-16 rounded-xl" src="{% static 'images/Donate/img3.png' %}" alt="MTN">
-                        <img class="h-8 md:h-16 rounded-xl" src="{% static 'images/Donate/img2.png' %}" alt="Telecel">
-                        <img class="h-8 md:h-16 rounded-xl" src="{% static 'images/Donate/img4.png' %}" alt="AirtelTigo">
-                        <img class="h-8 md:h-16 rounded-xl border" src="{% static 'images/Donate/img5.png' %}" alt="Raven">
-                    </div> {% endcomment %}
                     <div class="flex gap-3">
                         <img class="h-9 rounded-xl" src="{% static 'images/Donate/img3.png' %}" alt="MTN">
                         <img class="h-9 rounded-xl" src="{% static 'images/Donate/img2.png' %}" alt="Telecel">
@@ -88,11 +83,10 @@
                 </div>
                 <!-- Cards Section -->
                 <div class="flex flex-col items-center md:items-start md:w-1/2">
-                    {% comment %} <p class="text-xl font-bold text-center ml-14 md:ml-2 md:text-left">Cards</p> {% endcomment %}
-                    <p class="text-xl font-bold text-center ml-6 sm:ml-6 md:ml-4 lg:ml-14 md:text-left">Cards</p>
-                    <div class="flex flex-wrap gap-5 justify-center md:justify-start mt-1 ml-14">
-                        <img class="h-8 md:h-12 rounded-xl" src="{% static 'images/Donate/img1.png' %}" alt="Visa">
-                        <img class="h-8 md:h-12 rounded-xl" src="{% static 'images/Donate/img6.png' %}" alt="Master Card">
+                    <p class="text-xl font-bold text-center ml-6 sm:ml-0 md:ml-0 lg:ml-10 md:text-left">Cards</p>
+                    <div class="flex flex-wrap gap-5 justify-center md:justify-start mt-1  ml-10">
+                        <img class="h-5 md:h-9 rounded-xl" src="{% static 'images/Donate/img1.png' %}" alt="Visa">
+                        <img class="h-5 md:h-9 rounded-xl" src="{% static 'images/Donate/img6.png' %}" alt="Master Card">
                     </div>
                 </div>
                 <div class="absolute left-1/2 transform -translate-x-1/2 -translate-y-1/3 w-0 h-full hidden md:block">

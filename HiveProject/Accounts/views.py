@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, auth
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -79,7 +79,7 @@ def SignUp(request):
                 return render(request, "Accounts/Signup.html", {'form': form})
 
             if not is_password_strong(password):
-                messages.error(request, 'Password is too weak. It must be at least 8 characters long and contain uppercase, lowercase, numbers, and special characters.')
+                messages.error(request, 'It must be at least 8 characters , lowercase, numbers, and special characters.')
                 return render(request, "Accounts/Signup.html", {'form': form})
 
             if User.objects.filter(email=email).exists():
@@ -109,8 +109,8 @@ def SignUp(request):
 
 
 def Login(request):
-    # if request.user.is_authenticated:
-    #     return redirect('home')
+    if request.user.is_authenticated:
+        return redirect('home')
 
     if request.method == "POST":
         email = request.POST.get('email').lower()
@@ -130,7 +130,7 @@ def Login(request):
 
         if user is not None:
             login(request, user)
-            return redirect('Talent-page')
+            return redirect('home')
         else:
             messages.error(request, 'Invalid email or password')
 
@@ -216,7 +216,7 @@ def PasswordReset(request, user_id):
                 messages.success(request, 'Your password has been reset successfully. You can now log in with your new password.')
                 return redirect('Login')
             else:
-                messages.error(request, 'Password is too weak. It must be at least 8 characters long and contain uppercase, lowercase, numbers, and special characters.')
+                messages.error(request, 'It must be at least 8 characters long and contain uppercase, lowercase, numbers, and special characters.')
         else:
             messages.error(request, 'Passwords do not match. Please try again.')
 
