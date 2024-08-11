@@ -33,7 +33,7 @@
                 <img src="{% static 'images/logo/CashHivelogo.png' %}" alt="Hive Logo" class="h-50">
             </a>
             {% if request.user.is_authenticated %}
-            <h4 class="mb-2">Hey! {{request.user}}<span class="text-yellow-400"> Welcome To Hive </span></h4>
+            <h4 class="mb-2">Hey! {{request.user.first_name}}<span class="text-yellow-400"> Welcome To Hive </span></h4>
             {%endif%}
             <br>
             <h4 class="mb-4">We're Happy To Have You Join Us</h4>
@@ -57,18 +57,13 @@
     </div>
 
     <script>
-        document.getElementById('openModal').addEventListener('click', function() {
-            document.getElementById('confirmModal').classList.remove('hidden');
-        });
-
-        document.getElementById('cancelButton').addEventListener('click', function() {
-            document.getElementById('confirmModal').classList.add('hidden');
-        });
-
-        document.getElementById('confirmButton').addEventListener('click', function() {
-            // Add your confirmation action here
-            document.getElementById('confirmModal').classList.add('hidden');
-        });
+        function removeMessage(button) {
+            // Find the closest <li> element to the clicked button and remove it
+            const messageItem = button.closest('li');
+            if (messageItem) {
+                messageItem.remove();
+            }
+        }
     </script>
 </body>
 </html>

@@ -96,7 +96,7 @@ def SignUp(request):
                 messages.success(request, 'Please check your email to verify your account.')
                 return redirect('Login')
             except Exception as e:
-                user.delete()  # Roll back user creation if email sending fails
+                user.delete() 
                 messages.error(request, f'Failed to send verification email. Please try again later. Error: {str(e)}')
         else:
             for field, errors in form.errors.items():
@@ -170,7 +170,7 @@ def send_otp_email(user, otp):
 
 def ForgotPasswordEmail(request):
     if request.method == 'POST':
-        email = request.POST.get('email')
+        email = request.POST.get('email').lower()
         try:
             user = User.objects.get(email=email)
             otp = generate_otp()
@@ -189,13 +189,19 @@ def ForgotPasswordEmail(request):
 
 def VerifyOTP(request, user_id):
     if request.method == 'POST':
-        entered_otp = request.POST.get('otp')
+        entered_otp1 = request.POST.get('otp1')
+        entered_otp2 = request.POST.get('otp2')
+        entered_otp3 = request.POST.get('otp3')
+        entered_otp4 = request.POST.get('otp4')
+        entered_otp5 = request.POST.get('otp5')
+        entered_otp6 = request.POST.get('otp6')
+        entered_otp = str(entered_otp1) + str(entered_otp2) + str(entered_otp3) + str(entered_otp4) + str(entered_otp5) + str(entered_otp6)
         cache_key = f"password_reset_otp_{user_id}"
         stored_otp = cache.get(cache_key)
 
         if stored_otp and entered_otp == stored_otp:
             cache.delete(cache_key)
-            return redirect('reset_password', user_id=user_id)
+            return redirect('PasswordReset', user_id=user_id)
         else:
             messages.error(request, 'Invalid or expired OTP. Please try again.')
 
