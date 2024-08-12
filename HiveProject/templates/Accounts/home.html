@@ -1,6 +1,36 @@
-
-
 <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Alert</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Alert Message -->
+    <div id="welcome-alert" class="fixed top-4 right-4 p-4 bg-green-500 text-white rounded-lg shadow-lg">
+        <div class="flex items-center">
+            <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            <p class="text-sm font-medium">Welcome back, [User's Name]!</p>
+        </div>
+        <button onclick="document.getElementById('welcome-alert').style.display='none'" class="absolute top-2 right-2 text-white hover:text-gray-200">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+    </div>
+
+    <!-- Example content to show the alert -->
+    <div class="flex items-center justify-center min-h-screen">
+        <p class="text-gray-700 text-lg">Your main content here.</p>
+    </div>
+</body>
+</html>
+
+
+{% comment %} <!DOCTYPE html>
 <html lang="en">
     {% load static %}
 <head>
@@ -23,7 +53,7 @@
             </div>
                      
                     
-                    {% comment %} <a href="{% url 'Login'%}" class="text-gray-700 font-semibold hover:text-yellow-500" style="text-decoration: none;">Log&nbsp;in</a> {% endcomment %}
+                    {% comment %} <a href="{% url 'Login'%}" class="text-gray-700 font-semibold hover:text-yellow-500" style="text-decoration: none;">Log&nbsp;in</a> {% en
                     
                     <button  class=" text-black font-semibold  hover:bg-yellow-600" id="openModal"  style="text-decoration: none; background:#FDCE02;padding:10px 20px 10px 20px;border-radius:10px;"
                      onmouseover="this.style.color='black'; this.style.backgroundColor='#FDCE02'; "  onmouseout="this.style.color='black'; this.style.backgroundColor='#FDCE02';">
@@ -34,7 +64,7 @@
         </div>
     </header>
 
-    {% comment %} hellooooo {{user }}  {% endcomment %}
+    {% comment %} hellooooo {{user }}  {% endcommen
 
 
 
@@ -88,4 +118,4 @@ document.getElementById('openModal').addEventListener('click', function() {
 </script>
   
 </body>
-</html>
+</html> {% endcomment %}

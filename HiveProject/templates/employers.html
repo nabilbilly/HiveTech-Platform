@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hive - Search Engine for Recruiters</title>
+  <link rel="stylesheet" href="{% static 'src/css/employers.css'%}">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body  >
+    {% comment %} FIrst Division {% endcomment %}
+    <div class="flex flex-col items-center justify-center pt-6 ">
+
+            <!-- Header -->
+        <header class="flex justify-between items-center pl-12 p-4" style="background:#191919CC; width:400.4px; border-radius:17px;">
+                <div class="flex items-center">
+                    <a href="{% url 'Talent-page' %}">
+                        <img src="{% static 'images/logo/CashHive 2.png' %}" alt="Hive Logo" class="h-10" style="margin-right:10px">
+                    </a>
+                    <span class="text-xl font-bold ml-2">Hive</span>
+                </div>
+                <a href="{% url 'Talent-page' %}">
+                    <button class="text-gray-300 hover:text-white bg-gray-500 px-4 py-2 rounded border-2 border-transparent hover:border-white">
+                        For Talents
+                    </button>
+                </a>
+            </header>
+        
+            <!-- Main Content -->
+            <main class="flex flex-row items-start justify-center text-center mt-12 space-x-4">
+                <div class="mr-4">
+                    <img src="{% static 'images/Employers/search.png' %}" alt="Hero Image" class="w-10" />
+                </div>
+                <div class="flex flex-col items-center justify-center text-center">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-7">
+                        The<br>
+                        <span class="text-yellow-400 mt-6 inline-block">Search Engine</span><br>
+                        <span class="mt-6 inline-block">for Recruiters</span>
+                    </h1>
+                    <p class="flex text-gray-400 mb-8">
+                        Powered by <span class="flex text-white">&nbsp;<img src="{% static 'images/logo/new11.png' %}" alt="Raven Logo" class="h-6 w-6"> ravenhive</span>
+                    </p>
+                    <p class="text-gray-400 mb-8">
+                        Use Hive's powerful AI-powered search <br> to find a hiver in real-time.
+                    </p>
+                    <button class="bg-yellow-400 text-black px-6 py-3 rounded-lg font-bold hover:bg-yellow-500">
+                        Get Access
+                    </button>
+                    <br>
+                    <div class="mr-64">
+                        <img src="{% static 'images/Employers/chat.png' %}" alt="Ai Image" class="w-11" />
+                    </div>
+                </div>
+                <div class="" style="margin-top:200px;">
+                    <img src="{% static 'images/Employers/Ai.png' %}" alt="Ai Image" class="w-11" />
+                </div>
+            </main>
+        
+            <!-- Find a Hive Section -->
+            <main class="p-6 px-12 lg:px-52">
+                <div>
+                    <form class="flex items-center mt-20 max-w-lg mx-auto gap-4">
+                        <label class="sr-only" for="voice-search">Search</label>
+                        <div class="relative w-full">
+                            <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                                <!-- Optional icon or text inside the input -->
+                            </div>
+                            <input placeholder="Search..."
+                                class="border border-gray-300 text-white text-sm rounded-sm focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                id="voice-search"
+                                type="text"
+                                style="background: #191919CC; border: 1px solid #DADADA99; border-radius: 10px" />
+                        </div>
+                        <button class="inline-flex items-center py-2.5 px-5 ms-4 text-sm font-bold text-black bg-yellow-400 rounded-lg border-2 border-transparent hover:border-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                            type="submit">
+                            Find&nbsp;a&nbsp;hive
+                        </button>
+                    </form>
+                </div>
+        
+                <!-- Profile Cards Section -->
+                <section class="grid grid-cols-1 pt-12 md:grid-cols-2 lg:grid-cols-2 gap-6">
+                    <!-- Profile Card 1 -->
+                    <div class="p-6 rounded-lg shadow-lg" style="background:#191919CC; border: 1px solid #ECEFF2; border-radius: 20px;">
+                        <div class="flex items-center justify-between p-2" style="background: #191919CC; border: 1px solid #ECEFF20D; border-radius: 20px 20px 0 0;">
+                            <div class="flex">
+                                <img src="{% static 'images/Employers/Ellipse.png' %}" alt="Oppong Joseph" class="w-16 h-16 rounded-full mx-auto">
+                                <div class="ml-3 text-start">
+                                    <h2 class="text-sm font-semibold mt-2">Oppong Joseph</h2>
+                                    <p class="text-sm text-gray-400">UI/UX Designer</p>
+                                </div>
+                            </div>
+                            <div class="flex flex-col items-center gap-2">
+                                <img src="{% static 'images/Employers/linkedin.png' %}" alt="LinkedIn" class="w-7" />
+                                <img src="{% static 'images/Employers/linkedin (3).png' %}" alt="LinkedIn" class="w-7" />
+                            </div>
+                        </div>
+                        <p class="mt-4 px-3 text-center text-gray-300">Jude has 2 years as a software engineer, focusing on SaaS products, and 1 year as a UX Designer at Hive network, where she enhanced user interfaces.</p>
+                        <br>
+                    </div>
+        
+                    <!-- Profile Card 2 -->
+                    <div class="p-6 rounded-lg shadow-lg" style="background:#191919CC; border: 1px solid #ECEFF2; border-radius: 20px;">
+                        <div class="flex items-center justify-between p-2" style="background: #191919CC; border: 1px solid #ECEFF20D; border-radius: 20px 20px 0 0;">
+                            <div class="flex">
+                                <img src="{% static 'images/Employers/Ellipse.png' %}" alt="Oppong Joseph" class="w-16 h-16 rounded-full mx-auto">
+                                <div class="ml-3 text-start">
+                                    <h2 class="text-sm font-semibold mt-2">Oppong Joseph</h2>
+                                    <p class="text-sm text-gray-400">UI/UX Designer</p>
+                                </div>
+                            </div>
+                            <div class="flex flex-col items-center gap-2">
+                                <img src="{% static 'images/Employers/linkedin.png' %}" alt="LinkedIn" class="w-7" />
+                                <img src="{% static 'images/Employers/linkedin (3).png' %}" alt="LinkedIn" class="w-7" />
+                            </div>
+                        </div>
+                        <p class="mt-4 px-3 text-center text-gray-300">Jude has 2 years as a software engineer, focusing on SaaS products, and 1 year as a UX Designer at Hive network, where she enhanced user interfaces.</p>
+                        <br>
+                    </div>
+        
+                    <!-- Profile Card 3 -->
+                    <div class="p-6 rounded-lg shadow-lg" style="background:#191919CC; border: 1px solid #ECEFF2; border-radius: 20px;">
+                        <div class="flex items-center justify-between p-2" style="background: #191919CC; border: 1px solid #ECEFF20D; border-radius: 20px 20px 0 0;">
+                            <div class="flex">
+                                <img src="{% static 'images/Employers/Ellipse.png' %}" alt="Oppong Joseph" class="w-16 h-16 rounded-full mx-auto">
+                                <div class="ml-3 text-start">
+                                    <h2 class="text-sm font-semibold mt-2">Oppong Joseph</h2>
+                                    <p class="text-sm text-gray-400">UI/UX Designer</p>
+                                </div>
+                            </div>
+                            <div class="flex flex-col items-center gap-2">
+                                <img src="{% static 'images/Employers/linkedin.png' %}" alt="LinkedIn" class="w-7" />
+                                <img src="{% static 'images/Employers/linkedin (3).png' %}" alt="LinkedIn" class="w-7" />
+                            </div>
+                        </div>
+                        <p class="mt-4 px-3 text-center text-gray-300">Jude has 2 years as a software engineer, focusing on SaaS products, and 1 year as a UX Designer at Hive network, where she enhanced user interfaces.</p>
+                        <br>
+                    </div>
+        
+                    <!-- Profile Card 4 -->
+                    <div class="p-6 rounded-lg shadow-lg" style="background:#191919CC; border: 1px solid #ECEFF2; border-radius: 20px;">
+                        <div class="flex items-center justify-between p-2" style="background: #191919CC; border: 1px solid #ECEFF20D; border-radius: 20px 20px 0 0;">
+                            <div class="flex">
+                                <img src="{% static 'images/Employers/Ellipse.png' %}" alt="Oppong Joseph" class="w-16 h-16 rounded-full mx-auto">
+                                <div class="ml-3 text-start">
+                                    <h2 class="text-sm font-semibold mt-2">Oppong Joseph</h2>
+                                    <p class="text-sm text-gray-400">UI/UX Designer</p>
+                                </div>
+                            </div>
+                            <div class="flex flex-col items-center gap-2">
+                                <img src="{% static 'images/Employers/linkedin.png' %}" alt="LinkedIn" class="w-7" />
+                                <img src="{% static 'images/Employers/linkedin (3).png' %}" alt="LinkedIn" class="w-7" />
+                            </div>
+                        </div>
+                        <p class="mt-4 px-3 text-center text-gray-300">Jude has 2 years as a software engineer, focusing on SaaS products, and 1 year as a UX Designer at Hive network, where she enhanced user interfaces.</p>
+                        <br>
+                    </div>
+                </section>
+            </main>
+        
+            <!-- Employer Support Section -->
+            <div class="flex items-center justify-center px-10 pb-24 lg:px-24">
+                <p class="mt-6 px-12 lg:px-24 text-center text-gray-300">
+                    <span class="font-bold text-yellow-400">Employr</span> is a GPT-powered search engine on top of your ATS and sources from our <span class="text-yellow-400">hive.network</span> enabling you to instantly find and rank top candidates based on specific criteria and predicted job performance. You can search for student engineers and Employr will display the best-fits.
+                </p>
+            </div>
+    </div> {% comment %}-----------------------------End of FIrst Division -------------------------{% endcomment %}
+
+    {% comment %}-------------------------second Division -------------------------------{% endcomment %}
+     <div class="flex flex-col p-5 items-center justify-center " >
+        <div> <h5 class="text-white font-bold text-3xl mb-14 " >Pricing</h5> </div>
+        <header class="flex justify-between items-center mb-12 px-8 space-x-2 lg:space-x-5 w-90 p-4" style="background:#191919CC; border-radius:50px;">
+            <button class="text-gray-300 bg-black px-8 py-2 rounded-3xl  ">
+                Basic&nbsp;Plan
+            </button>
+            <button class="text-gray-300 bg-black px-8 py-2 rounded-3xl ">
+                Premium&nbsp;Plan
+            </button>
+            <button class="text-gray-300 bg-black  px-8 py-2 rounded-3xl">
+                Ultimate&nbsp;Plan
+            </button>
+           
+        </header>
+        <div class="flex flex-col md:flex-row items-start gap-5 p-6 rounded-lg shadow-lg" style="background:#191919CC; border: 1px solid #ECEFF2; border-radius: 20px;">
+            <div class="flex flex-col items-center mb-2 md:mb-0">
+                <div class="e-card playing" style="height: 280px;">
+                    <div class="image"></div>
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                    <div class="infotop">
+                        <p class="mt-4 px-3 text-start text-sm text-white">For sole proprietoship Business</p>
+                        <p class="mt-4 px-3 text-start text-sm text-white">Free</p>
+                        <p><span class="flex mt-4 pl-2 pr-3 text-start text-sm text-white">&nbsp;<img src="{% static 'images/Employers/circle.png' %}" alt="Raven Logo" class="h-4 w-4 mr-2"> limited to three search pre a month</span></p>
+                        <p><span class="flex mt-4 pl-2 pr-3  text-start text-sm text-white">&nbsp;<img src="{% static 'images/Employers/circle.png' %}" alt="Raven Logo" class="h-4 w-4 mr-2"> Ai powered candidates search</span></p>
+                        <button class=" text-white mt-5  px-16" style="background:#FDCE02;  border-radius:10px;">
+                            <a href="" class="font-bold text-sm text-black no-underline hover:text-black hover:no-underline " style="text-decoration: none;">&nbsp;Get&nbsp;Access&nbsp;</a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col items-center">
+                <div class="e-card playing">
+                    <div class="image"></div>
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                    <div class="infotop">
+                        <p class="mt-4 px-3 text-start text-sm text-white">Ideal for A&B Startups</p>
+                        <p class="mt-4 px-3 text-start text-bold text-2xl text-white">$20.99 <span class="text-sm">/month</span></p>
+                        <p><span class="flex mt-4 pl-2 pr-3 text-start text-sm text-white">&nbsp;<img src="{% static 'images/Employers/circle.png' %}" alt="Raven Logo" class="h-4 w-4 mr-2"> Everything in Free plus</span></p>
+                        <p><span class="flex mt-4 pl-2 pr-3  text-start text-sm text-white">&nbsp;<img src="{% static 'images/Employers/circle.png' %}" alt="Raven Logo" class="h-4 w-4 mr-2"> Customizable dashboards</span></p>
+                        <p><span class="flex mt-4 pl-2 pr-3 text-start text-sm text-white">&nbsp;<img src="{% static 'images/Employers/circle.png' %}" alt="Raven Logo" class="h-4 w-4 mr-2"> 20 search per month</span></p>
+                        <p><span class="flex mt-4 pl-2 pr-3  text-start text-sm text-white">&nbsp;<img src="{% static 'images/Employers/circle.png' %}" alt="Raven Logo" class="h-4 w-4 mr-2">Advanced AI powered candidate search</span></p>
+                        <p><span class="flex mt-4 pl-2 pr-3 text-start text-sm text-white">&nbsp;<img src="{% static 'images/Employers/circle.png' %}" alt="Raven Logo" class="h-4 w-4 mr-2">Hire a Tech Team </span></p>
+                        <button class=" text-white mt-5 px-16" style="background:#FDCE02;  border-radius:10px;">
+                            <a href="" class="font-bold text-sm text-black no-underline hover:text-black hover:no-underline " style="text-decoration: none;">&nbsp;Get&nbsp;Access&nbsp;</a>
+                        </button>
+                    </div>
+                   
+                </div>
+            </div>
+            <div class="flex flex-col items-start">
+                <div class="e-card playing" style="height: 130px;">
+                    <div class="image"></div>
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                    <div class="infotop">
+                        <p class="mt-4 px-3 text-start text-sm text-white">FOR LARGER ENTERPRISES</p>
+                        <button class=" text-white mt-9 px-16" style="background:#FDCE02;  border-radius:10px;">
+                            <a href="" class="font-bold text-sm text-black no-underline hover:text-black hover:no-underline " style="text-decoration: none;">&nbsp;Contact&nbsp;Sales</a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% comment %}-------------------------third Division -------------------------------{% endcomment %}
+     <div class="flex flex-col p-5 pt-16 items-center justify-center ">
+        <div class="flex items-center justify-center px-10 pb-12 lg:px-24">
+            <p class="mt-6 px-12 lg:px-24 text-center text-5xl font-bold text-yellow-400">
+                Simplifying the search for the perfect intern hire
+            </p>
+        </div>
+        <div>
+            <div class="flex items-center justify-center px-10 pb-20 lg:px-24">
+                <p class="mt-2px-12 lg:px-24 text-center text-gray-300">
+                    Integrate your Applicant Tracking System (ATS) and instantly pinpoint top talent from <span class="font-bold text-yellow-400">hive’</span>s inbound applicant pool. Enhance a <span class="font-bold text-yellow-400">hiver’s</span> profile by seamlessly syncing data from external platforms like Github and LinkedIn. </p> .
+                </p>
+            </div>
+       
+        </div>
+        
+        <div class="flex flex-col md:flex-row items-center gap-5 p-6 rounded-lg shadow-lg" style="background:#191919CC; border: 1px solid #ECEFF2; border-radius: 20px;">
+            
+            <p>&nbsp;<img src="{% static 'images/Employers/Frame.png' %}" alt="Raven Logo" class="mr-2" style="width:700px; height:450px"> </p>
+        </div>
+
+     </div>
+
+      {% comment %}-------------------------fouth Division -------------------------------{% endcomment %}
+      <div class="flex flex-col p-3 pt-16 items-center justify-center ">
+        
+        <div>
+            <div class="flex items-center justify-center px-10 pb-10 lg:px-24">
+                <p class="mt-2 px-12 lg:px-24 text-center text-gray-300">
+                    Tap into a broader talent pool by proactively searching external sources like LinkedIn, <br> Indeed, and Github profiles.
+                </p>
+            </div>
+       
+        </div>
+        <div class=" flex p-2 py-24 rounded-lg shadow-lg" style="background:#FFFFFF05; border: 1px solid #ECEFF2; border-radius: 20px;">
+            <div class="grid grid-cols-3 md:grid-cols-3 mr-3">
+                <div class="flex items-center justify-center">
+                    <p class="text-center mr-3 text-gray-300">
+                        Personal <br> Website
+                    </p>
+                    <img src="{% static 'images/Employers/onepart.png' %}" alt="Raven Logo" class=" w-14 h-50" >
+
+                </div>
+                <div class="flex flex-col items-center justify-center">
+                    <img src="{% static 'images/Employers/linkedin (2).png' %}" alt="Raven Logo"  style="width:110px; height:30px">
+                    <img src="{% static 'images/Employers/git (1).png' %}" alt="Raven Logo" class="mt-16" style="width:100px; height:40px">
+                </div>
+                <div class="flex items-center justify-center">
+                    <img src="{% static 'images/Employers/nextpart.png' %}" alt="Raven Logo" class=" w-10 h-30">
+                    <img src="{% static 'images/logo/CashHive 2.png' %}" alt="Hive Logo" class="h-14 lg:h-20" style="margin-right:20px">
+                    <span class=" text-sm lg:text-xl font-bold mr-2">Hive</span>
+                </div>
+            </div>
+        </div>
+        </div> 
+
+       {% comment %}------------------------- footer  -------------------------------{% endcomment %}
+        <footer class="flex flex-col lg:flex-row justify-between mt-20 items-center p-8" style="background:#191919CC; ">
+            <div class="flex items-center ">
+                    <div class="flex mr-5">
+                        <img src="{% static 'images/logo/CashHive 2.png' %}" alt="Hive Logo" class="h-10" style="margin-right:10px">
+
+                        <span class="text-xl font-bold ml-2">Hive</span>
+                    </div>
+                    <div class=" flex items-center " style="margin-left:70px">
+                        <img src="{% static 'images/logo/ravenhivelogo.png' %}" alt="Hive Logo" class="h-10">
+                        
+                    </div>
+            </div>
+
+           <div class=" flex items-center mt-10 lg:mt-1" >
+            <span class="text-xl font-bold ml-2">Subscribe to our emails</span>
+                <label class="switch-button" for="switch">
+                <div class="switch-outer"> 
+                    <input id="switch" type="checkbox">
+                    <div class="button">
+                    <span class="button-toggle"></span>
+                    <span class="button-indicator"></span>
+                    </div>
+                </div>
+                </label>
+            </div>
+        </footer>
+
+     </div>
+</body>
+</html>

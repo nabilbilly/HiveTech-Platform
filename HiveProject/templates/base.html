@@ -43,7 +43,7 @@
                         About&nbsp;Us
                     </a>
 
-                    <a href="#" class="text-black font-semibold " 
+                    <a href="{% url 'Employers-Page' %}" class="text-black font-semibold " 
                         style="text-decoration: none; position: relative; display: inline-block; transition: all 0.3s ease;"
                         onmouseover="this.style.color='black'; this.style.backgroundColor='#FDCE02'; this.style.padding='10px 20px 10px 20px'; this.style.borderRadius='10px'; this.style.opacity='1';"
                         onmouseout="this.style.color='black'; this.style.backgroundColor='transparent'; this.style.padding='0'; this.style.borderRadius='0'; this.style.opacity='1';">
@@ -72,9 +72,10 @@
                     <h3 class="text-xl font-bold text-gray-700">Hive</h3>
                     <ul class="mt-2 space-y-2">
                         <li><a href="{% url 'Talent-page' %}" class="text-gray-600 hover:text-yellow-500" style="text-decoration: none;">For Talents</a></li>
+                        <li><a href="{% url 'Employers-Page' %}" class="text-gray-600 hover:text-yellow-500" style="text-decoration: none;">Employers</a></li>
                         <li class="flex items-center">
                             <img src="{% static 'images/logo/new11.png' %}" alt="Raven Logo" class="h-6 w-6 mr-2">
-                            <a href="#" class="text-gray-600 hover:text-yellow-500" style="text-decoration: none;">Raven</a>
+                            <a href="#" class="text-gray-600 " style="text-decoration: none;">Raven</a>
                         </li>
                     </ul>
                 </div>
@@ -82,6 +83,7 @@
                     <h3 class="text-xl font-bold text-gray-700"style="text-decoration: none;">About Us</h3>
                     <ul class="mt-2 space-y-2">
                         <li><a href="#" class="text-gray-600 hover:text-yellow-500"style="text-decoration: none;">Careers (Become an ambassador)</a></li>
+                        <li><a href="{% url 'About_us-page' %}" class="text-gray-600 hover:text-yellow-500" style="text-decoration: none;">Know Us</a></li>
                         <li><a href="#" class="text-gray-600 hover:text-yellow-500" style="text-decoration: none;">FAQ</a></li>
                         <li><a href="#" class="text-gray-600 hover:text-yellow-500" style="text-decoration: none;">Terms of service</a></li>
                         <li class="mb-3"><a href="#" class="text-gray-600 hover:text-yellow-500 " style="text-decoration: none;">Privacy and policies</a></li>
@@ -106,7 +108,7 @@
                         <li><a href="#" class="text-gray-600 hover:text-yellow-500" style="text-decoration: none;">YouTube</a></li>
                         <li><a href="#" class="text-gray-600 hover:text-yellow-500" style="text-decoration: none;">GitHub</a></li>
                         <li><a href="#" class="text-gray-600 hover:text-yellow-500" style="text-decoration: none;">Facebook</a></li>
-                        <li><a href="mailto:hell@hive.community" class="text-gray-600 hover:text-yellow-500" style="text-decoration: none;">hell@hive.community</a></li>
+                        <li><a href="mailto:hell@hive.community" class="text-gray-600 hover:text-yellow-500" style="text-decoration: none;">teamhive@hivenetwork.xyz</a></li>
                     </ul>
                 </div>
             </div>
