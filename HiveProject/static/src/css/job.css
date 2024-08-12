@@ -1,0 +1,10 @@
+
+@media (max-width: 768px) {
+    .menu-content {
+        display: none;
+    }
+    .menu-content.open {
+        display: flex;
+        flex-direction: column;
+    }
+}

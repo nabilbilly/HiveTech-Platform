@@ -56,10 +56,10 @@
                 </div>
                 <div class="mb-4">
                     <label for="password" class="block font-bold text-black-700">Enter your password</label>
-                    <input type="password" id="password" name="password" class="w-full p-2 border-2 rounded" placeholder="">
+                    <input type="password" required id="password" name="password" class="w-full p-2 border-2 rounded" placeholder="">
                 </div>
                 <div class="flex items-right justify-end mb-2">
-                    <a href="{% url 'ForgotPasswordEmail' %}" class="underline text-black">Forgotten Password?</a>
+                    <a href="{% url 'ForgotPasswordEmail' %}" required class="underline text-black">Forgotten Password?</a>
                 </div>
                 <div class="flex mb-4">
                     <input type="checkbox" id="terms" class="mr-2 mb-2" >

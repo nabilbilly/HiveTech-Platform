@@ -7,5 +7,6 @@ urlpatterns = [
     path('DonatePage/', views.DonatePage, name='Donate-Page'),
     path('about.html/', views.Aboutuspage, name='About_us-page'),
     path('employers/', views.Employerspage, name='Employers-Page'),
+    path('job/', views.job_view, name='Job-Page'),
     
 ]

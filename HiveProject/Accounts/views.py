@@ -55,34 +55,12 @@ def Login(request):
         
         if user is not None:
             login(request, user)
-            return redirect('Home')
+            return redirect('Job-Page')
         else:
             messages.error(request, 'Invalid email or password')
     
     return render(request, "Accounts/login.html", {'page': page})
 
-# def Login(request):
-#     page = 'Login'
-    
-#     if request.method == "POST":
-#         email = request.POST.get('email').lower()
-#         password = request.POST.get('password')
-        
-#         try:
-#             user = User.objects.get(email=email)
-#         except User.DoesNotExist:
-#             messages.error(request, 'User does not exist')
-#             return render(request, "Accounts/login.html", {'page': page})
-
-#         user = authenticate(request, username=user.username, password=password)
-        
-#         if user is not None:
-#             login(request, user)
-#             return redirect('Home')
-#         else:
-#             messages.error(request, 'Invalid email or password')
-    
-#     return render(request, "Accounts/login.html", {'page': page})
 
 def Home(request):
     return render(request, "Accounts/home.html")

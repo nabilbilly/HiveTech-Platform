@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="{% static 'src/css/employers.css'%}">
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body class="pl-7">
+<body  >
     {% comment %} FIrst Division {% endcomment %}
     <div class="flex flex-col items-center justify-center pt-6 ">
 
@@ -20,9 +20,11 @@
                     </a>
                     <span class="text-xl font-bold ml-2">Hive</span>
                 </div>
-                <button class="text-gray-300 hover:text-white bg-gray-500 px-4 py-2 rounded border-2 border-transparent hover:border-white">
-                    For Talents
-                </button>
+                <a href="{% url 'Talent-page' %}">
+                    <button class="text-gray-300 hover:text-white bg-gray-500 px-4 py-2 rounded border-2 border-transparent hover:border-white">
+                        For Talents
+                    </button>
+                </a>
             </header>
         
             <!-- Main Content -->
@@ -285,8 +287,8 @@
                 </div>
                 <div class="flex items-center justify-center">
                     <img src="{% static 'images/Employers/nextpart.png' %}" alt="Raven Logo" class=" w-10 h-30">
-                    <img src="{% static 'images/logo/CashHive 2.png' %}" alt="Hive Logo" class="h-20" style="margin-right:20px">
-                    <span class="text-xl font-bold mr-2">Hive</span>
+                    <img src="{% static 'images/logo/CashHive 2.png' %}" alt="Hive Logo" class="h-14 lg:h-20" style="margin-right:20px">
+                    <span class=" text-sm lg:text-xl font-bold mr-2">Hive</span>
                 </div>
             </div>
         </div>
@@ -294,19 +296,19 @@
 
        {% comment %}------------------------- footer  -------------------------------{% endcomment %}
         <footer class="flex flex-col lg:flex-row justify-between mt-20 items-center p-8" style="background:#191919CC; ">
-            <div class="flex items-center mb-10">
+            <div class="flex items-center ">
                     <div class="flex mr-5">
                         <img src="{% static 'images/logo/CashHive 2.png' %}" alt="Hive Logo" class="h-10" style="margin-right:10px">
 
                         <span class="text-xl font-bold ml-2">Hive</span>
                     </div>
                     <div class=" flex items-center " style="margin-left:70px">
-                        <img src="{% static 'images/logo/new11.png' %}" alt="Hive Logo" class="h-10">
-                        <span class="text-xl font-bold ml-2">ravenhive</span>
+                        <img src="{% static 'images/logo/ravenhivelogo.png' %}" alt="Hive Logo" class="h-10">
+                        
                     </div>
             </div>
 
-           <div class=" flex items-center" >
+           <div class=" flex items-center mt-10 lg:mt-1" >
             <span class="text-xl font-bold ml-2">Subscribe to our emails</span>
                 <label class="switch-button" for="switch">
                 <div class="switch-outer"> 

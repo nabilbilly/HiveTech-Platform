@@ -2,8 +2,9 @@ body {
     background-color: #000;
     color: #fff;
     overflow-x: hidden;
+    padding: 0px;
+    margin: 0px;
   }
-  /* From Uiverse.io by MikeAndrewDesigner */ 
 .e-card {
 margin: 10px 20px 10px 20px;
 
