@@ -4,10 +4,10 @@ from . import views
 urlpatterns = [
     path('signup/', views.SignUp, name='SignUp'),
     path('login/', views.Login, name='Login'),
-    path('Home/', views.Home, name='Home'),
+    path('home/', views.Home, name='home'),
+    path('logout/', views.LogoutUser, name='LogoutUser'),
     path('ForgotPasswordEmail/', views.ForgotPasswordEmail, name='ForgotPasswordEmail'),
-    path('VerificationCode/', views.VerificationCode, name='VerificationCode'),
-    path('PasswordReset/', views.PasswordReset, name='PasswordReset'),
-    path('reset/<uidb64>/<token>/', views.PasswordReset, name='password_reset'),
-    path('logout', views.logout, name='logout'),
+    path('verify-otp/<int:user_id>/', views.VerifyOTP, name='verify-otp'),
+    path('PasswordReset/<int:user_id>/', views.PasswordReset, name='PasswordReset'),
+    path('reset/<uidb64>/<token>/', views.verify_email, name='verify_email'),
 ]

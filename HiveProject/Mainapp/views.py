@@ -12,7 +12,7 @@ def DevCommunityView(request):
 def DonatePage(request):
     return render(request, 'Donate/donatepage.html')
 
-def Aboutuspage(request):
+def AboutUsPage(request):
     return render(request, 'about.html')
 
 def Employerspage(request):
@@ -20,4 +20,5 @@ def Employerspage(request):
 
 def job_view(request):
     return render(request, 'Job/jobpage.html')
+
 

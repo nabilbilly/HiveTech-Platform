@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block title %}Hive Forgotten Password Verification Code{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'src/css/carousel.css' %}">
+<style>
+    .otp-input:focus {
+        border-color: #F59E0B;
+        outline: none;
+    }
+</style>
+{% endblock %}
+{% block extra_js %}
+<script src="{% static 'src/js/carousel.js' %}"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const otpInputs = document.querySelectorAll('.otp-input');
+        otpInputs.forEach((input, index) => {
+            input.addEventListener('input', function() {
+                if (this.value.length === 1) {
+                    if (index < otpInputs.length - 1) {
+                        otpInputs[index + 1].focus();
+                    }
+                }
+            });
+            input.addEventListener('keydown', function(e) {
+                if (e.key === 'Backspace' && this.value.length === 0 && index > 0) {
+                    otpInputs[index - 1].focus();
+                }
+            });
+        });
+    });
+</script>
+{% endblock %}
+
+{% block content %}
+
+<!-- Main Content -->
+<main class="container mx-auto px-4 py-12">
+    <div class="flex flex-col md:flex-row md:space-x-0">
+        <!-- Verification Code Form -->
+        <div class="bg-white p-8 rounded-sm overflow-y-auto w-full md:w-1/2" style="height:540px">
+            <div class="flex items-center justify-center mb-0">
+                <h2 class="text-2xl font-bold text-center">Join Hive</h2>
+                <img src="{% static 'images/logo/CashHive1.png' %}" alt="logo" class="h-12 md:h-14 lg:h-15 mr-2">
+            </div>
+            <h5 class="text-sm text-gray-700 text-center">Please enter the code we emailed you.</h5>
+            <br>
+            
+            <form method="POST" action="{% url 'verify-otp' user_id=user_id %}">
+            {% csrf_token %}
+            {% if messages %}
+            <ul class="messages mb-4">
+                {% for message in messages %}
+                    <li class="bg-yellow-50 border border-yellow-400 rounded text-yellow-800 text-sm flex items-center justify-between p-2 mb-2 relative">
+                        <div class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
+                            </svg>
+                            <p class="flex-1 mt-3">
+                                <span class="font-bold">Info:</span>
+                                {{ message }}
+                            </p>
+                        </div>
+                        <button type="button" class="ml-3 text-yellow-800 hover:text-yellow-600" aria-label="Close" onclick="removeMessage(this)" >
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round"nstroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                        </button>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+                <div class="flex items-center justify-center space-x-2 mb-12">
+                    <input type="text" name="otp1" maxlength="1" class="otp-input w-12 h-12 border-2 border-gray-400 rounded text-center text-xl" required>
+                    <input type="text" name="otp2" maxlength="1" class="otp-input w-12 h-12 border-2 border-gray-400 rounded text-center text-xl" required>
+                    <input type="text" name="otp3" maxlength="1" class="otp-input w-12 h-12 border-2 border-gray-400 rounded text-center text-xl" required>
+                    <input type="text" name="otp4" maxlength="1" class="otp-input w-12 h-12 border-2 border-gray-400 rounded text-center text-xl" required>
+                    <input type="text" name="otp5" maxlength="1" class="otp-input w-12 h-12 border-2 border-gray-400 rounded text-center text-xl" required>
+                    <input type="text" name="otp6" maxlength="1" class="otp-input w-12 h-12 border-2 border-gray-400 rounded text-center text-xl" required>
+                </div>
+                
+                <br><br><br>
+                <button type="submit" class="w-full bg-yellow-400 font-bold text-white py-2 rounded border-2 border-black hover:bg-yellow-500 mt-12">Continue</button>
+            </form>
+            
+            <p class="text-center text-gray-700 mt-3"><span class="font-bold">© 2024 Hive.</span> <br> <a href="#" class="underline text-black">Privacy,</a> <a href="#" class="underline text-black"> Terms</a> and <a href="#" class="underline text-black">Legal</a></p> 
+        </div>
+
+        <!-- Carousel -->
+        <div class="mt-10 md:mt-0 w-full md:w-1/2 bg-black p-6" style="height: 70%;">
+            <div class="flex items-center justify-center mb-1">
+                <h2 class="text-2xl text-white text-center font-bold">Ready to get started?</h2>
+                <img src="{% static 'images/logo/CashHive1.png' %}" alt="logo" class="h-12 md:h-13 lg:h-15 mb-2">
+            </div>
+            <h2 class="text-sm text-white text-center mb-6 mr-12">Here is how you Sign Up to Hive</h2>
+
+            <div class="relative w-full h-80 bg-black rounded-lg overflow-hidden">
+                <div class="slider relative w-full h-full">
+                    <input type="radio" name="toggle" id="btn-1" class="hidden" checked>
+                    <input type="radio" name="toggle" id="btn-2" class="hidden">
+                    <input type="radio" name="toggle" id="btn-3" class="hidden">
+                  
+                    <div class="slider-controls absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-10">
+                        <label for="btn-1" class="dot bg-gray-300 w-3 h-3 rounded-full cursor-pointer"></label>
+                        <label for="btn-2" class="dot bg-gray-300 w-3 h-3 rounded-full cursor-pointer"></label>
+                        <label for="btn-3" class="dot bg-gray-300 w-3 h-3 rounded-full cursor-pointer"></label>
+                    </div>
+                    
+                    <ul class="slides flex list-none p-0 m-0 h-full transition-transform duration-500 ease-in-out">
+                        <li class="slide flex-shrink-0 w-full h-full">
+                            <div class="slide-image w-full h-full flex items-center justify-center">
+                                <img src="{% static 'images/Accounts/Frame 624884@2x.png' %}" alt="stuff" class="w-full max-w-xs h-auto">
+                            </div>
+                        </li>
+                        <li class="slide flex-shrink-0 w-full h-full">
+                            <div class="slide-image w-full h-full flex items-center justify-center">
+                                <img src="{% static 'images/Accounts/image 34.png' %}" alt="stuff" class="w-full max-w-xs h-auto">
+                            </div>
+                        </li>
+                        <li class="slide flex-shrink-0 w-full h-full">
+                            <div class="slide-image w-full h-full flex items-center justify-center">
+                                <img src="{% static 'images/Accounts/image 36.png' %}" alt="stuff" class="w-full max-w-xs h-auto">
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <p class="mt-4 text-center text-white text-700 mb-300">Tell us your preferences for your next dream job</p>
+        </div>
+    </div>
+</main>
+
+<script>
+    function removeMessage(button) {
+        // Find the closest <li> element to the clicked button and remove it
+        const messageItem = button.closest('li');
+        if (messageItem) {
+            messageItem.remove();
+        }
+    }
+</script>
+{% endblock %}
