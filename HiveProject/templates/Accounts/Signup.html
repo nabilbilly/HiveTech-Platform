@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'General/base.html' %}
 
 {% comment %} # Nabil worked on this  {% endcomment %}
 
@@ -15,7 +15,6 @@
 <main class="container mx-auto px-4 py-12">
     <div class="flex flex-col md:flex-row md:space-x-0">
         <!-- Sign Up Form -->
-        {% comment %} <div class="bg-white p-8 rounded-sm shadow-lg w-full md:w-1/2"> {% endcomment %}
         <div class="bg-white p-8 rounded-sm  overflow-y-auto w-full md:w-1/2 " style="height:540px">
             <div class="flex items-center justify-center mb-0">
                 <h2 class="text-2xl font-bold text-center">Join Hive</h2>
@@ -23,6 +22,7 @@
             </div>
             <h5 class="text-sm text-gray-700 text-center mb-2">Create a Hive account and let companies <br> apply directly to you.</h5>
             <br>
+            <!--  Forms -->
             <form method="post" >
                 {% csrf_token %}
                 {% if messages %}
@@ -46,23 +46,23 @@
                 </ul>
                 {% endif %}
                 <div class="mb-4">
-                    <label for="firstName" class="block font-bold  text-black-300">Tell us about your first name</label>
+                    <label for="firstName" class="block font-bold  text-black-300">First Name*</label>
                     {{ form.first_name }}
                 </div>
                 <div class="mb-4">
-                    <label for="lastName" class="block font-bold text-black-300">Last Name</label>
+                    <label for="lastName" class="block font-bold text-black-300">Last Name*</label>
                     {{ form.last_name }}
                 </div>
                 <div class="mb-4">
-                    <label for="email" class="block font-bold text-black-700">Email Address</label>
+                    <label for="email" class="block font-bold text-black-700">Email Address*</label>
                     {{ form.email }}
                 </div>
                 <div class="mb-4">
-                    <label for="email" class="block font-bold text-black-700">password</label>
+                    <label for="email" class="block font-bold text-black-700">Password*</label>
                     {{ form.password1 }}
                 </div>
                 <div class="mb-4">
-                    <label for="email" class="block font-bold text-black-700">Confirm password</label>
+                    <label for="email" class="block font-bold text-black-700">Confirm Password*</label>
                     {{ form.password2 }}
                 </div>
                 <div class="flex mb-4">
@@ -75,6 +75,7 @@
                 </div>
                 <button type="submit" class="w-full bg-yellow-400 font-bold text-black py-2 rounded border-2 border-black hover:bg-yellow-500">Sign Up</button>
             </form>
+            <!-- end Form -->
           
             <p class="mt-4 text-center text-gray-700">Already have an account? <a href="{% url 'Login' %}" class="underline text-yellow-500">Log in</a></p>
             <p class="text-center text-gray-700"><span class="font-bold">© 2024 Hive.</span> <br> <a href="#" class="underline text-black">Privacy,</a> <a href="#" class="underline text-black"> Terms</a> and <a href="#" class="underline text-black">Legal</a></p> 
