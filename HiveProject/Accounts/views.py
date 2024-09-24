@@ -17,7 +17,7 @@ import re
 import random
 from django.core.cache import cache
 
-
+#Strong password Views 
 def is_password_strong(password):
     if len(password) < 8:
         return False
@@ -27,11 +27,11 @@ def is_password_strong(password):
         return False
     if not re.search(r"[0-9]", password):
         return False
-    if not re.search(r"[!@#$%^&*()_+]", password):
+    if not re.search(r"[.!@#$%^&*()_+]", password):
         return False
     return True
 
-
+# Email Verification 
 def verify_email(request, uidb64, token):
     try:
         uid = force_str(urlsafe_base64_decode(uidb64))
@@ -48,7 +48,7 @@ def verify_email(request, uidb64, token):
         messages.error(request, 'The verification link is invalid or has expired.')
         return redirect('SignUp')
 
-
+# Verifications of email 
 def send_verification_email(user, request):
     token = default_token_generator.make_token(user)
     uid = urlsafe_base64_encode(force_bytes(user.pk))
@@ -65,6 +65,7 @@ def send_verification_email(user, request):
     send_mail(subject, message, from_email, to_email, fail_silently=False, html_message=message)
 
 
+# Sign Up Pages 
 def SignUp(request):
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
@@ -79,7 +80,7 @@ def SignUp(request):
                 return render(request, "Accounts/Signup.html", {'form': form})
 
             if not is_password_strong(password):
-                messages.error(request, 'It must be at least 8 characters , lowercase, numbers, and special characters.')
+                messages.error(request, 'Password must be at least 8 characters , lowercase, numbers, and special characters.')
                 return render(request, "Accounts/Signup.html", {'form': form})
 
             if User.objects.filter(email=email).exists():
@@ -93,11 +94,11 @@ def SignUp(request):
 
             try:
                 send_verification_email(user, request)
-                messages.success(request, 'Please check your email to verify your account.')
+                messages.success(request, 'Please check your email to verify your account')
                 return redirect('Login')
             except Exception as e:
                 user.delete() 
-                messages.error(request, f'Failed to send verification email. Please try again later. Error: {str(e)}')
+                messages.error(request, f'Failed to send verification email. Please try again . Error: {str(e)}')
         else:
             for field, errors in form.errors.items():
                 for error in errors:
@@ -107,11 +108,8 @@ def SignUp(request):
 
     return render(request, "Accounts/Signup.html", {'form': form})
 
-
+# Login Page View
 def Login(request):
-    if request.user.is_authenticated:
-        return redirect('home')
-
     if request.method == "POST":
         email = request.POST.get('email').lower()
         password = request.POST.get('password')
@@ -123,7 +121,7 @@ def Login(request):
             return render(request, "Accounts/login.html")
 
         if not user.is_active:
-            messages.error(request, 'Please verify your email before logging in.')
+            messages.error(request, 'Please verify your email before logging in. Resend Mail')
             return render(request, "Accounts/login.html")
 
         user = authenticate(request, username=user.username, password=password)
@@ -133,25 +131,22 @@ def Login(request):
             return redirect('Job-Page')
         else:
             messages.error(request, 'Invalid email or password')
-    
+
     return render(request, "Accounts/login.html")
 
 
-
-def Home(request):
-    return render(request, "Accounts/home.html")
-
-
+# Log out User
 @login_required
 def LogoutUser(request):
     logout(request)
     return redirect('home')
 
+
+# Otp Generation for Forget Password
 def generate_otp():
     return str(random.randint(100000, 999999))
 
-
-
+# Sending OTP through mails
 def send_otp_email(user, otp):
     subject = 'Password Reset OTP'
     context = {
@@ -182,11 +177,11 @@ def ForgotPasswordEmail(request):
 
             return redirect('verify-otp', user_id=user.id)
         except User.DoesNotExist:
-            messages.error(request, 'No user with that email address exists.')
+            messages.error(request, 'No user with this email address exists.')
         return redirect('Login')
     return render(request, "Accounts/ForgotPasswordEmail.html")
 
-
+# Otp Verification Field with 5 input Box
 def VerifyOTP(request, user_id):
     if request.method == 'POST':
         entered_otp1 = request.POST.get('otp1')
@@ -208,7 +203,7 @@ def VerifyOTP(request, user_id):
     return render(request, "Accounts/VerifyOTP.html", {'user_id': user_id})
 
 
-
+# PasswordReset OR Change of Password
 def PasswordReset(request, user_id):
     user = User.objects.get(id=user_id)
     if request.method == 'POST':

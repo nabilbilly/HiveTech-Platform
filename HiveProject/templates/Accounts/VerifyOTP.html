@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'General/base.html' %}
 
 {% load static %}
 {% block title %}Hive Forgotten Password Verification Code{% endblock %}
@@ -80,7 +80,7 @@
                 </div>
                 
                 <br><br><br>
-                <button type="submit" class="w-full bg-yellow-400 font-bold text-white py-2 rounded border-2 border-black hover:bg-yellow-500 mt-12">Continue</button>
+                <button type="submit" class="w-full bg-yellow-400 font-bold text-black py-2 rounded border-2 border-black hover:bg-yellow-500 mt-12">Continue</button>
             </form>
             
             <p class="text-center text-gray-700 mt-3"><span class="font-bold">© 2024 Hive.</span> <br> <a href="#" class="underline text-black">Privacy,</a> <a href="#" class="underline text-black"> Terms</a> and <a href="#" class="underline text-black">Legal</a></p> 
@@ -130,6 +130,25 @@
         </div>
     </div>
 </main>
+<script>
+    const otpInputs = document.querySelectorAll('.otp-input');
+
+    otpInputs.forEach((input, index) => {
+        input.addEventListener('input', (e) => {
+            if (e.target.value.length === 1 && index < otpInputs.length - 1) {
+                // Move to the next input field
+                otpInputs[index + 1].focus();
+            }
+        });
+
+        input.addEventListener('keydown', (e) => {
+            if (e.key === 'Backspace' && index > 0 && e.target.value.length === 0) {
+                // Move back to the previous input field when backspace is pressed
+                otpInputs[index - 1].focus();
+            }
+        });
+    });
+</script>
 
 <script>
     function removeMessage(button) {
