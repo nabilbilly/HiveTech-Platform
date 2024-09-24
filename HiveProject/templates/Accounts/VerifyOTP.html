@@ -1,12 +1,37 @@
 {% extends 'General/base.html' %}
 
-{% comment %} # Nabil worked on this  {% endcomment %}
-
 {% load static %}
-{% block title %}Hive Reset Password Page{% endblock %}
-{% block extra_css %}<link rel="stylesheet" type="text/css" href="{% static 'src/css/carousel.css' %}">{% endblock %}
+{% block title %}Hive Forgotten Password Verification Code{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'src/css/carousel.css' %}">
+<style>
+    .otp-input:focus {
+        border-color: #F59E0B;
+        outline: none;
+    }
+</style>
+{% endblock %}
 {% block extra_js %}
 <script src="{% static 'src/js/carousel.js' %}"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const otpInputs = document.querySelectorAll('.otp-input');
+        otpInputs.forEach((input, index) => {
+            input.addEventListener('input', function() {
+                if (this.value.length === 1) {
+                    if (index < otpInputs.length - 1) {
+                        otpInputs[index + 1].focus();
+                    }
+                }
+            });
+            input.addEventListener('keydown', function(e) {
+                if (e.key === 'Backspace' && this.value.length === 0 && index > 0) {
+                    otpInputs[index - 1].focus();
+                }
+            });
+        });
+    });
+</script>
 {% endblock %}
 
 {% block content %}
@@ -14,15 +39,16 @@
 <!-- Main Content -->
 <main class="container mx-auto px-4 py-12">
     <div class="flex flex-col md:flex-row md:space-x-0">
-        <!-- Reset Password Form -->
-        <div class="bg-white pt-8 pl-8 pr-8 rounded-sm w-full md:w-1/2">
+        <!-- Verification Code Form -->
+        <div class="bg-white p-8 rounded-sm overflow-y-auto w-full md:w-1/2" style="height:540px">
             <div class="flex items-center justify-center mb-0">
                 <h2 class="text-2xl font-bold text-center">Join Hive</h2>
                 <img src="{% static 'images/logo/CashHive1.png' %}" alt="logo" class="h-12 md:h-14 lg:h-15 mr-2">
             </div>
-            <h5 class="text-sm text-gray-700 text-center">Set new Password</h5>
+            <h5 class="text-sm text-gray-700 text-center">Please enter the code we emailed you.</h5>
             <br>
-            <form action="{% url 'PasswordReset' user.id %}" method="post">
+            
+            <form method="POST" action="{% url 'verify-otp' user_id=user_id %}">
             {% csrf_token %}
             {% if messages %}
             <ul class="messages mb-4">
@@ -44,26 +70,29 @@
                 {% endfor %}
             </ul>
         {% endif %}
-                <div class="mb-4">
-                    <label for="new_password" class="block font-bold text-black-700">Enter new password</label>
-                    <input type="password" id="new_password" name="new_password" class="w-full p-2 border-2 rounded" placeholder="">
-                </div>
-                <div class="mb-4">
-                    <label for="confirm_password" class="block font-bold text-black-700">Confirm new password</label>
-                    <input type="password" id="confirm_password" name="confirm_password" class="w-full p-2 border-2 rounded" placeholder="">
+                <div class="flex items-center justify-center space-x-2 mb-12">
+                    <input type="text" name="otp1" maxlength="1" class="otp-input w-12 h-12 border-2 border-gray-400 rounded text-center text-xl" required>
+                    <input type="text" name="otp2" maxlength="1" class="otp-input w-12 h-12 border-2 border-gray-400 rounded text-center text-xl" required>
+                    <input type="text" name="otp3" maxlength="1" class="otp-input w-12 h-12 border-2 border-gray-400 rounded text-center text-xl" required>
+                    <input type="text" name="otp4" maxlength="1" class="otp-input w-12 h-12 border-2 border-gray-400 rounded text-center text-xl" required>
+                    <input type="text" name="otp5" maxlength="1" class="otp-input w-12 h-12 border-2 border-gray-400 rounded text-center text-xl" required>
+                    <input type="text" name="otp6" maxlength="1" class="otp-input w-12 h-12 border-2 border-gray-400 rounded text-center text-xl" required>
                 </div>
                 
-                <button type="submit" class="w-full bg-yellow-400 font-bold text-black py-2 rounded border-2 border-black hover:bg-yellow-500 mb-2">Save and Confirm</button>
+                <br><br><br>
+                <button type="submit" class="w-full bg-yellow-400 font-bold text-black py-2 rounded border-2 border-black hover:bg-yellow-500 mt-12">Continue</button>
             </form>
-            <p class="text-center text-gray-700"><span class="font-bold">© 2024 Hive.</span> <br> <a href="#" class="underline text-black">Privacy,</a> <a href="#" class="underline text-black"> Terms</a> and <a href="#" class="underline text-black">Legal</a></p>
+            
+            <p class="text-center text-gray-700 mt-3"><span class="font-bold">© 2024 Hive.</span> <br> <a href="#" class="underline text-black">Privacy,</a> <a href="#" class="underline text-black"> Terms</a> and <a href="#" class="underline text-black">Legal</a></p> 
         </div>
+
         <!-- Carousel -->
         <div class="mt-10 md:mt-0 w-full md:w-1/2 bg-black p-6" style="height: 70%;">
             <div class="flex items-center justify-center mb-1">
                 <h2 class="text-2xl text-white text-center font-bold">Ready to get started?</h2>
                 <img src="{% static 'images/logo/CashHive1.png' %}" alt="logo" class="h-12 md:h-13 lg:h-15 mb-2">
             </div>
-            <h2 class="text-sm text-white text-center mb-6 mr-12">Here is how you Log in to Hive</h2>
+            <h2 class="text-sm text-white text-center mb-6 mr-12">Here is how you Sign Up to Hive</h2>
 
             <div class="relative w-full h-80 bg-black rounded-lg overflow-hidden">
                 <div class="slider relative w-full h-full">
@@ -101,7 +130,25 @@
         </div>
     </div>
 </main>
+<script>
+    const otpInputs = document.querySelectorAll('.otp-input');
 
+    otpInputs.forEach((input, index) => {
+        input.addEventListener('input', (e) => {
+            if (e.target.value.length === 1 && index < otpInputs.length - 1) {
+                // Move to the next input field
+                otpInputs[index + 1].focus();
+            }
+        });
+
+        input.addEventListener('keydown', (e) => {
+            if (e.key === 'Backspace' && index > 0 && e.target.value.length === 0) {
+                // Move back to the previous input field when backspace is pressed
+                otpInputs[index - 1].focus();
+            }
+        });
+    });
+</script>
 
 <script>
     function removeMessage(button) {
