@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal codes</title>
+</head>
+<script src="https://cdn.tailwindcss.com"></script>
+<body>
+    <!-- Modal 1 -->
+    <main class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
+        <div class="bg-white rounded-lg shadow-md p-6 w-full max-w-md">
+            <h1 class="text-xl font-semibold mb-8 mx-auto text-center">
+                <span class="text-center bg-slate-400 px-4 py-2 rounded-full">Add Team workspace</span>
+            </h1>                    
+          <!-- Workspace Members Section -->
+          <div class="mb-4">
+            <h2 class="text-lg font-medium mb-2">Name of workspace</h2>
+      
+            <!-- Member List -->
+            <div class="space-y-3">
+              <!-- Member 1 -->
+              <div class="flex items-center justify-between border-2 border-black rounded-lg p-3">
+                <div class="flex items-center space-x-3">
+                  <img src="#" alt="You" class="rounded-full w-10 h-10  border-2 border-black" />
+                  <div>
+                    <p class="font-medium">You</p>
+                    <p class="text-sm text-gray-500">Admin</p>
+                  </div>
+                </div>
+                <button class="px-3 py-1 rounded-full text-sm bg-red-100 text-red-600">
+                  Deactivate
+                </button>
+              </div>
+      
+              <!-- Member 2 -->
+              <div class="flex items-center justify-between  border-2 border-black rounded-lg p-3">
+                <div class="flex items-center space-x-3">
+                  <img src="#" alt="Member 1" class="rounded-full w-10 h-10  border-2 border-black" />
+                  <div>
+                    <p class="font-medium">Member 1</p>
+                    <p class="text-sm text-gray-500">role</p>
+                  </div>
+                </div>
+                <button class="px-3 py-1 rounded-full text-sm bg-red-100 text-red-600 hover:bg-red-200">
+                  Delete
+                </button>
+              </div>
+      
+              <!-- Member 3 -->
+              <div class="flex items-center justify-between  border-2 border-black rounded-lg p-3">
+                <div class="flex items-center space-x-3">
+                  <img src="#" alt="Member 2" class="rounded-full w-10 h-10  border-2 border-black" />
+                  <div>
+                    <p class="font-medium">Member 2</p>
+                    <p class="text-sm text-gray-500">role</p>
+                  </div>
+                </div>
+                <button class="px-3 py-1 rounded-full text-sm bg-red-100 text-red-600 hover:bg-red-200">
+                  Delete
+                </button>
+              </div>
+            </div>
+          </div>
+      
+          <!-- Add Member Button -->
+          <button class="w-full text-black font-medium py-2 px-4 rounded-full flex items-center justify-center">
+            <svg class="w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7h18M3 12h18M3 17h18" />
+            </svg>
+            Add Member to workspace
+          </button>
+        </div>
+      </main>
+      <!-- Modal2 -->
+      <main class="min-h-screen bg-gray-100 flex items-center justify-center p-4">
+        <div class="bg-white rounded-lg shadow-md p-6 w-full max-w-md">
+            <h1 class="text-xl font-semibold mb-8 mx-auto text-center">
+                <span class="text-center bg-slate-400 px-4 py-2 rounded-full">Add Team workspace</span>
+            </h1> 
+                <form class="space-y-4" action="#" method="POST" onsubmit="handleSubmit(event)">
+                <div>
+                    <label for="role" class="block text-sm font-medium text-gray-700 mb-1">
+                        Specify role <span class="text-red-500">*</span>
+                    </label>
+                    <input
+                        type="text"
+                        id="role"
+                        placeholder="Eg: Solidity Developer"
+                        class="w-full px-3 py-2 border-2 border-black rounded-lg focus:outline-none"
+                        required
+                    />
+                </div>
+                <div>
+                    <label for="description" class="block text-sm font-medium text-gray-700 mb-1">
+                        Describe team member role (optional)
+                    </label>
+                    <textarea
+                        id="description"
+                        rows="4"
+                        class="w-full px-3 py-2 border-2 border-black rounded-lg focus:outline-none"
+                    ></textarea>
+                </div>
+                <div>
+                    <label for="invite" class="block text-sm font-medium text-gray-700 mb-1">
+                        Invite team via email or raventag <span class="text-red-500">*</span>
+                    </label>
+                    <input
+                        type="text"
+                        id="invite"
+                        placeholder="@ravenhive or member@gmail.com"
+                        class="w-full px-3 py-2 border-2 border-black rounded-lg focus:outline-none"
+                        required
+                    />
+                </div>
+                <button
+                type="submit"
+                class="w-full bg-yellow-400 hover:bg-yellow-500 text-black font-medium py-3 px-4 rounded-full flex items-center justify-center"
+            >
+                <svg class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 6h18M3 14h18M3 18h18M3 22h18M3 2h18" />
+                </svg>
+                Add Member to workspace
+            </button>
+            </form>
+        </div>
+    
+        <script>
+            function handleSubmit(event) {
+                event.preventDefault();
+                const role = document.getElementById('role').value;
+                const description = document.getElementById('description').value;
+                const invite = document.getElementById('invite').value;
+    
+                // Handle form submission here
+                console.log({ role, description, invite });
+            }
+        </script>
+    </main>
+    <!-- Modal 3 -->
+    <main class="min-h-screen bg-gray-100 flex items-center justify-center p-4">
+        <div class="bg-white rounded-lg shadow-md p-6 w-full max-w-md">
+            <h1 class="text-xl font-semibold mb-8 mx-auto text-center">
+                <span class="text-center bg-slate-400 px-4 py-2 rounded-full">Add Team workspace</span>
+            </h1> 
+                <form class="space-y-4" action="#" method="POST" onsubmit="handleSubmit(event)">
+                <div>
+                    <label for="name" class="block text-sm font-medium text-gray-700 mb-1">
+                        Name of Workspace <span class="text-red-500">*</span>
+                    </label>
+                    <input
+                        type="text"
+                        id="name"
+                        placeholder="Enter workspace name"
+                        class="w-full px-3 py-2 border-2 border-black rounded-lg focus:outline-none"
+                        required
+                    />
+                </div>
+                <div>
+                    <label for="description" class="block text-sm font-medium text-gray-700 mb-1">
+                        Describe workspace <span class="text-red-500">*</span>
+                    </label>
+                    <textarea
+                        id="description"
+                        rows="4"
+                        placeholder="Describe your workspace"
+                        class="w-full px-3 py-2 border-2 border-black rounded-lg focus:outline-none"
+                        required
+                    ></textarea>
+                </div>
+                <button
+                    type="submit"
+                    class="w-full bg-yellow-400 hover:bg-yellow-500 text-black font-medium py-2 px-4 rounded-full flex items-center justify-center"
+                >
+                    <svg class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 6h18M3 14h18M3 18h18M3 22h18M3 2h18" />
+                    </svg>
+                    Create workspace
+                </button>
+            </form>
+        </div>
+    
+        <script>
+            function handleSubmit(event) {
+                event.preventDefault();
+                const name = document.getElementById('name').value;
+                const description = document.getElementById('description').value;
+    
+                // Handle form submission here 
+                console.log({ name, description });
+            }
+        </script>
+    </main>
+</body>
+</html>

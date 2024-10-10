@@ -1,0 +1,39 @@
+{% extends 'Job/jobpagebase.html' %}
+
+{% comment %} # Theo worked on this {% endcomment %}
+
+{% load static %}
+{% block title %}TeamWork Space{% endblock %}
+
+{% block content %}
+
+<main class="p-4">
+  <!-- Search Bar with Notification -->
+  <div class="flex items-center mb-32">
+    <div class="relative flex-grow">
+      <svg class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16l-4-4m0 0l4-4m-4 4h14"></path>
+      </svg>
+      <input
+        type="text"
+        placeholder="Search"
+        class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-full focus:outline-none"
+      />
+    </div>
+    <button class="p-2 ml-4 text-gray-600 hover:text-gray-900">
+      <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405C18.275 14.505 18 13.53 18 12.5V11a6 6 0 10-12 0v1.5c0 1.03-.275 2.005-.595 3.095L4 17h5m0 0v3a2 2 0 004 0v-3m-4 0h4"></path>
+      </svg>
+    </button>
+  </div>
+
+  <!-- No workspace section -->
+  <div class="text-center">
+    <h1 class="mb-4 text-2xl font-bold">No workspace</h1>
+    <button class="px-6 py-3 text-gray-900 bg-yellow-300 rounded-md hover:bg-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2">
+      Create a new workspace
+    </button>
+  </div>
+</main>
+
+{% endblock %}
