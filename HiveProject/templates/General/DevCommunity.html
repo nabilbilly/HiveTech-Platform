@@ -1,0 +1,93 @@
+{% extends 'General/base.html' %}
+
+{% comment %} # Ezekiel worked on this  {% endcomment %}
+
+{% load static %}
+{% block title %}Hive Dev Community page{% endblock %}
+
+{% block content %}
+
+<div class="max-w-screen-lg mx-auto">
+    <div class="flex items-center justify-center mb-7 mt-7">
+        <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold text-center">Join our Community</h1>
+        <img src="{% static 'images/logo/CashHive1.png' %}" class="ml-1 h-20 w-20" alt="Image Description" />
+    </div>
+</div>
+
+{% comment %} Grid Boxs {% endcomment %}
+ {% comment %} <div class="grid grid-cols-3 gap-3 max-w-screen-lg mx-auto ">   {% endcomment %}
+  <div class="grid gap-2  grid-cols-2 lg:grid-cols-3  lg:gap-3 px-2 lg:px-1 max-w-screen-lg mx-auto">
+    <!-- University of Cape Coast image -->
+    <div class=" border-4 lg:border-4 border-black shadow-md overflow-hidden transform transition duration-300 hover:scale-105 hover:border-yellow-300 hover:shadow-lg" style="border-radius: 17px;">
+        <a href="#">
+          <img class="object-cover w-full h-full" src="{% static 'images/DevCommunity/image 15.png' %}" alt="University of Cape Coast" />
+        </a>
+    </div>
+
+    <!-- KNUST image -->
+    <div class="border-4 border-black shadow-md overflow-hidden transform transition duration-300 hover:scale-105 hover:border-yellow-300 hover:shadow-lg " style="border-radius: 17px;">
+        <a href="#">
+          <img class="object-cover w-full h-full" src="{% static 'images/DevCommunity/image 16.png' %}" alt="University of Cape Coast" />
+        </a>
+    </div>
+
+    <!-- UNIVERSITY OF GHANA image -->
+    <div class="border-4 border-black shadow-md overflow-hidden transform transition duration-300 hover:scale-105 hover:border-yellow-300 hover:shadow-lg" style="border-radius: 17px;">
+        <a href="#">
+          <img class="object-cover w-full h-full" src="{% static 'images/DevCommunity/image 17.png' %}" alt="University of Cape Coast" />
+        </a>
+    </div>
+
+    <!-- CAPE COAST TECHNICAL UNIVERSITY image -->
+    <div class="border-4 border-black shadow-md overflow-hidden transform transition duration-300 hover:scale-105 hover:border-yellow-300 hover:shadow-lg" style="border-radius: 17px;">
+        <a href="#">
+          <img class="object-cover w-full h-full" src="{% static 'images/DevCommunity/image 20.png' %}" alt="University of Cape Coast" />
+        </a>
+    </div>
+
+    <!-- CENTRAL UNIVERSITY image -->
+    <div class="border-4 border-black shadow-md overflow-hidden transform transition duration-300 hover:scale-105 hover:border-yellow-300 hover:shadow-lg" style="border-radius: 17px;">
+        <a href="#">
+          <img class="object-cover w-full h-full" src="{% static 'images/DevCommunity/image 19.png' %}" alt="University of Cape Coast" />
+        </a>
+    </div>
+
+    <!-- HO TECHNICAL UNIVERSITY image -->
+    <div class="border-4 border-black shadow-md overflow-hidden transform transition duration-300 hover:scale-105 hover:border-yellow-300 hover:shadow-lg" style="border-radius: 17px;">
+        <a href="#">
+          <img class="object-cover w-full h-full" src="{% static 'images/DevCommunity/image 18.png' %}" alt="University of Cape Coast" />
+        </a>
+    </div>
+    
+
+    <!-- ? UNIVERSITY OF MINES AND TECHNOLOGY-->
+    <div class="border-4 border-black shadow-md overflow-hidden transform transition duration-300 hover:scale-105 hover:border-yellow-300 hover:shadow-lg" style="border-radius: 17px;">
+        <a href="#">
+          <img class="object-cover w-full h-full" src="{% static 'images/DevCommunity/image 21.png' %}" alt="University of Cape Coast" />
+        </a>
+    </div>
+
+    <!-- ? UNIVERSITY OF ENERGY AND NATURAL RESOURCES-->
+    <div class="border-4 border-black shadow-md overflow-hidden transform transition duration-300 hover:scale-105 hover:border-yellow-300 hover:shadow-lg" style="border-radius: 17px;">
+        <a href="#">
+          <img class="object-cover w-full h-full" src="{% static 'images/DevCommunity/image 22.png' %}" alt="University of Cape Coast" />
+        </a>
+    </div>
+
+    <!-- ? VALLEY VIEW UNIVERSITY-->
+    <div class="border-4 border-black shadow-md overflow-hidden transform transition duration-300 hover:scale-105 hover:border-yellow-300 hover:shadow-lg" style="border-radius: 17px;">
+        <a href="#">
+          <img class="object-cover w-full h-full" src="{% static 'images/DevCommunity/image 23.png' %}" alt="University of Cape Coast" />
+        </a>
+    </div>
+
+    <!-- ? ACCRA TECHNICAL UNIVERSITY -->
+    <div class="border-4 border-black shadow-md overflow-hidden transform transition duration-300 hover:scale-105 hover:border-yellow-300 hover:shadow-lg" style="border-radius: 17px;">
+        <a href="#">
+          <img class="object-cover w-full h-full" src="{% static 'images/DevCommunity/image24.png' %}" alt="University of Cape Coast" />
+        </a>
+    </div>
+</div>
+{% comment %} Grid Boxs  end {% endcomment %}
+
+{% endblock %}

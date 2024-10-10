@@ -1,5 +1,22 @@
 {
   "dependencies": {
+    "bootstrap": "^5.3.3",
+    "tailwind": "^4.0.0",
     "tailwindcss": "^3.4.5"
+  },
+  "name": "hiveproject",
+  "version": "1.0.0",
+  "main": "tailwind.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "preinstall": "del /Q static\\src\\css\\bootstrap\\* && del /Q static\\src\\js\\*",
+    "postinstall": "xcopy node_modules\\bootstrap\\dist\\css\\*.* static\\src\\css\\bootstrap /E /Y && xcopy node_modules\\bootstrap\\dist\\js\\*.* static\\src\\js\\bootstrap /E /Y"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "tailwindcss": "^3.4.6"
   }
 }
