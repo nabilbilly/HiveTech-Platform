@@ -3,6 +3,19 @@ import os
 from django.core.management.utils import get_random_secret_key
 from dotenv import load_dotenv
 
+# # Session will expire when the user closes the browser
+# SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
+# # Set session timeout (in seconds)
+# SESSION_COOKIE_AGE = 300  # 5 minutes (or customize as needed)
+
+# # Ensure cookies are only sent over HTTPS
+# SESSION_COOKIE_SECURE = True  # Use in production with HTTPS enabled
+# settings.py
+
+SESSION_COOKIE_SECURE = False  # Should be True in production with HTTPS
+SESSION_COOKIE_HTTPONLY = True
+
 # Load environment variables from .env file
 load_dotenv()
 
@@ -39,6 +52,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    #'Accounts.middleware.CheckSessionKeyMiddleware', 
 ]
 
 ROOT_URLCONF = 'HiveProject.urls'
@@ -106,9 +120,10 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-# Log out Function
-LOGIN_REDIRECT_URL = "Home"
-LOGOUT_REDIRECT_URL = "/"
+# Where to redirect after a successful login
+LOGIN_REDIRECT_URL = '/dashboard/'
+LOGOUT_REDIRECT_URL = '/Login/'
+LOGIN_URL = '/Login/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 

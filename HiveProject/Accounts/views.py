@@ -42,10 +42,10 @@ def verify_email(request, uidb64, token):
     if user is not None and default_token_generator.check_token(user, token):
         user.is_active = True
         user.save()
-        messages.success(request, 'Email verified successfully. You can now log in.')
+        messages.success(request, 'Email verified successfully. Log In now.')
         return redirect('Login')
     else:
-        messages.error(request, 'The verification link is invalid or has expired.')
+        messages.error(request, 'The verification link is invalid or has expired. Resend link')
         return redirect('SignUp')
 
 # Verifications of email 
@@ -64,6 +64,20 @@ def send_verification_email(user, request):
 
     send_mail(subject, message, from_email, to_email, fail_silently=False, html_message=message)
 
+
+
+def resend_verification(request):
+    email = request.GET.get('email')
+    if email:
+        try:
+            user = User.objects.get(email=email, is_active=False)
+            send_verification_email(user, request)
+            messages.success(request, 'Verification email has been resent. Please check your inbox.')
+        except User.DoesNotExist:
+            messages.error(request, 'Invalid email or user is already verified.')
+    else:
+        messages.error(request, 'Email parameter is missing.')
+    return redirect('Login')
 
 # Sign Up Pages 
 def SignUp(request):
@@ -120,8 +134,13 @@ def Login(request):
             messages.error(request, 'User does not exist')
             return render(request, "Accounts/login.html")
 
+        # if not user.is_active:
+        #     messages.error(request, 'Please verify your email before logging in. Resend Mail')
+        #     return render(request, "Accounts/login.html")
+        
         if not user.is_active:
-            messages.error(request, 'Please verify your email before logging in. Resend Mail')
+            resend_url = reverse('resend_verification')
+            messages.error(request, f'Please verify your email before logging in. <a href="{resend_url}?email={email}">Resend Link</a>')
             return render(request, "Accounts/login.html")
 
         user = authenticate(request, username=user.username, password=password)
@@ -139,7 +158,7 @@ def Login(request):
 @login_required
 def LogoutUser(request):
     logout(request)
-    return redirect('home')
+    return redirect('Login')
 
 
 # Otp Generation for Forget Password

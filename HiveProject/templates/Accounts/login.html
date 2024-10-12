@@ -37,7 +37,7 @@
                                     </svg>
                                     <p class="flex-1 mt-3">
                                         <span class="font-bold">Info:</span>
-                                        {{ message }}
+                                        {{ message|safe  }}
                                     </p>
                                 </div>
                                 <button type="button" class="ml-3 text-yellow-800 hover:text-yellow-600" aria-label="Close" onclick="removeMessage(this)" >
@@ -47,6 +47,13 @@
                         {% endfor %}
                     </ul>
                 {% endif %}
+               {% comment %} {% if messages %}
+     {% for message in messages %}
+        <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+            {{ message|safe }}
+        </div>
+    {% endfor %}
+{% endif %} {% endcomment %}
 
 
 
