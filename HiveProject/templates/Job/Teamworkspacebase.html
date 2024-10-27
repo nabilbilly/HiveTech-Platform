@@ -12,7 +12,6 @@
 
     {% block extra_css %}{% endblock %}
     <style>
-    /* A Responsive hambeger Manu navbar */
         .responsive-menu {
             display: none;
             flex-direction: column;
@@ -42,231 +41,132 @@
             /* Light background for hover effect */
         }
         /* Custom radio button styles */
-        .custom-radio {
-            appearance: none;
-            border-radius: 50%;
-            border: 2px solid #e5e7eb; /* Gray border */
-            width: 1rem; /* Size of the radio button */
-            height: 1rem;
-            position: relative;
-            outline: none;
-            cursor: pointer;
-        }
+.custom-radio {
+    appearance: none;
+    border-radius: 50%;
+    border: 2px solid #e5e7eb; /* Gray border */
+    width: 1rem; /* Size of the radio button */
+    height: 1rem;
+    position: relative;
+    outline: none;
+    cursor: pointer;
+}
 
-        .custom-radio:checked {
-            background-color: #FDCE02; /* Yellow background */
-            border-color: #FDCE02; /* Yellow border */
-        }
+.custom-radio:checked {
+    background-color: #f59e0b; /* Yellow background */
+    border-color: #f59e0b; /* Yellow border */
+}
 
-        .custom-radio:checked::before {
-            content: "";
-            position: absolute;
-            top: 25%;
-            left: 25%;
-            width: 50%;
-            height: 50%;
-            border-radius: 50%;
-            background-color: white; /* Inner dot */
-        }
-        .profile-pic-wrapper {
-            width: 40px;
-            height: 40px;
-            min-width: 40px;
-            min-height: 40px;
-            border-radius: 50%;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px solid #ddd;
-        }
+.custom-radio:checked::before {
+    content: "";
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    width: 50%;
+    height: 50%;
+    border-radius: 50%;
+    background-color: white; /* Inner dot */
+}
 
-        .profile-pic-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
 
-        .bell-icon{
-            min-width: 35px;
-            min-height: 35px;
-            width: 35px;
-            height: 35px;
-        }
-        .logo{
-            min-width: 85px;
-            min-height: 40px;
-            width: 85px;
-            height: 40px;   
-        }
-        
-        /* Price Bar on the job search page  */
-        .pricebar.wrapper {
-            width: 400px;
-            background: #fff;
-            border-radius: 10px;
-            padding: 20px 25px 40px;
-            box-shadow: 0 12px 35px rgba(0,0,0,0.1);
-        }
-        .pricebar .slider {
-            height: 8px;
-            position: relative;
-            background: #00000033;
-            border-radius: 5px;
-        }
-        .pricebar .slider .progress {
-            height: 100%;
-            left: 25%;
-            right: 25%;
-            position: absolute;
-            border-radius: 5px;
-            background: #FDCE02; }
-        
-        .pricebar .range-input {
-            position: relative;
-            background:none;
-        }
-        .pricebar .range-input input {
-            position: absolute;
-            width: 100%;
-            height: 5px;
-            top: -6px;
-            background: none;
-            pointer-events: none;
-            -webkit-appearance: none;
-            -moz-appearance: none;
-        }
-        .pricebar .range-input input[type="range"]::-webkit-slider-thumb {
-            height: 20px;
-            width: 20px;
-            border-radius: 50%;
-            background: black;
-            pointer-events: auto;
-            -webkit-appearance: none;
-            box-shadow: 0 0 6px rgba(0,0,0,0.05);
-        }
-        .pricebar .range-input input[type="range"]::-moz-range-thumb {
-            height: 20px;
-            width: 20px;
-            border: none;
-            border-radius: 50%;
-            background:#00000033;
-            pointer-events: auto;
-            -moz-appearance: none;
-            box-shadow: 0 0 6px rgba(0,0,0,0.05);
-        }
-        .modal {
-            display: none; /* Hidden by default */
-            position: fixed; /* Stay in place */
-            z-index: 1; /* Sit on top */
-            padding-top: 80px; /* Location of the box */
-            left: 0;
-            top: 0;
-            width: 100%; /* Full width */
-            height: 100%; /* Full height */
-            overflow: auto; /* Enable scroll if needed */
-            background-color: rgb(0,0,0); /* Fallback color */
-            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-            border-radius:10px;
-        }
-        
-        /* Modal Content */
-        .modal-content {
-            background-color: #fefefe;
-            margin: auto;
-            padding: 20px;
-            border: 1px solid #888;
-            border-radius:10px;
-            width: 50%;
-        }
-        
-        /* The Close Button */
-        .close {
-            color: #aaaaaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-        
-        .close:hover,
-        .close:focus {
-            color: #000;
-            text-decoration: none;
-            cursor: pointer;
-        }
-        .modals {
-            display: none; /* Hidden by default */
-            position: fixed; /* Stay in place */
-            z-index: 1; /* Sit on top */
-            padding-top: 80px; /* Location of the box */
-            left: 0;
-            top: 0;
-            width: 100%; /* Full width */
-            height: 100%; /* Full height */
-            overflow: auto; /* Enable scroll if needed */
-            background-color: rgb(0,0,0); /* Fallback color */
-            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-            border-radius:10px;
-        }
-        /* Modal Content */
-        .modal-content-report {
-            background-color: #fefefe;
-            margin: auto;
-            padding: 0px;
-            border: 1px solid #888;
-            border-radius:10px;
-            width: 50%;
-            }
-                    
-        /* The Close Button */
-        .close {
-            color: black;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-        
-        .close:hover,
-        .close:focus {
-            color: #000;
-            text-decoration: none;
-            cursor: pointer;
-        }           
-        /* Media query for medium screens */
-        @media (min-width: 601px) and (max-width: 1024px) {
-            .modal-content {
-                background-color: #fefefe;
-                margin: auto;
-                padding: 20px;
-                border: 1px solid #888;
-                width: 80%;
-            }
-            .modal-content-report  {
-                background-color: #fefefe;
-                margin: auto;
-                padding: 0px;
-                border: 1px solid #888;
-                width: 80%;
-            }
+/* Container to ensure the sliders overlap correctly */
+.relative {
+    position: relative;
+}
 
-        }
-        /* Media query for small screens */
-        @media (max-width: 600px) {
-            .modal-content {
-                background-color: #fefefe;
-                margin: auto;
-                padding: 20px;
-                border: 1px solid #888;
-                width: 90%;
-            }
-            .modal-content-report  {
-                background-color: #fefefe;
-                margin: auto;
-                padding: 0px;
-                border: 1px solid #888;
-                width: 95%;
-            }
-        }
+/* Track background */
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+}
+
+/* Slider track */
+input[type="range"]::-webkit-slider-runnable-track {
+    height: 2px;
+    background: #f59e0b; /* Yellow color for the track */
+}
+
+/* Slider handle */
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    background: #f59e0b; /* Yellow color for the handle */
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* Firefox styles */
+input[type="range"]::-moz-range-track {
+    height: 2px;
+    background: #f59e0b; /* Yellow color for the track */
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    background: #f59e0b; /* Yellow color for the handle */
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* Edge styles */
+input[type="range"]::-ms-track {
+    height: 2px;
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+}
+
+input[type="range"]::-ms-fill-lower {
+    background: #f59e0b; /* Yellow color for the track */
+}
+
+input[type="range"]::-ms-fill-upper {
+    background: #f59e0b; /* Yellow color for the track */
+}
+
+input[type="range"]::-ms-thumb {
+    width: 16px;
+    height: 16px;
+    background: #f59e0b; /* Yellow color for the handle */
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.profile-pic-wrapper {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    min-height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #ddd;
+}
+
+.profile-pic-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.bell-icon{
+    min-width: 35px;
+    min-height: 35px;
+    width: 35px;
+    height: 35px;
+}
+.logo{
+    min-width: 85px;
+    min-height: 40px;
+    width: 85px;
+    height: 40px;   
+}
 
     </style>
 </head>
@@ -301,10 +201,11 @@
                         style="text-decoration: none;">Overview</a>
                     <a href="#" class="text-black font-semibold mt-2 hover:text-yellow-500"
                         style="text-decoration: none;">Balance</a>
-                    <a href="{% url 'Teamview-Page' %}" class="text-black font-semibold mt-2 hover:text-yellow-500"
-                        style="text-decoration: none;">Team&nbsp;Workspace</a>
-                    <a href="{% url 'Job-Page' %}" class="bg-yellow-300 text-black font-semibold rounded-lg px-4 py-2 hover:text-black hover:bg-yellow-300"
+                    <a href="{% url 'Teamview-Page' %}" class="bg-yellow-300 text-black font-semibold rounded-lg px-4 py-2 hover:text-black hover:bg-yellow-300"
+                        style="text-decoration: none;">Team&nbsp;Workspace</a>    
+                    <a href="{% url 'Job-Page' %}" class="text-black font-semibold mt-2 hover:text-yellow-500"
                         style="text-decoration: none;">Job&nbsp;Search</a>
+                    
                    
                 </nav>
                 <div class="flex items-center space-x-2">
@@ -357,10 +258,11 @@
                 style="text-decoration: none;">Overview</a>
             <a href="#" class="text-black font-semibold hover:text-yellow-500"
                 style="text-decoration: none;">Balance</a>
+             <a href="#" class="bg-yellow-500 text-black font-semibold rounded-lg px-4 py-2 hover:bg-yellow-600"
+                style="text-decoration: none;"> Workspace</a>    
             <a href="#" class="text-black font-semibold hover:text-yellow-500" style="text-decoration: none;">Team
-                Workspace</a>
-            <a href="#" class="bg-yellow-500 text-black font-semibold rounded-lg px-4 py-2 hover:bg-yellow-600"
-                style="text-decoration: none;">JobSearch</a>
+               JobSearch</a>
+           
         </div>
     </header>
 
@@ -390,8 +292,7 @@
             minSlider.addEventListener('input', updateSliderValues);
             maxSlider.addEventListener('input', updateSliderValues);
 
-    <script/>
-    
+    </>
 </body>
 
 </html>

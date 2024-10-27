@@ -10,17 +10,18 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
     {% block extra_css %}{% endblock %}
+    
 </head>
 <body>
      <!-- Navigation -->
      <header class="bg-white bottom-border" style="border-bottom: 2px solid black;">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <div class="flex items-center">
-                <a href="{% url 'Talent-page' %}"> <img src="{% static 'images/logo/CashHivelogo.png' %}" alt="Hive Logo" class="h-10 " style="margin-right:10px"> </a>
+            <div class="flex items-center ">
+                <a href="{% url 'Talent-page' %}"> <img src="{% static 'images/logo/CashHivelogo.png' %}" alt="Hive Logo" class=" logo" style="margin-right:10px,min-width: 85px;min-height: 40px;width: 85px;height: 40px;"> </a>
                 
             </div>
             <div class="flex items-center space-x-3 ">
-                <nav class="hidden items-center md:flex space-x-12 mr-8 ">
+                <nav class="hidden items-center md:flex space-x-4 lg:space-x-12 mr-8 pl-2 ">
 
                     <a href="{% url 'Talent-page' %}" class="text-black font-semibold " 
                         style="text-decoration: none; position: relative; display: inline-block; transition: all 0.3s ease;"

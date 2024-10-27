@@ -12,6 +12,12 @@
      margin-bottom: -15px;
      z-index: 2;
  }
+ .logo{
+   min-width: 85px;
+    min-height: 40px;
+    width: 85px;
+    height: 40px;
+ }
  
  .suport-section {
      display: flex;

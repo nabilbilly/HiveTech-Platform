@@ -1,0 +1,48 @@
+/* General Modal Styles for Team Workspace */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 50px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 35%;
+}
+/* Close button - Hidden by default */
+.close {
+    display: none;
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.close:hover,
+.close:focus {
+    color: black;
+}
+/* Show close button on small screens only */
+@media (max-width: 600px) {
+    .close {
+        display: block;
+    }
+    .modal-content {
+        width: 95%;
+    }
+}
+@media (min-width: 601px) and (max-width: 1024px) {
+    .modal-content {
+        width: 80%;
+    }
+}
