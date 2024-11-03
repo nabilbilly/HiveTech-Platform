@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head{% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Location of Work</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .select2-container .select2-selection--multiple {
+            height: auto;
+            padding: 8px;
+            border: 2px solid black;
+            border-radius: 8px;
+        }
+        .select2-selection__choice {
+            color: black;
+            font-size: 14px;
+        }
+        .selected {
+            background-color: #FFC22666 !important;
+        }
+        .select2-results__option--highlighted[aria-selected] {
+            background-color: #FDCE02 !important; /* Change hover color */
+            color: black !important; /* Text color */
+        }
+    </style>
+</head>
+<body class="bg-white">
+
+     <!-- Logo Section -->
+    <div class="flex items-start pt-6 mb-6 px-4 sm:px-6 md:px-8 lg:px-16 xl:px-20">
+        <!-- <a href="#"> <img src="{% static 'images/logo/CashHivelogo.png' %}" alt="Hive Logo" class="h-10 mr-3"> </a>
+         -->
+         <a href="#"> <img src="{% static 'images/logo/CashHivelogo.png' %}" alt="Hive Logo" class="h-10 mr-3"> </a>
+        
+    </div>
+    
+    <div class="bg-white flex items-center justify-center ">
+
+        <div class="w-full max-w-3xl mb-8 p-6">
+            <!-- Title and Subtitle -->
+            <h2 class="text-lg  font-bold text-center lg:text-2xl  text-gray-900 mb-2">What are your geographical preferences? &nbsp;</h2>
+        </div> 
+    </div> 
+   
+    <div class="flex flex-col items-center pb-10 px-4 sm:px-8 lg:px-32 bg-white px-4 sm:px-6 md:px-8 lg:pl-52 lg:pr-42 xl:px-20">
+        <!-- Step-by-step Sidebar -->
+        <div class="flex items-start w-full lg:justify-between">
+            <div class="hidden lg:flex flex-col items-center mr-6">
+                <div class="flex flex-col items-center">
+                    <div class="w-16 h-16  border-2 border-black rounded-full flex items-center justify-center" style="background:#FDCE02">
+                        <span class="text-black font-lg text-sm">7/13</span>
+                    </div>
+                    <div class="border-l-2 border-gray-300 border-dashed h-12  w-0.5"></div>
+                </div>
+    
+                <div class="w-16 h-16  border-2 border-black rounded-full flex items-center justify-center" style="background:#FDCE02">
+                    <svg width="24" height="24" viewBox="0 0 79 79" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M13.1673 62.5423V26.334H65.834V37.1636C68.204 37.8877 70.4423 38.9411 72.4173 40.3565V26.334C72.4173 22.6802 69.4877 19.7507 65.834 19.7507H52.6673V13.1673C52.6673 9.51357 49.7377 6.58398 46.084 6.58398H32.9173C29.2636 6.58398 26.334 9.51357 26.334 13.1673V19.7507H13.1673C9.51357 19.7507 6.6169 22.6802 6.6169 26.334L6.58398 62.5423C6.58398 66.1961 9.51357 69.1257 13.1673 69.1257H38.4473C37.4598 67.0848 36.8015 64.8794 36.4723 62.5423H13.1673ZM32.9173 13.1673H46.084V19.7507H32.9173V13.1673Z" fill="black"/>
+                        <path d="M59.2493 42.791C50.1643 42.791 42.791 50.1643 42.791 59.2493C42.791 68.3343 50.1643 75.7077 59.2493 75.7077C68.3343 75.7077 75.7077 68.3343 75.7077 59.2493C75.7077 50.1643 68.3343 42.791 59.2493 42.791ZM64.6806 66.9848L57.6035 59.9077V49.3743H60.8952V58.5581L66.9848 64.6477L64.6806 66.9848Z" fill="black"/>
+                    </svg>
+                </div>
+    
+                <div class="border-l-2 border-gray-300 border-dashed h-12  w-0.5"></div>
+    
+                <div class="w-16 h-16  border-2 border-black rounded-full flex items-center justify-center " style="background:#FDCE02">
+                    <svg width="24" height="24" viewBox="0 0 87 87" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M43.498 72.166C58.3407 72.166 70.373 60.1337 70.373 45.291C70.373 30.4483 58.3407 18.416 43.498 18.416C28.6553 18.416 16.623 30.4483 16.623 45.291C16.623 60.1337 28.6553 72.166 43.498 72.166Z" stroke="black" stroke-width="7.16667" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M36.3317 20.209C39.5652 22.0155 42.6026 24.6882 42.348 28.1737C42.1444 30.959 39.7624 31.5805 39.2642 33.5947C38.7663 35.6089 41.648 37.8062 36.7728 41.0568C33.5228 43.2238 23.7378 47.3432 16.623 43.5007" stroke="black" stroke-width="7.16667" stroke-linecap="round"/>
+                        <path d="M17.5213 44.394C12.1463 47.7772 4.20589 56.9733 7.66796 63.2065C12.1461 71.269 29.1677 64.4438 48.8755 48.8731C68.5834 33.3025 76.1608 10.543 76.1608 10.543L66.7929 13.0398" stroke="black" stroke-width="7.16667" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M47.0859 72.1673C47.0859 72.1673 47.9812 63.209 54.2515 57.834C60.5218 52.459 68.5861 52.459 68.5861 52.459" stroke="black" stroke-width="7.16667" stroke-linecap="round"/>
+                        </svg>
+                </div>
+            </div>
+    
+            <!-- Main Content -->
+            <div class="flex flex-col items-center lg:items-start w-full lg:w-2/2 lg:pl-16 ">
+                <div class="text-center lg:text-left " style="width: 60%;">
+                    <select id="countries" class="w-50 border-2 border-black  text-sm lg:w-1/2 p-3  mb-5 rounded-lg hover:bg-yellow-400" multiple >
+                        <!-- Country options -->
+                        <optgroup id="country-optgroup-Africa" label="Africa">
+                            <option value="DZ"  label="Algeria">Algeria</option>
+                            <option value="AO" label="Angola">Angola</option>
+                            <option value="BJ" label="Benin">Benin</option>
+                            <option value="BW" label="Botswana">Botswana</option>
+                            <option value="BF" label="Burkina Faso">Burkina Faso</option>
+                            <option value="BI" label="Burundi">Burundi</option>
+                            <option value="CM" label="Cameroon">Cameroon</option>
+                            <option value="CV" label="Cape Verde">Cape Verde</option>
+                            <option value="CF" label="Central African Republic">Central African Republic</option>
+                            <option value="TD" label="Chad">Chad</option>
+                            <option value="KM" label="Comoros">Comoros</option>
+                            <option value="CG" label="Congo - Brazzaville">Congo - Brazzaville</option>
+                            <option value="CD" label="Congo - Kinshasa">Congo - Kinshasa</option>
+                            <option value="CI" label="Côte d’Ivoire">Côte d’Ivoire</option>
+                            <option value="DJ" label="Djibouti">Djibouti</option>
+                            <option value="EG" label="Egypt">Egypt</option>
+                            <option value="GQ" label="Equatorial Guinea">Equatorial Guinea</option>
+                            <option value="ER" label="Eritrea">Eritrea</option>
+                            <option value="ET" label="Ethiopia">Ethiopia</option>
+                            <option value="GA" label="Gabon">Gabon</option>
+                            <option value="GM" label="Gambia">Gambia</option>
+                            <option value="GH" label="Ghana">Ghana</option>
+                            <option value="GN" label="Guinea">Guinea</option>
+                            <option value="GW" label="Guinea-Bissau">Guinea-Bissau</option>
+                            <option value="KE" label="Kenya">Kenya</option>
+                            <option value="LS" label="Lesotho">Lesotho</option>
+                            <option value="LR" label="Liberia">Liberia</option>
+                            <option value="LY" label="Libya">Libya</option>
+                            <option value="MG" label="Madagascar">Madagascar</option>
+                            <option value="MW" label="Malawi">Malawi</option>
+                            <option value="ML" label="Mali">Mali</option>
+                            <option value="MR" label="Mauritania">Mauritania</option>
+                            <option value="MU" label="Mauritius">Mauritius</option>
+                            <option value="YT" label="Mayotte">Mayotte</option>
+                            <option value="MA" label="Morocco">Morocco</option>
+                            <option value="MZ" label="Mozambique">Mozambique</option>
+                            <option value="NA" label="Namibia">Namibia</option>
+                            <option value="NE" label="Niger">Niger</option>
+                            <option value="NG" label="Nigeria">Nigeria</option>
+                            <option value="RW" label="Rwanda">Rwanda</option>
+                            <option value="RE" label="Réunion">Réunion</option>
+                            <option value="SH" label="Saint Helena">Saint Helena</option>
+                            <option value="SN" label="Senegal">Senegal</option>
+                            <option value="SC" label="Seychelles">Seychelles</option>
+                            <option value="SL" label="Sierra Leone">Sierra Leone</option>
+                            <option value="SO" label="Somalia">Somalia</option>
+                            <option value="ZA" label="South Africa">South Africa</option>
+                            <option value="SD" label="Sudan">Sudan</option>
+                            <option value="SZ" label="Swaziland">Swaziland</option>
+                            <option value="ST" label="São Tomé and Príncipe">São Tomé and Príncipe</option>
+                            <option value="TZ" label="Tanzania">Tanzania</option>
+                            <option value="TG" label="Togo">Togo</option>
+                            <option value="TN" label="Tunisia">Tunisia</option>
+                            <option value="UG" label="Uganda">Uganda</option>
+                            <option value="EH" label="Western Sahara">Western Sahara</option>
+                            <option value="ZM" label="Zambia">Zambia</option>
+                            <option value="ZW" label="Zimbabwe">Zimbabwe</option>
+                            </optgroup>
+                            <optgroup id="country-optgroup-Americas" label="Americas">
+                                <option value="AI" label="Anguilla">Anguilla</option>
+                                <option value="AG" label="Antigua and Barbuda">Antigua and Barbuda</option>
+                                <option value="AR" label="Argentina">Argentina</option>
+                                <option value="AW" label="Aruba">Aruba</option>
+                                <option value="BS" label="Bahamas">Bahamas</option>
+                                <option value="BB" label="Barbados">Barbados</option>
+                                <option value="BZ" label="Belize">Belize</option>
+                                <option value="BM" label="Bermuda">Bermuda</option>
+                                <option value="BO" label="Bolivia">Bolivia</option>
+                                <option value="BR" label="Brazil">Brazil</option>
+                                <option value="VG" label="British Virgin Islands">British Virgin Islands</option>
+                                <option value="CA" label="Canada">Canada</option>
+                                <option value="KY" label="Cayman Islands">Cayman Islands</option>
+                                <option value="CL" label="Chile">Chile</option>
+                                <option value="CO" label="Colombia">Colombia</option>
+                                <option value="CR" label="Costa Rica">Costa Rica</option>
+                                <option value="CU" label="Cuba">Cuba</option>
+                                <option value="DM" label="Dominica">Dominica</option>
+                                <option value="DO" label="Dominican Republic">Dominican Republic</option>
+                                <option value="EC" label="Ecuador">Ecuador</option>
+                                <option value="SV" label="El Salvador">El Salvador</option>
+                                <option value="FK" label="Falkland Islands">Falkland Islands</option>
+                                <option value="GF" label="French Guiana">French Guiana</option>
+                                <option value="GL" label="Greenland">Greenland</option>
+                                <option value="GD" label="Grenada">Grenada</option>
+                                <option value="GP" label="Guadeloupe">Guadeloupe</option>
+                                <option value="GT" label="Guatemala">Guatemala</option>
+                                <option value="GY" label="Guyana">Guyana</option>
+                                <option value="HT" label="Haiti">Haiti</option>
+                                <option value="HN" label="Honduras">Honduras</option>
+                                <option value="JM" label="Jamaica">Jamaica</option>
+                                <option value="MQ" label="Martinique">Martinique</option>
+                                <option value="MX" label="Mexico">Mexico</option>
+                                <option value="MS" label="Montserrat">Montserrat</option>
+                                <option value="AN" label="Netherlands Antilles">Netherlands Antilles</option>
+                                <option value="NI" label="Nicaragua">Nicaragua</option>
+                                <option value="PA" label="Panama">Panama</option>
+                                <option value="PY" label="Paraguay">Paraguay</option>
+                                <option value="PE" label="Peru">Peru</option>
+                                <option value="PR" label="Puerto Rico">Puerto Rico</option>
+                                <option value="BL" label="Saint Barthélemy">Saint Barthélemy</option>
+                                <option value="KN" label="Saint Kitts and Nevis">Saint Kitts and Nevis</option>
+                                <option value="LC" label="Saint Lucia">Saint Lucia</option>
+                                <option value="MF" label="Saint Martin">Saint Martin</option>
+                                <option value="PM" label="Saint Pierre and Miquelon">Saint Pierre and Miquelon</option>
+                                <option value="VC" label="Saint Vincent and the Grenadines">Saint Vincent and the Grenadines</option>
+                                <option value="SR" label="Suriname">Suriname</option>
+                                <option value="TT" label="Trinidad and Tobago">Trinidad and Tobago</option>
+                                <option value="TC" label="Turks and Caicos Islands">Turks and Caicos Islands</option>
+                                <option value="VI" label="U.S. Virgin Islands">U.S. Virgin Islands</option>
+                                <option value="US" label="United States">United States</option>
+                                <option value="UY" label="Uruguay">Uruguay</option>
+                                <option value="VE" label="Venezuela">Venezuela</option>
+                                </optgroup>
+                                <optgroup id="country-optgroup-Europe" label="Europe">
+                                    <option value="AL" label="Albania">Albania</option>
+                                    <option value="AD" label="Andorra">Andorra</option>
+                                    <option value="AT" label="Austria">Austria</option>
+                                    <option value="BY" label="Belarus">Belarus</option>
+                                    <option value="BE" label="Belgium">Belgium</option>
+                                    <option value="BA" label="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
+                                    <option value="BG" label="Bulgaria">Bulgaria</option>
+                                    <option value="HR" label="Croatia">Croatia</option>
+                                    <option value="CY" label="Cyprus">Cyprus</option>
+                                    <option value="CZ" label="Czech Republic">Czech Republic</option>
+                                    <option value="DK" label="Denmark">Denmark</option>
+                                    <option value="DD" label="East Germany">East Germany</option>
+                                    <option value="EE" label="Estonia">Estonia</option>
+                                    <option value="FO" label="Faroe Islands">Faroe Islands</option>
+                                    <option value="FI" label="Finland">Finland</option>
+                                    <option value="FR" label="France">France</option>
+                                    <option value="DE" label="Germany">Germany</option>
+                                    <option value="GI" label="Gibraltar">Gibraltar</option>
+                                    <option value="GR" label="Greece">Greece</option>
+                                    <option value="GG" label="Guernsey">Guernsey</option>
+                                    <option value="HU" label="Hungary">Hungary</option>
+                                    <option value="IS" label="Iceland">Iceland</option>
+                                    <option value="IE" label="Ireland">Ireland</option>
+                                    <option value="IM" label="Isle of Man">Isle of Man</option>
+                                    <option value="IT" label="Italy">Italy</option>
+                                    <option value="JE" label="Jersey">Jersey</option>
+                                    <option value="LV" label="Latvia">Latvia</option>
+                                    <option value="LI" label="Liechtenstein">Liechtenstein</option>
+                                    <option value="LT" label="Lithuania">Lithuania</option>
+                                    <option value="LU" label="Luxembourg">Luxembourg</option>
+                                    <option value="MK" label="Macedonia">Macedonia</option>
+                                    <option value="MT" label="Malta">Malta</option>
+                                    <option value="FX" label="Metropolitan France">Metropolitan France</option>
+                                    <option value="MD" label="Moldova">Moldova</option>
+                                    <option value="MC" label="Monaco">Monaco</option>
+                                    <option value="ME" label="Montenegro">Montenegro</option>
+                                    <option value="NL" label="Netherlands">Netherlands</option>
+                                    <option value="NO" label="Norway">Norway</option>
+                                    <option value="PL" label="Poland">Poland</option>
+                                    <option value="PT" label="Portugal">Portugal</option>
+                                    <option value="RO" label="Romania">Romania</option>
+                                    <option value="RU" label="Russia">Russia</option>
+                                    <option value="SM" label="San Marino">San Marino</option>
+                                    <option value="RS" label="Serbia">Serbia</option>
+                                    <option value="CS" label="Serbia and Montenegro">Serbia and Montenegro</option>
+                                    <option value="SK" label="Slovakia">Slovakia</option>
+                                    <option value="SI" label="Slovenia">Slovenia</option>
+                                    <option value="ES" label="Spain">Spain</option>
+                                    <option value="SJ" label="Svalbard and Jan Mayen">Svalbard and Jan Mayen</option>
+                                    <option value="SE" label="Sweden">Sweden</option>
+                                    <option value="CH" label="Switzerland">Switzerland</option>
+                                    <option value="UA" label="Ukraine">Ukraine</option>
+                                    <option value="SU" label="Union of Soviet Socialist Republics">Union of Soviet Socialist Republics</option>
+                                    <option value="GB" label="United Kingdom">United Kingdom</option>
+                                    <option value="VA" label="Vatican City">Vatican City</option>
+                                    <option value="AX" label="Åland Islands">Åland Islands</option>
+                        <!-- Add more country options as needed -->
+                    </select>
+                </div>
+                
+                <script>
+                    $(document).ready(function() {
+                        $('#countries').select2({
+                            placeholder: "Input preferred location",
+                            allowClear: true,
+                            width: '100%'
+                        });
+                    });
+                </script>  
+                
+                <div class="flex items-center mt-10 mb-4">
+                    <input id="work-location" type="checkbox" class="form-checkbox h-5 w-5 text-yellow-500 rounded focus:ring-0" />
+                    <label for="work-location" class="ml-3 text-sm text-gray-800">
+                        Includes jobs from where you want to work in:
+                    </label>
+                </div>
+                
+                <div class="grid grid-cols-3 sm:grid-cols-3 gap-5 mt-3 ">
+                    <button class="category-btn px-3 py-2 bg-gray-200 rounded-lg text-gray-800 text-sm font-medium">Africa</button>
+                    <button class="category-btn px-3 py-2 bg-gray-200 rounded-lg text-gray-800 text-sm font-medium">United State</button>
+                    <button class="category-btn px-3 py-2 bg-gray-200 rounded-lg text-gray-800 text-sm font-medium">Europe</button>
+                </div> 
+
+                <!-- Checkbox 2 -->
+                <div class="flex justify-center items-center mb-4 mt-7 px-4 sm:px-6 md:px-32 lg:px-0 ">
+                    <input id="work-anywhere" type="checkbox" class="form-checkbox h-5 w-5 text-yellow-500 rounded focus:ring-0 sm:-mt-2" />
+                    <label for="work-anywhere" class="ml-3 text-sm text-gray-800">
+                        Includes jobs from all part of the Globe.
+                    </label>
+                </div>
+            </div>
+       </div>
+            <div class="bg-white flex items-center justify-center py-12">
+                <a href="#" class=" font-medium "  style="color:#FDCE02">Skip Now</a>  
+            </div>
+            <div class="bg-white flex items-center justify-center space-x-7 ">
+                <a href="{% url 'English-Level' %}"><button class="bg-gray-300 text-gray-700 font-md px-4 py-2 rounded-md w-30">&nbsp;&nbsp;&nbsp;&nbsp;Back&nbsp;&nbsp;&nbsp;&nbsp;</button><a/>
+                <a href="{% url 'Employment-Option' %}"><button class=" text-gray-700 font-md px-4 py-2 rounded-md w-30" style="background:#FDCE02">Continue</button><a/>
+            </div>
+    </div>
+    
+     <!-- JavaScript for Multi-Select with Limit -->
+     <script>
+        const categoryButtons = document.querySelectorAll('.category-btn');
+        let selectedCount = 0;
+        const maxSelection = 3;
+
+        categoryButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                if (button.classList.contains('selected')) {
+                    // Deselecting a selected button
+                    button.classList.remove('selected');
+                    selectedCount--;
+                } else if (selectedCount < maxSelection) {
+                    // Selecting a new button if under the limit
+                    button.classList.add('selected');
+                    selectedCount++;
+                } else {
+                    alert(`You can select a maximum of ${maxSelection} options.`);
+                }
+            });
+        });
+    </script>
+
+    
+</body>
+</html>
+

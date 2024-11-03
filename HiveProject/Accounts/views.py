@@ -122,6 +122,37 @@ def SignUp(request):
 
     return render(request, "Accounts/Signup.html", {'form': form})
 
+# # Login Page View
+# def Login(request):
+#     if request.method == "POST":
+#         email = request.POST.get('email').lower()
+#         password = request.POST.get('password')
+
+#         try:
+#             user = User.objects.get(email=email)
+#         except User.DoesNotExist:
+#             messages.error(request, 'User does not exist')
+#             return render(request, "Accounts/login.html")
+
+#         # if not user.is_active:
+#         #     messages.error(request, 'Please verify your email before logging in. Resend Mail')
+#         #     return render(request, "Accounts/login.html")
+        
+#         if not user.is_active:
+#             resend_url = reverse('resend_verification')
+#             messages.error(request, f'Please verify your email before logging in. <a href="{resend_url}?email={email}">Resend Link</a>')
+#             return render(request, "Accounts/login.html")
+
+#         user = authenticate(request, username=user.username, password=password)
+
+#         if user is not None:
+#             login(request, user)
+#             return redirect('Job-Page')
+#         else:
+#             messages.error(request, 'Invalid email or password')
+
+#     return render(request, "Accounts/login.html")
+
 # Login Page View
 def Login(request):
     if request.method == "POST":
@@ -134,10 +165,6 @@ def Login(request):
             messages.error(request, 'User does not exist')
             return render(request, "Accounts/login.html")
 
-        # if not user.is_active:
-        #     messages.error(request, 'Please verify your email before logging in. Resend Mail')
-        #     return render(request, "Accounts/login.html")
-        
         if not user.is_active:
             resend_url = reverse('resend_verification')
             messages.error(request, f'Please verify your email before logging in. <a href="{resend_url}?email={email}">Resend Link</a>')
@@ -147,11 +174,20 @@ def Login(request):
 
         if user is not None:
             login(request, user)
+
+            if user.first_login:
+                user.first_login = False
+                user.save()
+                return redirect('Introduction')  # Redirect to introduction.html
+
             return redirect('Job-Page')
         else:
             messages.error(request, 'Invalid email or password')
 
     return render(request, "Accounts/login.html")
+
+def Introduction(request):
+    return render(request, 'Accounts/introduction.html')
 
 
 # Log out User

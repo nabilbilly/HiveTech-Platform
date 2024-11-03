@@ -204,11 +204,14 @@
                         <div class="ml-2 flex-shrink h-10 w-10">
                             <img src="{% static 'images/Icons/inactive.png' %}" alt="Inactive Icon" class="h-full w-full object-cover rounded-lg mt-4">
                         </div>
-                        <div id="OnReport-click" class="ml-2 flex-shrink-0 h-10 w-10">
-                            <img src="{% static 'images/Icons/inactive.png' %}" alt="Inactive Icon" class="h-full w-full object-cover rounded-lg mt-4">
+                        <div id="OnReport-click"  class="ml-2 flex-shrink-0 h-10 w-10">
+                            <svg width="43" class="mt-4" height="40" viewBox="0 0 43 43" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M33.6781 8.98535H9.2373V24.6973H33.6781V8.98535Z" fill="#171717" fill-opacity="0.7"/>
+                                <path d="M9.2373 35.172V24.6974M9.2373 24.6974H33.6781V8.98551H9.2373M9.2373 24.6974V8.98551M9.2373 8.98551V7.23975" stroke="#171717" stroke-opacity="0.7" stroke-width="3.49154" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
                         </div>
                         <div class=" ml-2 flex-shrink-0 h-10 w-12">
-                            <button class="bg-yellow-400 text-black rounded-md md:py-1.5 px-2  py-2 text-xs md:text-base hover:bg-yellow-400 mt-4 w-full md:w-auto">Apply</button>
+                            <button class="bg-yellow-400 text-black rounded-md md:py-1.5 px-2  py-2 text-sm md:text-sm hover:bg-yellow-400 mt-4 w-full md:w-auto">Apply</button>
                         </div>
                       </div>
                   </div>
@@ -266,7 +269,7 @@
               {% csrf_token %}
               <div class="mb-4">
                   <label class="flex items-center">
-                      <input type="radio" name="report_reason" value="offensive" class="mr-2 custom-radio">
+                      <input type="radio" name="report_reason" value="offensive" checked class="mr-2 custom-radio">
                       It is offensive, discriminatory
                   </label>
               </div>

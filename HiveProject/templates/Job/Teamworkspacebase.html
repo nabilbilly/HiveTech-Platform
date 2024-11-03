@@ -205,9 +205,16 @@ input[type="range"]::-ms-thumb {
                         style="text-decoration: none;">Team&nbsp;Workspace</a>    
                     <a href="{% url 'Job-Page' %}" class="text-black font-semibold mt-2 hover:text-yellow-500"
                         style="text-decoration: none;">Job&nbsp;Search</a>
-                    
-                   
                 </nav>
+
+                 <!-- Hamburger Menu Button -->
+                 <button id="hamburger-icon" class="block md:hidden flex items-center cursor-pointer">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
                 <div class="flex items-center space-x-2">
                     <a href="#" class="text-black">
                         <img src="{% static 'images/icons/mode.png' %}" class="bell-icon" alt="Notification Bell"
@@ -242,28 +249,27 @@ input[type="range"]::-ms-thumb {
                     </script>
                     
                 </div>
-                <!-- Hamburger Menu Button -->
-                <button id="hamburger-icon" class="block md:hidden flex items-center cursor-pointer">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4 6h16M4 12h16m-7 6h7"></path>
-                    </svg>
-                </button>
+               
             </div>
         </div>
-        <!-- Responsive Menu Toggle -->
-        <div id="responsive-menu" class="responsive-menu">
-            <a href="#" class="text-black font-semibold hover:text-yellow-500"
-                style="text-decoration: none;">Overview</a>
-            <a href="#" class="text-black font-semibold hover:text-yellow-500"
-                style="text-decoration: none;">Balance</a>
-             <a href="#" class="bg-yellow-500 text-black font-semibold rounded-lg px-4 py-2 hover:bg-yellow-600"
-                style="text-decoration: none;"> Workspace</a>    
-            <a href="#" class="text-black font-semibold hover:text-yellow-500" style="text-decoration: none;">Team
-               JobSearch</a>
-           
+         <!-- Responsive Menu Toggle -->
+        <!-- Add this responsive menu -->
+        <div class="responsive-menu" id="responsive-menu">
+            <a href="#" class="text-black font-semibold mt-2 hover:text-yellow-500">Overview</a>
+            <a href="#" class="text-black font-semibold mt-2 hover:text-yellow-500">Balance</a>
+            <a href="{% url 'Teamview-Page' %}" class="text-black font-semibold mt-2 hover:text-yellow-500">Team&nbsp;Workspace</a>
+            <a href="{% url 'Job-Page' %}" class="bg-yellow-300 text-black font-semibold rounded-lg px-4 py-2 hover:text-black hover:bg-yellow-300">Job&nbsp;Search</a>
         </div>
+
+        <!-- Add this JavaScript -->
+        <script>
+            const hamburgerIcon = document.getElementById('hamburger-icon');
+            const responsiveMenu = document.getElementById('responsive-menu');
+
+            hamburgerIcon.addEventListener('click', () => {
+                responsiveMenu.classList.toggle('active');
+            });
+        </script>
     </header>
 
     {% block content %}{% endblock %}

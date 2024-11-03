@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remote Job Steps</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-white">
+
+     <!-- Logo Section -->
+    <div class="flex items-start pt-6 mb-6 px-4 sm:px-6 md:px-8 lg:px-16 xl:px-20">
+        <!-- <a href="#"> <img src="{% static 'images/logo/CashHivelogo.png' %}" alt="Hive Logo" class="h-10 mr-3"> </a>
+         -->
+         <a href="#"> <img src="{% static 'images/logo/CashHivelogo.png' %}" alt="Hive Logo" class="h-10 mr-3"> </a>
+        
+    </div>
+    
+    <div class="bg-white flex items-center justify-center ">
+
+        <div class="w-full max-w-3xl mb-8 p-6">
+            <!-- Title and Subtitle -->
+            <h2 class="text-2xl font-bold text-center text-gray-900 mb-2">What's The Minimum You'd Like To Earn?</h2>
+        </div> 
+    </div> 
+    <div class="bg-white flex items-center justify-center py-5">
+        <div class="flex justify-center space-x-4 mb-6">
+            <button class="px-4 py-2 text-gray-800 text-sm font-semibold">Salary</button>
+            <button class="px-4 py-2 text-gray-800 text-sm font-semibold">Hour</button>
+            <button class="px-4 py-2 rounded-lg text-sm text-gray-800 font-semibold" style="background: #FFC22666;">Yearly</button>
+        </div> 
+    </div>
+   
+    <div class="flex flex-col items-center pb-10 px-4 sm:px-8 lg:px-32 bg-white px-4 sm:px-6 md:px-8 lg:pl-50 lg:pr-42 xl:px-20">
+        <!-- Step-by-step Sidebar -->
+        <div class="flex items-start w-full lg:justify-between">
+            <div class="hidden lg:flex flex-col items-center mr-6">
+                <div class="flex flex-col items-center">
+                    <div class="w-16 h-16  border-2 border-black rounded-full flex items-center justify-center" style="background:#FDCE02">
+                        <span class="text-black font-lg text-sm">2/13</span>
+                    </div>
+                    <div class="border-l-2 border-gray-300 border-dashed h-12  w-0.5"></div>
+                </div>
+    
+                <div class="w-16 h-16  border-2 border-black rounded-full flex items-center justify-center" style="background:#FDCE02">
+                    <svg width="24" height="24" viewBox="0 0 79 79" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M13.1673 62.5423V26.334H65.834V37.1636C68.204 37.8877 70.4423 38.9411 72.4173 40.3565V26.334C72.4173 22.6802 69.4877 19.7507 65.834 19.7507H52.6673V13.1673C52.6673 9.51357 49.7377 6.58398 46.084 6.58398H32.9173C29.2636 6.58398 26.334 9.51357 26.334 13.1673V19.7507H13.1673C9.51357 19.7507 6.6169 22.6802 6.6169 26.334L6.58398 62.5423C6.58398 66.1961 9.51357 69.1257 13.1673 69.1257H38.4473C37.4598 67.0848 36.8015 64.8794 36.4723 62.5423H13.1673ZM32.9173 13.1673H46.084V19.7507H32.9173V13.1673Z" fill="black"/>
+                        <path d="M59.2493 42.791C50.1643 42.791 42.791 50.1643 42.791 59.2493C42.791 68.3343 50.1643 75.7077 59.2493 75.7077C68.3343 75.7077 75.7077 68.3343 75.7077 59.2493C75.7077 50.1643 68.3343 42.791 59.2493 42.791ZM64.6806 66.9848L57.6035 59.9077V49.3743H60.8952V58.5581L66.9848 64.6477L64.6806 66.9848Z" fill="black"/>
+                    </svg>
+                </div>
+    
+                <div class="border-l-2 border-gray-300 border-dashed h-12  w-0.5"></div>
+    
+                <div class="w-16 h-16  border-2 border-black rounded-full flex items-center justify-center " style="background:#FDCE02">
+                    <svg width="24" height="24" viewBox="0 0 87 87" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M43.498 72.166C58.3407 72.166 70.373 60.1337 70.373 45.291C70.373 30.4483 58.3407 18.416 43.498 18.416C28.6553 18.416 16.623 30.4483 16.623 45.291C16.623 60.1337 28.6553 72.166 43.498 72.166Z" stroke="black" stroke-width="7.16667" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M36.3317 20.209C39.5652 22.0155 42.6026 24.6882 42.348 28.1737C42.1444 30.959 39.7624 31.5805 39.2642 33.5947C38.7663 35.6089 41.648 37.8062 36.7728 41.0568C33.5228 43.2238 23.7378 47.3432 16.623 43.5007" stroke="black" stroke-width="7.16667" stroke-linecap="round"/>
+                        <path d="M17.5213 44.394C12.1463 47.7772 4.20589 56.9733 7.66796 63.2065C12.1461 71.269 29.1677 64.4438 48.8755 48.8731C68.5834 33.3025 76.1608 10.543 76.1608 10.543L66.7929 13.0398" stroke="black" stroke-width="7.16667" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M47.0859 72.1673C47.0859 72.1673 47.9812 63.209 54.2515 57.834C60.5218 52.459 68.5861 52.459 68.5861 52.459" stroke="black" stroke-width="7.16667" stroke-linecap="round"/>
+                        </svg>
+                </div>
+            </div>
+    
+            <!-- Main Content -->
+            <div class="flex flex-col items-center lg:items-start w-full lg:w-2/2 lg:pl-24 ">
+                <!-- Chart Section -->
+                <div class="mb-6">
+                    <canvas id="salaryChart" class="w-full h-80"></canvas>
+                </div>
+
+                <!-- Range Input for 'a' and 'b' values -->
+                <div class="flex justify-between mt-4 mb-4 space-x-6">
+                    <div class="flex  items-center">
+                        <label for="minSalary" class="mb-2 mr-2 mt-10 text-sm font-bold text-gray-700">a</label>
+                        <button class=" border-2 border-black pr-2 rounded-md w-30">
+                            <input type="number" id="minSalary" value="10" min="0" max="100000" class="p-2  rounded-lg w-24 text-left">
+                            <span class="text-sm mt-1">USD / yr</span>
+                       </button>
+                    </div>
+                    <div class="flex items-center">
+                        <label for="maxSalary" class="mb-2 mr-2 mt-10 text-sm font-bold text-gray-700">b</label>
+                        <button class=" border-2 border-black pr-2 rounded-md w-30">
+                            <input type="number" id="maxSalary" value="80000" min="0" max="100000" class="p-2  rounded-lg w-24 text-left">
+                            <span class="text-sm mt-1">USD / yr</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bg-white flex items-center justify-center py-12">
+            <a href="#" class=" font-medium "  style="color:#FDCE02">Skip Now</a>  
+        </div>
+        <div class="bg-white flex items-center justify-center space-x-7 ">
+            <a href="{% url 'Explore-Interest' %}"><button class="bg-gray-300 text-gray-700 hover:text-gray-800 font-md px-4 py-2 rounded-md w-30">&nbsp;&nbsp;&nbsp;&nbsp;Back&nbsp;&nbsp;&nbsp;&nbsp;</button></a>
+            <a href="{% url 'Years-Of-Experience' %}"><button class=" text-gray-700 bg-yellow-400 hover:bg-yellow-500 font-md px-4 py-2 rounded-md w-30" >Continue</button></a>
+        </div>
+    </div>
+    
+     <!-- Chart and Interactive JavaScript -->
+     <script>
+        // Setup initial chart data
+        const ctx = document.getElementById('salaryChart').getContext('2d');
+        const salaryChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['a', '', '', '', '', '', '', 'b'],
+                datasets: [{
+                    label: 'Expected Earnings',
+                    data: [10, 20, 30, 50, 55, 70, 85, 100],
+                    backgroundColor: 'rgba(251, 191, 36, 0.3)',
+                    borderColor: 'rgba(251, 191, 36, 1)',
+                    borderWidth: 2,
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Update chart based on input values
+        document.getElementById('minSalary').addEventListener('input', updateChart);
+        document.getElementById('maxSalary').addEventListener('input', updateChart);
+
+        function updateChart() {
+            const minSalary = parseInt(document.getElementById('minSalary').value) || 0;
+            const maxSalary = parseInt(document.getElementById('maxSalary').value) || 100;
+            
+            // Adjust dataset based on min and max salary values
+            salaryChart.data.datasets[0].data = [minSalary, minSalary * 1.2, minSalary * 1.5, (minSalary + maxSalary) / 2, maxSalary * 0.85, maxSalary * 0.9, maxSalary * 0.95, maxSalary];
+            salaryChart.update();
+        }
+    </script>
+    
+</body>
+</html>
+

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remote Job Steps</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-white">
+
+    <!-- Logo Section -->
+    <div class="flex items-start pt-6 mb-6 px-4 sm:px-6 md:px-8 lg:px-16 xl:px-20">
+        <!-- <a href="#"> <img src="{% static 'images/logo/CashHivelogo.png' %}" alt="Hive Logo" class="h-10 mr-3"> </a>
+         -->
+         <a href="#"> <img src="image.png" alt="Hive Logo" class="h-10 mr-3"> </a>
+        
+    </div>
+    
+    <div class="bg-white flex items-center justify-center ">
+
+        <div class="w-full max-w-3xl mb-6 p-6">
+            <!-- Title and Subtitle -->
+            <h2 class="text-2xl font-bold font-Poppins text-center text-gray-900 mb-2">Find Your Dream Remote Job Today</h2>
+            <p class="text-center text-xs text-gray-500 mb-8">Connect with top companies and start working from anywhere</p>
+        </div> 
+    </div>
+    <div class="bg-white flex items-center justify-center px-4 sm:px-6 md:px-8 lg:px-80 xl:px-20">
+
+        <div class="space-y-2 " >
+            <!-- Step 1 -->
+            <div class="flex items-start">
+                <div class="flex flex-col items-center mr-6">
+                    <div class="w-24 h-24 bg-yellow-400 border-2 border-black flex items-center justify-center rounded-full sm:flex hidden">
+                        <svg width="50" height="50" viewBox="0 0 71 71" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g clip-path="url(#clip0_2523_7108)">
+                            <path d="M0 35.5C0 26.0848 3.74017 17.0553 10.3977 10.3977C17.0553 3.74017 26.0848 0 35.5 0C44.9152 0 53.9448 3.74017 60.6023 10.3977C67.2598 17.0553 71 26.0848 71 35.5C71 44.9152 67.2598 53.9448 60.6023 60.6023C53.9448 67.2598 44.9152 71 35.5 71C26.0848 71 17.0553 67.2598 10.3977 60.6023C3.74017 53.9448 0 44.9152 0 35.5ZM35.5 6.65625C27.8502 6.65625 20.5136 9.69514 15.1044 15.1044C9.69514 20.5136 6.65625 27.8502 6.65625 35.5C6.65625 43.1498 9.69514 50.4864 15.1044 55.8956C20.5136 61.3049 27.8502 64.3438 35.5 64.3438C43.1498 64.3438 50.4864 61.3049 55.8956 55.8956C61.3049 50.4864 64.3438 43.1498 64.3438 35.5C64.3438 27.8502 61.3049 20.5136 55.8956 15.1044C50.4864 9.69514 43.1498 6.65625 35.5 6.65625ZM30.7075 27.0022C30.3132 27.7919 29.6259 28.3926 28.7887 28.6722C27.9515 28.9519 27.0375 28.8874 26.2478 28.4932C25.4581 28.0989 24.8574 27.4071 24.5778 26.5699C24.2981 25.7327 24.3626 24.8188 24.7568 24.0291C25.5068 22.5247 26.6916 20.9184 28.5243 19.6936C30.3747 18.46 32.6999 17.75 35.5 17.75C38.1077 17.7334 40.6526 18.5496 42.7642 20.0797C44.9963 21.7526 46.5938 24.3619 46.5938 27.7344C46.5938 29.7224 46.0834 31.4175 45.1338 32.8375C44.2241 34.1998 43.0482 35.1139 42.0631 35.7751C41.5794 36.0946 41.0868 36.3875 40.6741 36.6404L40.6475 36.6582C40.257 36.885 39.8722 37.1218 39.4937 37.3682C39.0216 37.6515 38.6063 38.0201 38.269 38.4554C37.7749 39.1791 37.0153 39.6788 36.155 39.846C35.2948 40.0131 34.4033 39.8342 33.6742 39.3481C32.945 38.862 32.437 38.1079 32.2604 37.2496C32.0839 36.3912 32.2529 35.4978 32.731 34.7634C33.5475 33.5919 34.5947 32.5934 35.8018 31.8302C36.2573 31.5344 36.7203 31.2459 37.1907 30.9649L37.2217 30.9471C37.6655 30.6764 38.0294 30.459 38.3666 30.2327C38.8404 29.9499 39.2572 29.5812 39.5958 29.1455C39.76 28.9059 39.9375 28.5198 39.9375 27.7344C39.9552 27.2796 39.8579 26.8278 39.6547 26.4206C39.4515 26.0134 39.1489 25.664 38.7749 25.4047C37.8132 24.7403 36.6688 24.3914 35.5 24.4062C33.8626 24.4062 32.8597 24.8056 32.2163 25.2361C31.5654 25.6804 31.0447 26.29 30.7075 27.0022ZM39.9375 48.8125C39.9375 49.9894 39.47 51.1181 38.6378 51.9503C37.8056 52.7825 36.6769 53.25 35.5 53.25C34.3231 53.25 33.1944 52.7825 32.3622 51.9503C31.53 51.1181 31.0625 49.9894 31.0625 48.8125C31.0625 47.6356 31.53 46.5069 32.3622 45.6747C33.1944 44.8425 34.3231 44.375 35.5 44.375C36.6769 44.375 37.8056 44.8425 38.6378 45.6747C39.47 46.5069 39.9375 47.6356 39.9375 48.8125Z" fill="black"/>
+                            </g>
+                            <defs>
+                            <clipPath id="clip0_2523_7108">
+                            <rect width="71" height="71" fill="white"/>
+                            </clipPath>
+                            </defs>
+                            </svg>
+                            
+                    </div>
+                    <div class="border-l-2 border-gray-300 border-dashed h-16 mt-2 w-0.5"></div>
+                </div>
+                <div>
+                    <p class="text-yellow-400 font-semibold mb-2">Step 1</p>
+                    <h3 class="text-md font-semibold text-gray-900 mb-2">Get Started with a Few Questions</h3>
+                    <p class="text-gray-500 mb-5 text-sm">Take the journey towards your remote work journey. Answer the questions to help us understand your skills and preferences.</p>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="flex items-start">
+                <div class="flex flex-col items-center mr-6">
+                    <div class="w-24 h-24 bg-yellow-400 border-2 border-black bg-yellow-400 flex items-center justify-center rounded-full sm:flex hidden">
+                        <svg width="50" height="50" viewBox="0 0 79 79" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M13.1673 62.5423V26.334H65.834V37.1636C68.204 37.8877 70.4423 38.9411 72.4173 40.3565V26.334C72.4173 22.6802 69.4877 19.7507 65.834 19.7507H52.6673V13.1673C52.6673 9.51357 49.7377 6.58398 46.084 6.58398H32.9173C29.2636 6.58398 26.334 9.51357 26.334 13.1673V19.7507H13.1673C9.51357 19.7507 6.6169 22.6802 6.6169 26.334L6.58398 62.5423C6.58398 66.1961 9.51357 69.1257 13.1673 69.1257H38.4473C37.4598 67.0848 36.8015 64.8794 36.4723 62.5423H13.1673ZM32.9173 13.1673H46.084V19.7507H32.9173V13.1673Z" fill="black"/>
+                            <path d="M59.2493 42.791C50.1643 42.791 42.791 50.1643 42.791 59.2493C42.791 68.3343 50.1643 75.7077 59.2493 75.7077C68.3343 75.7077 75.7077 68.3343 75.7077 59.2493C75.7077 50.1643 68.3343 42.791 59.2493 42.791ZM64.6806 66.9848L57.6035 59.9077V49.3743H60.8952V58.5581L66.9848 64.6477L64.6806 66.9848Z" fill="black"/>
+                            </svg>
+                            
+                    </div>
+                    <div class="border-l-2 border-gray-300 border-dashed h-16 mt-2 w-0.5"></div>
+                </div>
+                <div>
+                    <p class="text-yellow-400 font-semibold mb-2">Step 2</p>
+                    <h3 class="text-md font-semibold text-gray-900 mb-2">Easy Apply</h3>
+                    <p class="text-gray-500 mb-5 text-sm">Browse our curated list of remote jobs, connect with teams and apply with ease.</p>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="flex items-start">
+                <div class="flex flex-col items-center mr-6">
+                    <div class="w-24 h-24 bg-yellow-400 border-2 border-black bg-yellow-400 flex items-center justify-center rounded-full sm:flex hidden">
+                        <svg width="50" height="50" viewBox="0 0 87 87" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M43.498 72.166C58.3407 72.166 70.373 60.1337 70.373 45.291C70.373 30.4483 58.3407 18.416 43.498 18.416C28.6553 18.416 16.623 30.4483 16.623 45.291C16.623 60.1337 28.6553 72.166 43.498 72.166Z" stroke="black" stroke-width="7.16667" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M36.3317 20.209C39.5652 22.0155 42.6026 24.6882 42.348 28.1737C42.1444 30.959 39.7624 31.5805 39.2642 33.5947C38.7663 35.6089 41.648 37.8062 36.7728 41.0568C33.5228 43.2238 23.7378 47.3432 16.623 43.5007" stroke="black" stroke-width="7.16667" stroke-linecap="round"/>
+                            <path d="M17.5213 44.394C12.1463 47.7772 4.20589 56.9733 7.66796 63.2065C12.1461 71.269 29.1677 64.4438 48.8755 48.8731C68.5834 33.3025 76.1608 10.543 76.1608 10.543L66.7929 13.0398" stroke="black" stroke-width="7.16667" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M47.0859 72.1673C47.0859 72.1673 47.9812 63.209 54.2515 57.834C60.5218 52.459 68.5861 52.459 68.5861 52.459" stroke="black" stroke-width="7.16667" stroke-linecap="round"/>
+                            </svg>
+                    </div>
+                    <div class="block sm:hidden border-l-2 border-gray-300 border-dashed h-16 mt-2 w-0.5"></div>
+                </div>
+                <div>
+                    <p class="text-yellow-400 font-semibold mb-2">Step 3</p>
+                    <h3 class="text-md font-bold text-gray-900 mb-2">Start your Remote Journey</h3>
+                    <p class="text-gray-500 mb-8 text-sm">Break free from traditional office boundaries, boost productivity, and enjoy the freedom to work from anywhere, at any time.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-white flex items-center justify-center ">
+        <div class="flex justify-center mt-12 mb-16">
+            <button class=" text-black font-semibold py-3 px-16 rounded-lg hover:bg-yellow-500" style="background:#FDCE02">
+                Start journey
+            </button>
+        </div>
+    </div>
+    
+</body>
+</html>
+
