@@ -17,9 +17,11 @@ import re
 import random
 from django.core.cache import cache
 
-# Create your views here.
+
 @login_required(login_url='Login')
-def job_view(request):
-    return render(request, 'Job/jobpage.html')
+def Teamview(request):
+    return render(request, 'Job/TeamworkspaceDashboard.html')
 
-
+@login_required(login_url='Login')
+def TeamworkspaceChat(request):
+    return render(request, 'Job/TeamworkspaceChat.html')

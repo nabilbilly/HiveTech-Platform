@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'Mainapp',
     'Accounts',
     'DashboardPages',
+    'Teamworkspace',
 ]
 
 MIDDLEWARE = [

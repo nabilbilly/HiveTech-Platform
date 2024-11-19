@@ -25,6 +25,7 @@ urlpatterns = [
     path('',include('Mainapp.urls')),
     path('accounts/',include('Accounts.urls')),
     path('dashboard/',include('DashboardPages.urls')),
+    path('Teamworkspace/',include('Teamworkspace.urls')),
 ]
 
 if settings.DEBUG:

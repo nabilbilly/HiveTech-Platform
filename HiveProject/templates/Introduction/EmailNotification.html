@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Notification</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .selected {
+            background-color: #FFC22666 !important;
+        }
+    </style>
+</head>
+<body class="bg-white">
+
+     <!-- Logo Section -->
+    <div class="flex items-start pt-6 mb-6 px-4 sm:px-6 md:px-8 lg:px-16 xl:px-20">
+        <!-- <a href="#"> <img src="{% static 'images/logo/CashHivelogo.png' %}" alt="Hive Logo" class="h-10 mr-3"> </a>
+         -->
+         <a href="#"> <img src="{% static 'images/logo/CashHivelogo.png' %}" alt="Hive Logo" class="h-10 mr-3"> </a>
+        
+    </div>
+    
+    <div class="bg-white flex items-center justify-center ">
+
+        <div class="w-full max-w-3xl mb-8 p-6">
+            <!-- Title and Subtitle -->
+            <h2 class="text-2xl font-bold text-center text-gray-900 mb-2">Always get Notified on new remote openings </h2>
+        </div> 
+    </div> 
+   
+    <div class="flex flex-col items-center pb-10 px-4 sm:px-8 lg:px-32 bg-white px-4 sm:px-6 md:px-8 lg:pl-46 lg:pr-42 xl:px-20">
+        <!-- Step-by-step Sidebar -->
+        <div class="flex items-start w-full lg:justify-between">
+            <div class="hidden lg:flex flex-col items-center mr-6">
+                <div class="flex flex-col items-center">
+                    <div class="w-16 h-16  border-2 border-black rounded-full flex items-center justify-center" style="background:#FDCE02">
+                        <span class="text-black font-lg text-sm">13/13</span>
+                    </div>
+                    <div class="border-l-2 border-gray-300 border-dashed h-12  w-0.5"></div>
+                </div>
+    
+                <div class="w-16 h-16  border-2 border-black rounded-full flex items-center justify-center" style="background:#FDCE02">
+                    <svg width="24" height="24" viewBox="0 0 79 79" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M13.1673 62.5423V26.334H65.834V37.1636C68.204 37.8877 70.4423 38.9411 72.4173 40.3565V26.334C72.4173 22.6802 69.4877 19.7507 65.834 19.7507H52.6673V13.1673C52.6673 9.51357 49.7377 6.58398 46.084 6.58398H32.9173C29.2636 6.58398 26.334 9.51357 26.334 13.1673V19.7507H13.1673C9.51357 19.7507 6.6169 22.6802 6.6169 26.334L6.58398 62.5423C6.58398 66.1961 9.51357 69.1257 13.1673 69.1257H38.4473C37.4598 67.0848 36.8015 64.8794 36.4723 62.5423H13.1673ZM32.9173 13.1673H46.084V19.7507H32.9173V13.1673Z" fill="black"/>
+                        <path d="M59.2493 42.791C50.1643 42.791 42.791 50.1643 42.791 59.2493C42.791 68.3343 50.1643 75.7077 59.2493 75.7077C68.3343 75.7077 75.7077 68.3343 75.7077 59.2493C75.7077 50.1643 68.3343 42.791 59.2493 42.791ZM64.6806 66.9848L57.6035 59.9077V49.3743H60.8952V58.5581L66.9848 64.6477L64.6806 66.9848Z" fill="black"/>
+                    </svg>
+                </div>
+    
+                <div class="border-l-2 border-gray-300 border-dashed h-12  w-0.5"></div>
+    
+                <div class="w-16 h-16  border-2 border-black rounded-full flex items-center justify-center " style="background:#FDCE02">
+                    <svg width="24" height="24" viewBox="0 0 87 87" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M43.498 72.166C58.3407 72.166 70.373 60.1337 70.373 45.291C70.373 30.4483 58.3407 18.416 43.498 18.416C28.6553 18.416 16.623 30.4483 16.623 45.291C16.623 60.1337 28.6553 72.166 43.498 72.166Z" stroke="black" stroke-width="7.16667" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M36.3317 20.209C39.5652 22.0155 42.6026 24.6882 42.348 28.1737C42.1444 30.959 39.7624 31.5805 39.2642 33.5947C38.7663 35.6089 41.648 37.8062 36.7728 41.0568C33.5228 43.2238 23.7378 47.3432 16.623 43.5007" stroke="black" stroke-width="7.16667" stroke-linecap="round"/>
+                        <path d="M17.5213 44.394C12.1463 47.7772 4.20589 56.9733 7.66796 63.2065C12.1461 71.269 29.1677 64.4438 48.8755 48.8731C68.5834 33.3025 76.1608 10.543 76.1608 10.543L66.7929 13.0398" stroke="black" stroke-width="7.16667" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M47.0859 72.1673C47.0859 72.1673 47.9812 63.209 54.2515 57.834C60.5218 52.459 68.5861 52.459 68.5861 52.459" stroke="black" stroke-width="7.16667" stroke-linecap="round"/>
+                        </svg>
+                </div>
+            </div>
+    
+            <!-- Main Content -->
+            <div class="flex flex-col items-center lg:items-start w-full lg:w-2/2 lg:pl-32 ">
+                <!-- Categories Grid Search and disply  -->
+                <div class="text-center lg:text-left w-full  ">
+                    <input type="text"  id="years" placeholder="Email Address" name="email"  class="w-full border-2 border-black  text-sm lg:w-1/2 p-3   mb-2 rounded-lg">
+                        
+                    </input>
+                </div>
+
+                <div class=" flex items-start justify-content-sm-start">
+                    <button class="category-btn px-3 py-2 bg-gray-200 rounded-lg text-gray-800 text-sm font-medium">Lets&nbsp;setup&nbsp;your&nbsp;portfolio</button>
+                </div>
+
+                <!-- Information Cards -->
+                <div class="bg-white rounded-lg mt-12 border-2 border-zinc-200 max-w-3xl mx-auto p-6 space-y-4 mb-6" style="background:#FDCE020D;">
+                    <div class="flex items-start ">
+                        <svg width="101" height="110" class="-mt-5 lg:mt-0" viewBox="0 0 101 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="0.524414" y="0.5" width="99" height="109" rx="9.5" fill="white"/>
+                            <rect x="0.524414" y="0.5" width="99" height="109" rx="9.5" stroke="black"/>
+                            <path d="M47.1044 81.2493H43.0152C32.559 81.2493 27.3323 81.2493 24.0832 77.9389C20.834 74.6285 20.834 69.2998 20.834 58.6452C20.834 47.9906 20.834 42.6618 24.0832 39.3514C27.3323 36.041 32.559 36.041 43.0152 36.041H54.1073C64.5636 36.041 69.7932 36.041 73.0423 39.3514C75.5419 41.8977 76.1165 45.6398 76.2507 52.0827" stroke="black" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M73.3832 78.3991L79.167 84.1654M61.667 36.0404L61.3753 35.1362C59.9316 30.6445 59.2112 28.3987 57.4932 27.1154C55.7724 25.832 53.4916 25.832 48.9212 25.832H48.1541C43.5895 25.832 41.3057 25.832 39.5878 27.1154C37.867 28.3987 37.1466 30.6445 35.7028 35.1362L35.417 36.0404M76.4049 71.1162C76.4279 69.7509 76.1788 68.3947 75.6723 67.1266C75.1657 65.8586 74.4117 64.7041 73.4543 63.7304C72.4969 62.7568 71.3553 61.9835 70.096 61.4556C68.8366 60.9278 67.4848 60.6559 66.1193 60.6559C64.7538 60.6559 63.402 60.9278 62.1426 61.4556C60.8833 61.9835 59.7416 62.7568 58.7842 63.7304C57.8268 64.7041 57.0729 65.8586 56.5663 67.1266C56.0597 68.3947 55.8107 69.7509 55.8337 71.1162C55.8791 73.8141 56.9827 76.3862 58.9067 78.278C60.8307 80.1699 63.421 81.2301 66.1193 81.2301C68.8176 81.2301 71.4079 80.1699 73.3319 78.278C75.2558 76.3862 76.3595 73.8141 76.4049 71.1162Z" stroke="black" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        <div class="mt-5 ml-3 ">
+                            <h2 class="text-lg mb-2 font-semibold">Find Your Dream Remote Job</h2>
+                            <p class="text-gray-600 text-sm">Explore thousands of remote job opportunities from top companies worldwide. Find your dream job and start working from anywhere. Flexible, remote, and fulfilling careers await.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <svg width="101" height="110"  class="-mt-5 lg:mt-0" viewBox="0 0 101 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="0.524414" y="0.5" width="99" height="109" rx="9.5" fill="white"/>
+                            <rect x="0.524414" y="0.5" width="99" height="109" rx="9.5" stroke="black"/>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M49.4993 79.7096C50.3464 79.7097 51.164 80.0207 51.797 80.5836C52.43 81.1465 52.8344 81.9221 52.9335 82.7633L52.9577 83.168V86.6263C52.9567 87.5078 52.6192 88.3556 52.0141 88.9965C51.409 89.6375 50.582 90.0232 49.702 90.0748C48.8221 90.1265 47.9556 89.8402 47.2797 89.2745C46.6037 88.7087 46.1693 87.9062 46.0652 87.0309L46.041 86.6263V83.168C46.041 82.2508 46.4054 81.3711 47.0539 80.7225C47.7025 80.074 48.5821 79.7096 49.4993 79.7096ZM32.3806 72.62C33.0289 73.2686 33.3932 74.1481 33.3932 75.0651C33.3932 75.9821 33.0289 76.8616 32.3806 77.5101L29.9356 79.9552C29.6165 80.2855 29.2349 80.5489 28.813 80.7302C28.3911 80.9114 27.9373 81.0068 27.4781 81.0108C27.0189 81.0148 26.5635 80.9273 26.1385 80.7534C25.7135 80.5795 25.3273 80.3228 25.0026 79.998C24.6779 79.6733 24.4211 79.2872 24.2472 78.8622C24.0733 78.4372 23.9858 77.9818 23.9898 77.5226C23.9938 77.0634 24.0892 76.6096 24.2705 76.1876C24.4517 75.7657 24.7152 75.3841 25.0455 75.0651L27.4905 72.62C28.139 71.9717 29.0185 71.6075 29.9356 71.6075C30.8526 71.6075 31.7321 71.9717 32.3806 72.62ZM71.5082 72.62L73.9532 75.0651C74.5832 75.7173 74.9318 76.5909 74.9239 77.4977C74.916 78.4044 74.5523 79.2718 73.9111 79.913C73.2699 80.5542 72.4025 80.918 71.4957 80.9258C70.589 80.9337 69.7154 80.5851 69.0631 79.9552L66.6181 77.5101C65.9881 76.8579 65.6396 75.9843 65.6474 75.0775C65.6553 74.1708 66.019 73.3034 66.6602 72.6622C67.3014 72.021 68.1688 71.6573 69.0756 71.6494C69.9823 71.6415 70.8559 71.9901 71.5082 72.62ZM51.6331 20.918C53.3193 20.9176 54.9475 21.5332 56.2116 22.6489C57.4758 23.7647 58.2889 25.3038 58.4979 26.977L59.8121 37.4903C63.7811 39.7635 66.8878 43.2845 68.6492 47.5057C70.4105 51.7269 70.7277 56.4118 69.5516 60.8319C68.3754 65.252 65.7717 69.1597 62.1454 71.9473C58.5191 74.7348 54.0733 76.2461 49.4993 76.2461C44.9254 76.2461 40.4796 74.7348 36.8533 71.9473C33.227 69.1597 30.6233 65.252 29.4471 60.8319C28.271 56.4118 28.5882 51.7269 30.3495 47.5057C32.1109 43.2845 35.2176 39.7635 39.1866 37.4903L40.5008 26.977C40.7098 25.3038 41.5229 23.7647 42.7871 22.6489C44.0512 21.5332 45.6794 20.9176 47.3656 20.918H51.6331ZM49.4993 41.668C45.8305 41.668 42.312 43.1254 39.7177 45.7197C37.1235 48.3139 35.666 51.8325 35.666 55.5013C35.666 59.1701 37.1235 62.6887 39.7177 65.2829C42.312 67.8772 45.8305 69.3346 49.4993 69.3346C53.1682 69.3346 56.6867 67.8772 59.281 65.2829C61.8752 62.6887 63.3327 59.1701 63.3327 55.5013C63.3327 51.8325 61.8752 48.3139 59.281 45.7197C56.6867 43.1254 53.1682 41.668 49.4993 41.668ZM21.8327 52.043C22.7499 52.043 23.6295 52.4073 24.2781 53.0559C24.9267 53.7045 25.291 54.5841 25.291 55.5013C25.291 56.4185 24.9267 57.2981 24.2781 57.9467C23.6295 58.5953 22.7499 58.9596 21.8327 58.9596H18.3743C17.4571 58.9596 16.5775 58.5953 15.9289 57.9467C15.2804 57.2981 14.916 56.4185 14.916 55.5013C14.916 54.5841 15.2804 53.7045 15.9289 53.0559C16.5775 52.4073 17.4571 52.043 18.3743 52.043H21.8327ZM80.6243 52.043C81.5415 52.043 82.4212 52.4073 83.0698 53.0559C83.7183 53.7045 84.0827 54.5841 84.0827 55.5013C84.0827 56.4185 83.7183 57.2981 83.0698 57.9467C82.4212 58.5953 81.5415 58.9596 80.6243 58.9596H77.166C76.2488 58.9596 75.3692 58.5953 74.7206 57.9467C74.072 57.2981 73.7077 56.4185 73.7077 55.5013C73.7077 54.5841 74.072 53.7045 74.7206 53.0559C75.3692 52.4073 76.2488 52.043 77.166 52.043H80.6243ZM73.9532 31.0509C74.6016 31.6994 74.9658 32.5789 74.9658 33.4959C74.9658 34.413 74.6016 35.2924 73.9532 35.941L71.5082 38.386C71.1892 38.7163 70.8076 38.9798 70.3856 39.161C69.9637 39.3423 69.5099 39.4377 69.0507 39.4417C68.5915 39.4457 68.1361 39.3582 67.7111 39.1843C67.2861 39.0104 66.8999 38.7536 66.5752 38.4289C66.2505 38.1042 65.9937 37.718 65.8198 37.293C65.646 36.868 65.5584 36.4126 65.5624 35.9534C65.5664 35.4942 65.6618 35.0404 65.8431 34.6185C66.0243 34.1966 66.2878 33.8149 66.6181 33.4959L69.0631 31.0509C69.7117 30.4025 70.5912 30.0383 71.5082 30.0383C72.4252 30.0383 73.3047 30.4025 73.9532 31.0509ZM29.9356 31.0509L32.3806 33.4959C32.995 34.1511 33.3304 35.0196 33.3158 35.9177C33.3012 36.8158 32.9378 37.6729 32.3025 38.3078C31.6671 38.9427 30.8097 39.3055 29.9116 39.3195C29.0135 39.3334 28.1453 38.9974 27.4905 38.3826L25.0455 35.9375C24.4311 35.2823 24.0957 34.4138 24.1103 33.5157C24.1249 32.6177 24.4883 31.7605 25.1236 31.1256C25.759 30.4907 26.6164 30.1279 27.5145 30.114C28.4125 30.1 29.2808 30.436 29.9356 31.0509ZM51.6331 27.8346H47.3656L46.501 34.7513H52.4977L51.6331 27.8346Z" fill="black"/>
+                            </svg>                
+                        <div class="mt-4 ml-3 ">
+                            <h2 class="text-lg mb-2 font-semibold">Tailored Job Search Experience</h2>
+                            <p class="text-gray-600 text-sm">Customize your job search with tailored resources and tools. Get personalized job recommendations and streamline your application process. Boost your remote career today.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <svg width="101" height="110" class="-mt-5 lg:mt-0" viewBox="0 0 101 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="0.524414" y="0.5" width="99" height="109" rx="9.5" fill="white"/>
+                            <rect x="0.524414" y="0.5" width="99" height="109" rx="9.5" stroke="black"/>
+                            <path d="M29 31V49.075V49V79V31ZM38 61H44C44.85 61 45.563 60.712 46.139 60.136C46.715 59.56 47.002 58.848 47 58C46.998 57.152 46.71 56.44 46.136 55.864C45.562 55.288 44.85 55 44 55H38C37.15 55 36.438 55.288 35.864 55.864C35.29 56.44 35.002 57.152 35 58C34.998 58.848 35.286 59.561 35.864 60.139C36.442 60.717 37.154 61.004 38 61ZM38 73H41C41.85 73 42.563 72.712 43.139 72.136C43.715 71.56 44.002 70.848 44 70C43.998 69.152 43.71 68.44 43.136 67.864C42.562 67.288 41.85 67 41 67H38C37.15 67 36.438 67.288 35.864 67.864C35.29 68.44 35.002 69.152 35 70C34.998 70.848 35.286 71.561 35.864 72.139C36.442 72.717 37.154 73.004 38 73ZM29 85C27.35 85 25.938 84.413 24.764 83.239C23.59 82.065 23.002 80.652 23 79V31C23 29.35 23.588 27.938 24.764 26.764C25.94 25.59 27.352 25.002 29 25H50.525C51.325 25 52.088 25.15 52.814 25.45C53.54 25.75 54.177 26.175 54.725 26.725L69.275 41.275C69.825 41.825 70.25 42.463 70.55 43.189C70.85 43.915 71 44.677 71 45.475V47.575C71 48.425 70.712 49.125 70.136 49.675C69.56 50.225 68.848 50.5 68 50.5C67.152 50.5 66.44 50.212 65.864 49.636C65.288 49.06 65 48.348 65 47.5V46H53C52.15 46 51.438 45.712 50.864 45.136C50.29 44.56 50.002 43.848 50 43V31H29V79H45.5C46.35 79 47.063 79.288 47.639 79.864C48.215 80.44 48.502 81.152 48.5 82C48.498 82.848 48.21 83.561 47.636 84.139C47.062 84.717 46.35 85.004 45.5 85H29ZM63.5 76C65.6 76 67.375 75.275 68.825 73.825C70.275 72.375 71 70.6 71 68.5C71 66.4 70.275 64.625 68.825 63.175C67.375 61.725 65.6 61 63.5 61C61.4 61 59.625 61.725 58.175 63.175C56.725 64.625 56 66.4 56 68.5C56 70.6 56.725 72.375 58.175 73.825C59.625 75.275 61.4 76 63.5 76ZM80.9 85.9C80.35 86.45 79.65 86.725 78.8 86.725C77.95 86.725 77.25 86.45 76.7 85.9L70.7 79.9C69.65 80.6 68.513 81.125 67.289 81.475C66.065 81.825 64.802 82 63.5 82C59.75 82 56.563 80.688 53.939 78.064C51.315 75.44 50.002 72.252 50 68.5C49.998 64.748 51.311 61.561 53.939 58.939C56.567 56.317 59.754 55.004 63.5 55C67.246 54.996 70.434 56.309 73.064 58.939C75.694 61.569 77.006 64.756 77 68.5C77 69.8 76.825 71.063 76.475 72.289C76.125 73.515 75.6 74.652 74.9 75.7L80.9 81.7C81.45 82.25 81.725 82.95 81.725 83.8C81.725 84.65 81.45 85.35 80.9 85.9Z" fill="black"/>
+                            </svg>
+                        <div class="mt-4 ml-3 ">
+                            <h2 class="text-lg mb-2 font-semibold">Quick and Easy Job Browsing</h2>
+                            <p class="text-gray-600 text-sm">Streamline your job search with our intuitive platform. Save hours searching for remote jobs and focus on what matters – your career. Efficient, effortless, and effective.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <svg width="101" height="100" class="-mt-5 lg:mt-0" viewBox="0 0 101 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g clip-path="url(#clip0_2553_15471)">
+                            <rect x="0.0244141" width="99" height="110" rx="10" fill="white"/>
+                            <path d="M67.5254 29.1106C69.1318 27.0787 67.6179 24.1681 64.9477 24.1681H44.24C43.6793 24.164 43.127 24.3042 42.6361 24.5753C42.1453 24.8463 41.7324 25.2391 41.4373 25.7159L25.7678 51.7886C24.5314 53.8421 26.0854 56.4043 28.5674 56.4043H39.1402L29.181 81.2714C27.7411 84.4164 31.6323 87.2931 34.2469 85.0176L74.6664 46.772H53.5486L67.5254 29.1106Z" stroke="black" stroke-width="6.16667" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                            <rect x="0.524414" y="0.5" width="99" height="109" rx="9.5" stroke="black"/>
+                            <defs>
+                            <clipPath id="clip0_2553_15471">
+                            <rect x="0.0244141" width="100" height="110" rx="10" fill="white"/>
+                            </clipPath>
+                            </defs>
+                            </svg>
+                        <div class="mt-3 ml-3 ">
+                            <h2 class="text-lg mb-2 font-semibold">Lightning-Fast Job Search</h2>
+                            <p class="text-gray-600 text-sm">Browse remote jobs with lightning speed and ease. Discover new opportunities and apply with simplicity. Seamless job search, every time.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bg-white flex items-center justify-center py-12">
+            <a href="#" class=" font-medium "  style="color:#FDCE02">Skip Now</a>  
+        </div>
+        <div class="bg-white flex items-center justify-center space-x-10 ">
+            <a href="{% url 'Join-Community'%}"><button class="bg-gray-300 text-gray-700 font-md px-4 py-2 rounded-md w-30">&nbsp;&nbsp;&nbsp;&nbsp;Back&nbsp;&nbsp;&nbsp;&nbsp;</button></a>
+            <a href="{% url 'Job-Page'%}"><button class=" text-gray-700 font-md px-4 py-2 rounded-md w-30" style="background:#FDCE02">Continue</button></a>
+        </div>
+    </div>
+   
+
+    
+</body>
+</html>
+
