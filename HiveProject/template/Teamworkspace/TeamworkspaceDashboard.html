@@ -11,10 +11,11 @@
 {% endblock %}
 
 {% block content %}
+   <!-- IF STATEMENT represent if user belongs to a team then Display the team else(the else statement is in line 210)-->
     {% if teams %}
         <main class="p-4">
-            <!-- --------------- Search Bar with Notification ------------------- -->
-            <div class="flex container mx-auto px-4 pb-2 pt-3 items-center shadow-sm mb-3">
+            <!-- --------------- Search Bar with Create workspace icon ------------------- -->
+            <div class="flex container mx-auto px-4 pb-2 pt-3 items-center shadow-sm mb-3">  
                 <div class="relative flex-grow">
                     <svg class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16l-4-4m0 0l4-4m-4 4h14"></path>
@@ -25,18 +26,17 @@
                         class="w-full pl-10 pr-4 py-2 border-2 border-black rounded-md focus:outline-none"
                     />
                 </div>
-                <!-- This button create Team or Teamworkspace -->
+                <!-- ---- This button create Team or Teamworkspace -- -->
                 <button id="OnCreateworkspace-click" class="p-2 ml-4 text-gray-600 hover:text-gray-900">
-                {% comment %} <button id="create-team-button" class="p-2 ml-4 text-gray-600 hover:text-gray-900" onclick="showCreateTeamPopup()"> {% endcomment %}
-                    <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405C18.275 14.505 18 13.53 18 12.5V11a6 6 0 10-12 0v1.5c0 1.03-.275 2.005-.595 3.095L4 17h5m0 0v3a2 2 0 004 0v-3m-4 0h4"></path>
+                    <svg width="35" height="35" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M8.74963 0.61962C16.2265 -0.209144 23.772 -0.209144 31.2488 0.61962C35.3885 1.08362 38.7284 4.3437 39.2141 8.49795C40.101 16.0814 40.101 23.7424 39.2141 31.3258C38.7284 35.48 35.3885 38.7401 31.2488 39.2041C23.772 40.033 16.2264 40.033 8.74963 39.2041C4.60988 38.7401 1.27004 35.48 0.784293 31.3258C-0.102577 23.7432 -0.102577 16.083 0.784293 8.50037C1.02999 6.48214 1.95004 4.60602 3.39534 3.17608C4.84064 1.74613 6.72647 0.846168 8.74721 0.622037M19.9992 7.84545C20.4799 7.84545 20.9409 8.03641 21.2808 8.37632C21.6208 8.71623 21.8117 9.17725 21.8117 9.65795V18.0994H30.2531C30.7338 18.0994 31.1949 18.2903 31.5348 18.6302C31.8747 18.9701 32.0656 19.4312 32.0656 19.9119C32.0656 20.3926 31.8747 20.8536 31.5348 21.1935C31.1949 21.5334 30.7338 21.7244 30.2531 21.7244H21.8117V30.1658C21.8117 30.6465 21.6208 31.1075 21.2808 31.4474C20.9409 31.7873 20.4799 31.9783 19.9992 31.9783C19.5185 31.9783 19.0575 31.7873 18.7176 31.4474C18.3777 31.1075 18.1867 30.6465 18.1867 30.1658V21.7244H9.74529C9.26459 21.7244 8.80357 21.5334 8.46366 21.1935C8.12375 20.8536 7.93279 20.3926 7.93279 19.9119C7.93279 19.4312 8.12375 18.9701 8.46366 18.6302C8.80357 18.2903 9.26459 18.0994 9.74529 18.0994H18.1867V9.65795C18.1867 9.17725 18.3777 8.71623 18.7176 8.37632C19.0575 8.03641 19.5185 7.84545 19.9992 7.84545Z" fill="black" fill-opacity="0.6"/>
                     </svg>
                 </button>
             </div>
+            <!-- ---------------End of Search Bar with and Create workspace icon ------------------- -->
 
-
-            <!-- --------------------Team work space card  -------------------- -->
-            <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- --------------------Team workspace card  -------------------- -->
+            <div class="container mx-auto px-36 grid grid-cols-1 md:grid-cols-2 gap-6">
                 {% for team in teams %}
                     <div class="bg-white p-6 rounded-xl border-2 border-zinc-950">
                         <a href="{% url 'Team-Workspace-Chat' %}">
@@ -126,8 +126,9 @@
                             </form>
                         </div>
                     </div>
-
-                    <!-- The View Members Modal -->
+                    <!-- -------------------- End Team workspace card  the rest are modal functions in the card  -------------------- -->
+                <!-- --------------------Main modal Section for the card popup  -------------------- -->
+                    <!------------------------- The View Members Modal ------------------------ -->
                     <div class="modal ModalViewMembers-{{ team.slug }}" style="display: none;">
                         <div class="modal-content">
                             <span class="close close-view-members">&times;</span>
@@ -148,7 +149,7 @@
                                         <form class="space-y-7" id="create-team-form" action="{% url 'add_team' %}" method="post" >
                                         {% csrf_token %}
                                         <div>
-                                            <label for="team-name" class="block text-sm font-medium text-gray-200 mb-1">
+                                            <label for="team-name" class="block text-sm  font-medium text-gray-700 mb-2">
                                                 Name of Workspace <span class="text-red-500">*</span>
                                             </label>
                                             <input
@@ -160,7 +161,7 @@
                                             />
                                         </div>
                                         <div>
-                                            <label for="description" class="block text-sm font-medium text-gray-700 mb-1">
+                                            <label for="description" class="block text-sm font-medium text-gray-700 mb-2">
                                                 Describe workspace <span class="text-red-500">*</span>
                                             </label>
                                             <textarea
@@ -201,12 +202,84 @@
                 {% endfor %}
             </div>
         </main>
-        <!-- End of main page The rest are modals -->
-    {% else %}
-        <div>
-            <p>No teams or workspaces exist.</p>
-            <button id="create-team-button" onclick="showCreateTeamPopup()">Create Team/Workspace</button>
+        <!-- End of main page . The main page will display the teamwork space only IF TEAMWORKSPACE == true else will display the Else statement page there -->
+     <!-- ELSE STATEMET REPRESENT IF user does not have a workspace or in other word TEAM It will Display this Page-->    
+    {% else %} 
+    <div class="bg-gray-100"> 
+        <div class="center-align"> 
+            <main class="pt-56"> 
+                <!-- No workspace section --> 
+                <div class="text-center"> 
+                    <h1 class="mb-4 text-2xl font-bold">No workspace</h1> 
+                    <button id="FirstOnCreateworkspace-click" class="px-6 py-3 text-gray-900 bg-yellow-300 rounded-md hover:bg-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2">
+                        Create a new workspace 
+                    </button> 
+                </div> 
+            </main> 
         </div>
+    </div>
+
+    <div id="FirstModalCreateworkspace" class="modal"> 
+        <div class="modal-content">
+            <!-- Form content for first modal here --> 
+            <main class=" bg-gray-100 flex items-center justify-center p-4">
+                <div class="bg-white rounded-lg  p-2 w-full max-w-md">
+                    <h1 class="text-xl font-semibold mb-8 mx-auto text-center">
+                        <span class="close" id="CloseCreateworkspace">&times;</span>
+                        <span class="text-center text-sm bg-slate-200 px-4 py-2 rounded-full">Add Team workspace</span>
+                    </h1> 
+                        <form class="space-y-7" id="create-team-form" action="{% url 'add_team' %}" method="post" >
+                        {% csrf_token %}
+                        <div>
+                            <label for="team-name" class="block text-sm font-medium text-gray-200 mb-1">
+                                Name of Workspace <span class="text-red-500">*</span>
+                            </label>
+                            <input
+                                type="text"
+                            id="team-name" name="name"
+                                placeholder="Enter workspace name"
+                                class="w-full px-3 py-2 border-2 border-black rounded-lg focus:outline-none"
+                                required
+                            />
+                        </div>
+                        <div>
+                            <label for="description" class="block text-sm font-medium text-gray-700 mb-1">
+                                Describe workspace <span class="text-red-500">*</span>
+                            </label>
+                            <textarea
+                                id="description" name="description"
+                                rows="4"
+                                placeholder="Describe your workspace"
+                                class="w-full px-3 py-2 border-2 border-black rounded-lg focus:outline-none"
+                                required
+                            ></textarea>
+                        </div>
+                        <button
+                            type="submit"
+                            class="w-full bg-yellow-400 hover:bg-yellow-500 text-black font-medium py-2 px-4 rounded-lg flex items-center justify-center"
+                        >
+                            <svg class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 6h18M3 14h18M3 18h18M3 22h18M3 2h18" />
+                            </svg>
+                            Create workspace
+                        </button>
+                    </form>
+                </div>
+            
+                <script>
+                    function handleSubmit(event) {
+                        event.preventDefault();
+                        const name = document.getElementById('name').value;
+                        const description = document.getElementById('description').value;
+            
+                        // Handle form submission here 
+                        console.log({ name, description });
+                    }
+                </script>
+            </main> 
+            </div> 
+        </div>
+    </div>
     {% endif %}
 
 
@@ -249,7 +322,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 
 <script>
-    var modalsCreateworkspace = document.getElementById("ModalCreateworkspace");
+    {% comment %} var modalsCreateworkspace = document.getElementById("ModalCreateworkspace");
     var  Createworkspace = document.getElementById("OnCreateworkspace-click");
     var closeCreateworkspace = document.getElementById("CloseCreateworkspace");
     
@@ -264,7 +337,50 @@ document.addEventListener('DOMContentLoaded', function () {
         if (event.target == modalsCreateworkspace) {
             modalsCreateworkspace.style.display = "none";
         }
-    } 
+    }  {% endcomment %}
+
+    document.addEventListener('DOMContentLoaded', function() {
+        var modalsCreateworkspace = document.getElementById("ModalCreateworkspace");
+        var createWorkspaceButton = document.getElementById("OnCreateworkspace-click");
+        var closeCreateworkspace = document.getElementById("CloseCreateworkspace");
+    
+        var firstModalsCreateworkspace = document.getElementById("FirstModalCreateworkspace");
+        var firstCreateWorkspaceButton = document.getElementById("FirstOnCreateworkspace-click");
+        var firstCloseCreateworkspace = document.getElementById("FirstCloseCreateworkspace");
+    
+        // First Modal
+        if (firstCreateWorkspaceButton && firstModalsCreateworkspace) {
+            firstCreateWorkspaceButton.onclick = function() {
+                firstModalsCreateworkspace.style.display = "block";
+            }
+    
+            firstCloseCreateworkspace.onclick = function() {
+                firstModalsCreateworkspace.style.display = "none";
+            }
+        }
+    
+        // Second Modal
+        if (createWorkspaceButton && modalsCreateworkspace) {
+            createWorkspaceButton.onclick = function() {
+                modalsCreateworkspace.style.display = "block";
+            }
+    
+            closeCreateworkspace.onclick = function() {
+                modalsCreateworkspace.style.display = "none";
+            }
+        }
+    
+        // Close modals by clicking outside them
+        window.onclick = function(event) {
+            if (event.target == modalsCreateworkspace) {
+                modalsCreateworkspace.style.display = "none";
+            }
+            if (event.target == firstModalsCreateworkspace) {
+                firstModalsCreateworkspace.style.display = "none";
+            }
+        }
+    });
+    
 </script>
 {% endblock %}
 

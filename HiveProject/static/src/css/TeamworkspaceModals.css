@@ -70,3 +70,10 @@
         width: 80%;
     }
 }
+
+.center-align {
+     display: flex; 
+     justify-content: center; 
+     align-items: center; 
+     height: 100vh; 
+    }
