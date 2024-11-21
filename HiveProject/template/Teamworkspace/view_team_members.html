@@ -1,0 +1,11 @@
+<div>
+    <h3>Members of {{ team.name }}</h3>
+    <ul>
+        {% for member in members %}
+            <li>
+                {{ member.user.first_name }} ({{ member.role }})
+                <button onclick="deleteTeamMember('{{ team.slug }}', '{{ member.user.id }}')">Remove</button>
+            </li>
+        {% endfor %}
+    </ul>
+</div>

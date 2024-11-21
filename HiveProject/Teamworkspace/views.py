@@ -84,3 +84,73 @@ def add_team(request):
 
     messages.error(request, 'Invalid request method.')
     return redirect('Team-workspace-dashboard')
+
+
+@login_required
+def add_member(request, slug):
+    team = get_object_or_404(Team, slug=slug)
+    if request.method == 'POST':
+        username = request.POST.get('user_identifier')
+        role = request.POST.get('role')
+        description = request.POST.get('description', '')
+
+        try:
+            user = User.objects.get(username=username)
+            if team.can_add_member():
+                TeamMembership.objects.create(user=user, team=team, role=role, description=description)
+                messages.success(request, f'Member {username} added successfully!')
+            else:
+                messages.error(request, 'Team already has the maximum number of members.')
+        except User.DoesNotExist:
+            messages.error(request, f'User with username {username} does not exist.')
+
+        return redirect('Team-workspace-dashboard')
+
+    messages.error(request, 'Invalid request method.')
+    return redirect('Team-workspace-dashboard')
+
+@login_required
+def add_members(request, slug):
+    team = get_object_or_404(Team, slug=slug)
+    if not team.members.filter(user=request.user, role="admin").exists():
+        messages.error(request, "Only the admin can add members.")
+        return redirect("view_team", slug=slug)
+
+    if request.method == "POST":
+        username_or_email = request.POST.get("user_identifier")
+        role = request.POST.get("role") 
+        description = request.POST.get("description", '') 
+        specify_role = request.POST.get("SpecifyRole", '')
+        try:
+            user = User.objects.get(username=username_or_email)
+        except User.DoesNotExist:
+            try:
+                user = User.objects.get(email=username_or_email)
+            except User.DoesNotExist:
+                messages.error(request, "User not found.")
+                return redirect("view_team", slug=slug)
+
+        if team.can_add_member():
+            # TeamMembership.objects.create(team=team, user=user, role="member")
+            TeamMembership.objects.create(team=team, user=user, role=role, description=description, SpecifyRole=specify_role)
+            messages.success(request, f"{user.username} added to the team.")
+        else:
+            messages.error(request, "Team already has 5 members.")
+    return redirect("view_team", slug=slug)
+
+@login_required
+def view_team(request, slug):
+    team = get_object_or_404(Team, slug=slug)
+    members = team.members.all()
+    context = {"team": team, "members": members}
+    return render(request, "Teamworkspace/view_team.html", context)
+
+@login_required
+def view_team_members(request, slug):
+    """
+    View members of a specific team.
+    """
+    team = get_object_or_404(Team, slug=slug)
+    members = team.members.all()
+    context = {"team": team, "members": members}
+    return render(request, "Teamworkspace/view_team_members.html", context)
