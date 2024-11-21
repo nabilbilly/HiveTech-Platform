@@ -10,4 +10,5 @@ urlpatterns = [
     path('add_member/<int:team_id>/', views.add_member, name='add_member'), 
     path('add_member/<slug:slug>/', views.add_members, name='add_members'), 
     path('view_team/<slug:slug>/', views.view_team, name='view_team'),
+     path('view_team_members/<slug:slug>/', views.view_team_members, name='view_team_members'),
 ]

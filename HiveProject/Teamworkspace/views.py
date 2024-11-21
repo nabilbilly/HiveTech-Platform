@@ -145,12 +145,24 @@ def view_team(request, slug):
     context = {"team": team, "members": members}
     return render(request, "Teamworkspace/view_team.html", context)
 
+# @login_required
+# def view_team_members(request, slug):
+#     """
+#     View members of a specific team.
+#     """
+#     team = get_object_or_404(Team, slug=slug)
+#     members = team.members.all()
+#     context = {"team": team, "members": members}
+#     return render(request, "Teamworkspace/view_team_members.html", context)
+
+# from django.shortcuts import get_object_or_404
+# from django.contrib.auth.decorators import login_required
+# from .models import Team, TeamMembership
+
 @login_required
 def view_team_members(request, slug):
-    """
-    View members of a specific team.
-    """
     team = get_object_or_404(Team, slug=slug)
-    members = team.members.all()
+    # Sorting members to make sure admin appears first
+    members = team.members.order_by('-role', 'user__first_name')  # Assuming 'admin' > 'member'
     context = {"team": team, "members": members}
     return render(request, "Teamworkspace/view_team_members.html", context)

@@ -1,11 +1,73 @@
-<div>
-    <h3>Members of {{ team.name }}</h3>
-    <ul>
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Members</title>
+
+</head>
+<body>
+    <div class="bg-white rounded-lg  p-0 lg:p-2 w-full max-w-md">
+        <h1 class="text-xl font-semibold mb-8 mx-auto text-center">
+            <span class="text-center text-sm bg-slate-200 px-4 py-2 rounded-full">Add Team workspace</span>
+        </h1>                    
+      <!-- Workspace Members Section -->
+      <div class="mb-4">
+       
+        <h2 class="text-lg font-md mb-2">{{ team.name }}</h2>
         {% for member in members %}
-            <li>
-                {{ member.user.first_name }} ({{ member.role }})
-                <button onclick="deleteTeamMember('{{ team.slug }}', '{{ member.user.id }}')">Remove</button>
-            </li>
+        <!-- Member List -->
+        <div class="space-y-7">
+          <!-- Member 1 -->
+          <div class="flex items-center justify-between border-2 border-black rounded-lg p-3">
+            <div class="flex items-center space-x-3">
+              <img src="#" alt="You" class="rounded-full w-10 h-10  border-2 border-black" />
+              <div>
+                <p class="font-medium">{{ member.user.first_name }}</p>
+                <p class="text-sm text-gray-500">({{ member.role }})</p>
+              </div>
+            </div>
+            {% if member.role != 'admin' %}
+            <button onclick="deleteTeamMember('{{ team.slug }}', '{{ member.user.id }}')" class="px-3 py-1 rounded-full text-sm bg-red-100 text-red-600">
+                Deactivate
+            </button>
+            {% endif %}
+          </div>
+          {% endfor %}
+      <!-- Add Member Button -->
+      <button class="w-full bg-yellow-300 text-black font-medium py-3 px-4 rounded-lg flex items-center justify-center">
+        <svg class="w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7h18M3 12h18M3 17h18" />
+        </svg>
+        Manage Team Members
+      </button>
+    </div>
+
+</body>
+</html>
+
+{% comment %} <div class="bg-white rounded-lg p-0 lg:p-2 w-full max-w-md">
+    <h1 class="text-xl font-semibold mb-8 mx-auto text-center">
+        <button onclick="closeViewMembersPopup()" class="text-gray-400 hover:text-gray-600">&times;</button>
+        <span class="text-center text-sm bg-slate-200 px-4 py-2 rounded-full">Team Members for {{ team.name }}</span>
+    </h1>
+    <div class="space-y-7">
+        {% for member in members %}
+        <div class="flex items-center justify-between border-2 border-black rounded-lg p-3">
+            <div class="flex items-center space-x-3">
+                <img src="{% static 'images/default-profile.png' %}" alt="{{ member.user.first_name }}" class="rounded-full w-10 h-10 border-2 border-black" />
+                <div>
+                    <p class="font-medium">{{ member.user.first_name }}</p>
+                    <p class="text-sm text-gray-500">({{ member.role }})</p>
+                </div>
+            </div>
+            {% if member.role != 'admin' %}
+            <button onclick="deleteTeamMember('{{ team.slug }}', '{{ member.user.id }}')" class="px-3 py-1 rounded-full text-sm bg-red-100 text-red-600">
+                Deactivate
+            </button>
+            {% endif %}
+        </div>
         {% endfor %}
-    </ul>
-</div>
+    </div>
+</div> {% endcomment %}
