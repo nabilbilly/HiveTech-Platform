@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Hive Platform{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'src/css/job.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    {% block extra_css %}{% endblock %}
+    <style>
+    /* A Responsive hambeger Manu navbar */
+        .responsive-menu {
+            display: none;
+            flex-direction: column;
+            width: 100%;
+            background-color: white;
+            position: absolute;
+            top: 60px;
+            /* Adjust based on your header height */
+            left: 0;
+            z-index: 10;
+        }
+
+        .responsive-menu.active {
+            display: flex;
+        }
+
+        .responsive-menu a {
+            padding: 16px;
+            text-align: center;
+            display: block;
+            color: black;
+            font-weight: 600;
+        }
+
+        .responsive-menu a:hover {
+            background-color: #f5f5f5;
+            /* Light background for hover effect */
+        }
+        /* Custom radio button styles */
+        .custom-radio {
+            appearance: none;
+            border-radius: 50%;
+            border: 2px solid #e5e7eb; /* Gray border */
+            width: 1rem; /* Size of the radio button */
+            height: 1rem;
+            position: relative;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .custom-radio:checked {
+            background-color: #FDCE02; /* Yellow background */
+            border-color: #FDCE02; /* Yellow border */
+        }
+
+        .custom-radio:checked::before {
+            content: "";
+            position: absolute;
+            top: 25%;
+            left: 25%;
+            width: 50%;
+            height: 50%;
+            border-radius: 50%;
+            background-color: white; /* Inner dot */
+        }
+        .profile-pic-wrapper {
+            width: 40px;
+            height: 40px;
+            min-width: 40px;
+            min-height: 40px;
+            border-radius: 50%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #ddd;
+        }
+
+        .profile-pic-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .bell-icon{
+            min-width: 35px;
+            min-height: 35px;
+            width: 35px;
+            height: 35px;
+        }
+        .logo{
+            min-width: 85px;
+            min-height: 40px;
+            width: 85px;
+            height: 40px;   
+        }
+        
+        /* Price Bar on the job search page  */
+        .pricebar.wrapper {
+            width: 400px;
+            background: #fff;
+            border-radius: 10px;
+            padding: 20px 25px 40px;
+            box-shadow: 0 12px 35px rgba(0,0,0,0.1);
+        }
+        .pricebar .slider {
+            height: 8px;
+            position: relative;
+            background: #00000033;
+            border-radius: 5px;
+        }
+        .pricebar .slider .progress {
+            height: 100%;
+            left: 25%;
+            right: 25%;
+            position: absolute;
+            border-radius: 5px;
+            background: #FDCE02; }
+        
+        .pricebar .range-input {
+            position: relative;
+            background:none;
+        }
+        .pricebar .range-input input {
+            position: absolute;
+            width: 100%;
+            height: 5px;
+            top: -6px;
+            background: none;
+            pointer-events: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+        }
+        .pricebar .range-input input[type="range"]::-webkit-slider-thumb {
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background: black;
+            pointer-events: auto;
+            -webkit-appearance: none;
+            box-shadow: 0 0 6px rgba(0,0,0,0.05);
+        }
+        .pricebar .range-input input[type="range"]::-moz-range-thumb {
+            height: 20px;
+            width: 20px;
+            border: none;
+            border-radius: 50%;
+            background:#00000033;
+            pointer-events: auto;
+            -moz-appearance: none;
+            box-shadow: 0 0 6px rgba(0,0,0,0.05);
+        }
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            padding-top: 80px; /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+            border-radius:10px;
+        }
+        
+        /* Modal Content */
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            border-radius:10px;
+            width: 50%;
+        }
+        
+        /* The Close Button */
+        .close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .modals {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            padding-top: 80px; /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+            border-radius:10px;
+        }
+        /* Modal Content */
+        .modal-content-report {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 0px;
+            border: 1px solid #888;
+            border-radius:10px;
+            width: 50%;
+            }
+                    
+        /* The Close Button */
+        .close {
+            color: black;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }           
+        /* Media query for medium screens */
+        @media (min-width: 601px) and (max-width: 1024px) {
+            .modal-content {
+                background-color: #fefefe;
+                margin: auto;
+                padding: 20px;
+                border: 1px solid #888;
+                width: 80%;
+            }
+            .modal-content-report  {
+                background-color: #fefefe;
+                margin: auto;
+                padding: 0px;
+                border: 1px solid #888;
+                width: 80%;
+            }
+
+        }
+        /* Media query for small screens */
+        @media (max-width: 600px) {
+            .modal-content {
+                background-color: #fefefe;
+                margin: auto;
+                padding: 20px;
+                border: 1px solid #888;
+                width: 90%;
+            }
+            .modal-content-report  {
+                background-color: #fefefe;
+                margin: auto;
+                padding: 0px;
+                border: 1px solid #888;
+                width: 95%;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+      <!-- Alert Message -->
+    <div id="welcome-alert" class="fixed top-4 right-4 p-4 bg-yellow-300 text-black rounded-lg shadow-lg">
+        <div class="flex items-center">
+            <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            <p class="text-sm font-medium"> Hey {{ user.first_name}}! Great to have you here! </p>
+        </div>
+        <button onclick="document.getElementById('welcome-alert').style.display='none'" class="absolute top-2 right-2 text-white hover:text-gray-200">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+    </div>
+
+    <header class="bg-white bottom-border" style="border-bottom: 2px solid black;">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <a href="">
+                    <img src="{% static 'images/logo/CashHivelogo.png' %}" alt="Hive Logo" class="h-10 mr-3 logo">
+                </a>
+            </div>
+            <div class="flex items-center justify-center space-x-6">
+                <nav class="hidden md:flex space-x-6 mr-12 nav-links">
+                    <a href="#" class="text-black font-semibold mt-2 hover:text-yellow-500"
+                        style="text-decoration: none;">Overview</a>
+                    <a href="#" class="text-black font-semibold mt-2 hover:text-yellow-500"
+                        style="text-decoration: none;">Balance</a>
+                    <a href="{% url 'Team-workspace-dashboard' %}" class="text-black font-semibold mt-2 hover:text-yellow-500"
+                        style="text-decoration: none;">Team&nbsp;Workspace</a>
+                    <a href="{% url 'Job-Page' %}" class="bg-yellow-300 text-black font-semibold rounded-lg px-4 py-2 hover:text-black hover:bg-yellow-300"
+                        style="text-decoration: none;">Job&nbsp;Search</a>
+                   
+                </nav>
+
+                <!-- Hamburger Menu Button -->
+                <button id="hamburger-icon" class="block md:hidden flex items-center cursor-pointer">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+                <div class="flex items-center space-x-2">
+                    <a href="#" class="text-black">
+                        <img src="{% static 'images/icons/mode.png' %}" class="bell-icon" alt="Notification Bell"
+                            class="h-10 w-10">
+                    </a>
+                    <a href="#" class="text-black">
+                        <img src="{% static 'images/icons/bell.png' %}" class="bell-icon" alt="Notification Bell"
+                            class="h-10 w-10">
+                    </a>
+                    <a href="#" class="text-black profile-picture">
+                      
+                            <div class="profile-pic-wrapper">
+                                <img src="{% static 'images/Employers/kojo (2).jpeg' %}" alt="User Profile">
+                            </div>
+                    </a>
+
+                    <script>
+                        const inputElement = document.getElementById('profilePicInput');
+                        const profilePicElement = document.getElementById('profilePic');
+                
+                        inputElement.addEventListener('change', function(event) {
+                            const file = event.target.files[0];
+                            if (file) {
+                                const reader = new FileReader();
+                                reader.onload = function(e) {
+                                    profilePicElement.src = e.target.result;
+                                }
+                                reader.readAsDataURL(file);
+                            }
+                        });
+                        
+                    </script>
+                    
+                </div>
+        </div>
+        <!-- Responsive Menu Toggle -->
+        <!-- Add this responsive menu -->
+        <div class="responsive-menu" id="responsive-menu">
+            <a href="#" class="text-black font-semibold mt-2 hover:text-yellow-500">Overview</a>
+            <a href="#" class="text-black font-semibold mt-2 hover:text-yellow-500">Balance</a>
+            <a href="{% url 'Team-workspace-dashboard' %}" class="text-black font-semibold mt-2 hover:text-yellow-500">Team&nbsp;Workspace</a>
+            <a href="{% url 'Job-Page' %}" class="bg-yellow-300 text-black font-semibold rounded-lg px-4 py-2 hover:text-black hover:bg-yellow-300">Job&nbsp;Search</a>
+        </div>
+
+        <!-- Add this JavaScript for Humberger menu -->
+        <script>
+            const hamburgerIcon = document.getElementById('hamburger-icon');
+            const responsiveMenu = document.getElementById('responsive-menu');
+
+            hamburgerIcon.addEventListener('click', () => {
+                responsiveMenu.classList.toggle('active');
+            });
+        </script>
+
+    </header>
+
+    {% block content %}{% endblock %}
+
+    <script>
+        document.getElementById('hamburger-icon').addEventListener('click', function () {
+            const menu = document.getElementById('responsive-menu');
+            menu.classList.toggle('active');
+        });
+
+        const minSlider = document.getElementById('min-slider');
+            const maxSlider = document.getElementById('max-slider');
+            const minValue = document.getElementById('min-value');
+            const maxValue = document.getElementById('max-value');
+
+            // Update the values based on the sliders
+            function updateSliderValues() {
+                if (parseInt(minSlider.value) > parseInt(maxSlider.value)) {
+                    minSlider.value = maxSlider.value;
+                }
+                minValue.textContent = `$${minSlider.value}/hr`;
+                maxValue.textContent = `$${maxSlider.value}/hr`;
+            }
+
+            // Add event listeners to sliders
+            minSlider.addEventListener('input', updateSliderValues);
+            maxSlider.addEventListener('input', updateSliderValues);
+
+    <script/>
+    
+</body>
+
+</html>
+
+  {% comment %} code must be uncommented when logout is to be implemented
+                    <a href="{% url 'LogoutUser' %}">Logout</a> {% endcomment %}

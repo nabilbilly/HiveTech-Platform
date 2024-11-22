@@ -22,6 +22,4 @@ from django.core.cache import cache
 def job_view(request):
     return render(request, 'Job/jobpage.html')
 
-@login_required(login_url='Login')
-def Teamview(request):
-    return render(request, 'Job/iftruepage.html')
+

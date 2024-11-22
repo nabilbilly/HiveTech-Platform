@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Team</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <h2>{{ team.name }}</h2>
+    <p>{{ team.description }}</p>
+    <p>Created by: {{ team.created_by.username }}</p>
+
+    <h3>Members:</h3>
+    <ul>
+        {% for member in members %}
+            <li>{{ member.user.username }} ({{ member.role }})</li>
+        {% endfor %}
+    </ul>
+
+    {% if request.user == team.created_by %}
+    <h3>Add Member</h3>
+    <form method="POST" action="{% url 'add_members' team.slug %}">
+        {% csrf_token %}
+        <label for="user_identifier">Username or Email:</label> 
+        <input type="text" id="user_identifier" name="user_identifier" required> 
+        <label for="member-role">Role:</label> 
+        <select id="member-role" name="role" required> 
+            <option value="member">Member</option> 
+            <option value="admin">Admin</option> 
+        </select> 
+        <label for="member-description">Description:</label> <textarea id="member-description" name="description"></textarea> <label for="specify-role">Specify Role:</label> 
+        <input type="text" id="specify-role" name="SpecifyRole">
+        {% comment %} <label for="user_identifier">Username or Email:</label>
+        <input type="text" id="user_identifier" name="user_identifier" required>{% endcomment %}
+        <button type="submit">Add Member</button> 
+    </form>
+    {% endif %}
+</body>
+</html>
+
