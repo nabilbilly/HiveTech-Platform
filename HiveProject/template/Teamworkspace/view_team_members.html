@@ -18,14 +18,14 @@
         <h2 class="text-lg font-md mb-2">{{ team.name }}</h2>
         {% for member in members %}
         <!-- Member List -->
-        <div class="space-y-7">
+        <div class="space-y-5">
           <!-- Member 1 -->
-          <div class="flex items-center justify-between border-2 border-black rounded-lg p-3">
+          <div class="flex items-center justify-between border-2 border-zinc-900 rounded-lg p-2">
             <div class="flex items-center space-x-3">
               <img src="#" alt="You" class="rounded-full w-10 h-10  border-2 border-black" />
-              <div>
-                <p class="font-medium">{{ member.user.first_name }}</p>
-                <p class="text-sm text-gray-500">({{ member.role }})</p>
+              <div class=" flex-col">
+                <span class="font-sm">{{ member.user.first_name }}</span>  <br>
+                <span class="text-sm text-gray-500">({{ member.role }})</span>
               </div>
             </div>
             {% if member.role != 'admin' %}

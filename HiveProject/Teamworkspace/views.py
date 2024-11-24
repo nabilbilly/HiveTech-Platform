@@ -166,3 +166,32 @@ def view_team_members(request, slug):
     members = team.members.order_by('-role', 'user__first_name')  # Assuming 'admin' > 'member'
     context = {"team": team, "members": members}
     return render(request, "Teamworkspace/view_team_members.html", context)
+
+
+@login_required
+def delete_team_member(request, slug, user_id):
+    """
+    Delete a member from a team.
+    """
+    team = get_object_or_404(Team, slug=slug)
+    if TeamMembership.objects.filter(team=team, user=request.user, role='admin').exists():
+        user = get_object_or_404(User, id=user_id)
+        membership = get_object_or_404(TeamMembership, team=team, user=user)
+        membership.delete()
+        messages.success(request, f"Member {user.username} has been removed from the team.")
+    else:
+        messages.error(request, "You do not have permission to delete members.")
+    return redirect('view_team', slug=slug)
+
+@login_required
+def delete_team_workspace(request, slug):
+    """
+    Delete a team workspace.
+    """
+    team = get_object_or_404(Team, slug=slug)
+    if team.created_by == request.user or TeamMembership.objects.filter(team=team, user=request.user, role='admin').exists():
+        team.delete()
+        messages.success(request, f'Team {team.name} has been deleted.')
+    else:
+        messages.error(request, 'You do not have permission to delete this team.')
+    return redirect('Team-workspace-dashboard')

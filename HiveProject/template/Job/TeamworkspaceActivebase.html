@@ -91,7 +91,7 @@
                     style="text-decoration: none;">Overview</a>
                 <a href="#" class="text-black font-semibold mt-2 hover:text-yellow-500"
                     style="text-decoration: none;">Balance</a>
-                <a href="{% url 'Team_workspace_dashboard' %}" class="bg-yellow-300 text-black font-semibold rounded-lg px-4 py-2 hover:text-black hover:bg-yellow-300"
+                <a href="{% url 'Team-workspace-dashboard' %}" class="bg-yellow-300 text-black font-semibold rounded-lg px-4 py-2 hover:text-black hover:bg-yellow-300"
                     style="text-decoration: none;">Team&nbsp;Workspace</a>    
                 <a href="{% url 'Team-workspace-dashboard' %}" class="text-black font-semibold mt-2 hover:text-yellow-500"
                     style="text-decoration: none;">Job&nbsp;Search</a>
@@ -106,90 +106,6 @@
                 </button>
         </div>
     </nav>
-
-    {% comment %} <header class="bg-white bottom-border" style="border-bottom: 2px solid black;">
-        <div class="container mx-auto px-2 py-3 flex justify-between items-center">
-            <div class="flex items-center">
-                <a href="">
-                    <img src="{% static 'images/logo/CashHivelogo.png' %}" alt="Hive Logo" class="h-10 mr-3 logo">
-                </a>
-            </div>
-            <div class="flex items-center justify-center space-x-6">
-                <nav class="hidden md:flex space-x-6 mr-12 nav-links">
-                    <a href="#" class="text-black font-semibold mt-2 hover:text-yellow-500"
-                        style="text-decoration: none;">Overview</a>
-                    <a href="#" class="text-black font-semibold mt-2 hover:text-yellow-500"
-                        style="text-decoration: none;">Balance</a>
-                    <a href="{% url 'Teamview-Page' %}" class="bg-yellow-300 text-black font-semibold rounded-lg px-4 py-2 hover:text-black hover:bg-yellow-300"
-                        style="text-decoration: none;">Team&nbsp;Workspace</a>    
-                    <a href="{% url 'Job-Page' %}" class="text-black font-semibold mt-2 hover:text-yellow-500"
-                        style="text-decoration: none;">Job&nbsp;Search</a>
-                </nav>
-
-                 <!-- Hamburger Menu Button -->
-                 <button id="hamburger-icon" class="block md:hidden flex items-center cursor-pointer">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4 6h16M4 12h16m-7 6h7"></path>
-                    </svg>
-                </button>
-                <div class="flex items-center space-x-2">
-                    <a href="#" class="text-black">
-                        <img src="{% static 'images/icons/mode.png' %}" class="bell-icon" alt="Notification Bell"
-                            class="h-10 w-10">
-                    </a>
-                    <a href="#" class="text-black">
-                        <img src="{% static 'images/icons/bell.png' %}" class="bell-icon" alt="Notification Bell"
-                            class="h-10 w-10">
-                    </a>
-                    <a href="#" class="text-black profile-picture">
-                      
-                            <div class="profile-pic-wrapper">
-                                <img src="{% static 'images/Employers/kojo (2).jpeg' %}" alt="User Profile">
-                            </div>
-                    </a>
-
-                    <script>
-                        const inputElement = document.getElementById('profilePicInput');
-                        const profilePicElement = document.getElementById('profilePic');
-                
-                        inputElement.addEventListener('change', function(event) {
-                            const file = event.target.files[0];
-                            if (file) {
-                                const reader = new FileReader();
-                                reader.onload = function(e) {
-                                    profilePicElement.src = e.target.result;
-                                }
-                                reader.readAsDataURL(file);
-                            }
-                        });
-                        
-                    </script>
-                    
-                </div>
-               
-            </div>
-        </div>
-         <!-- Responsive Menu Toggle -->
-        <!-- Add this responsive menu -->
-        <div class="responsive-menu" id="responsive-menu">
-            <a href="#" class="text-black font-semibold mt-2 hover:text-yellow-500">Overview</a>
-            <a href="#" class="text-black font-semibold mt-2 hover:text-yellow-500">Balance</a>
-            <a href="{% url 'Teamview-Page' %}" class="text-black font-semibold mt-2 hover:text-yellow-500">Team&nbsp;Workspace</a>
-            <a href="{% url 'Job-Page' %}" class="bg-yellow-300 text-black font-semibold rounded-lg px-4 py-2 hover:text-black hover:bg-yellow-300">Job&nbsp;Search</a>
-        </div>
-
-        <!-- Add this JavaScript -->
-        <script>
-            const hamburgerIcon = document.getElementById('hamburger-icon');
-            const responsiveMenu = document.getElementById('responsive-menu');
-
-            hamburgerIcon.addEventListener('click', () => {
-                responsiveMenu.classList.toggle('active');
-            });
-        </script>
-    </header> {% endcomment %}
 
     {% block content %}{% endblock %}
 
