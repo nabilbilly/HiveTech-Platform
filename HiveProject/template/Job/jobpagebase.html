@@ -268,6 +268,22 @@
             }
         }
 
+        .profile-dropdown {
+            z-index: 1000; /* Ensure this value is higher than the z-index of other elements */
+        }
+        
+        .profile-wrapper {
+            position: relative;
+        }
+        
+        .profile-wrapper .profile-dropdown {
+            display: none;
+        }
+        
+        .profile-wrapper:hover .profile-dropdown {
+            display: block;
+        }
+
     </style>
 </head>
 
@@ -325,12 +341,30 @@
                         <img src="{% static 'images/icons/bell.png' %}" class="bell-icon" alt="Notification Bell"
                             class="h-10 w-10">
                     </a>
-                    <a href="#" class="text-black profile-picture">
+                    {% comment %} <a href="#" class="text-black profile-picture">
                       
                             <div class="profile-pic-wrapper">
                                 <img src="{% static 'images/Employers/kojo (2).jpeg' %}" alt="User Profile">
                             </div>
-                    </a>
+                    </a> {% endcomment %}
+                    <div class="relative inline-block text-left profile-wrapper">
+                        <a href="#" class="text-black profile-picture">
+                            <div class="profile-pic-wrapper">
+                                <img src="{% static 'images/Employers/kojo (2).jpeg' %}" alt="User Profile" class="w-16 h-16 rounded-full">
+                            </div>
+                        </a>
+                
+                        <!-- Profile Dropdown -->
+                        <div class="profile-dropdown origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="profile-menu-button">
+                            <div class="py-1" role="none">
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">View Profile</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Settings and Privacy</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Community</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Save</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Log Out</a>
+                            </div>
+                        </div>
+                    </div>
 
                     <script>
                         const inputElement = document.getElementById('profilePicInput');
@@ -399,6 +433,23 @@
             maxSlider.addEventListener('input', updateSliderValues);
 
     <script/>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const profilePic = document.querySelector('.profile-picture');
+            const profileDropdown = document.querySelector('.profile-dropdown');
+
+            profilePic.addEventListener('click', function(event) {
+                event.preventDefault();
+                profileDropdown.style.display = profileDropdown.style.display === 'block' ? 'none' : 'block';
+            });
+
+            window.addEventListener('click', function(event) {
+                if (!profilePic.contains(event.target) && !profileDropdown.contains(event.target)) {
+                    profileDropdown.style.display = 'none';
+                }
+            });
+        });
+    </script>
     
 </body>
 

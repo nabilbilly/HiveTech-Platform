@@ -1,0 +1,48 @@
+# Deny access to sensitive files
+<FilesMatch "(^\.|settings\.py|__pycache__|db\.sqlite3)">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Disable directory browsing
+Options -Indexes
+
+# Block access to specific IPs (replace 192.168.1.1 with the IP to block)
+<Limit GET POST>
+    Order allow,deny
+    Allow from all
+    <!-- Deny from 192.168.1.1 -->
+</Limit>
+
+# Force HTTPS
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Prevent hotlinking of images and files
+RewriteCond %{HTTP_REFERER} !^$
+RewriteCond %{HTTP_REFERER} !^https://(www\.)?yourdomain\.com/ [NC]
+RewriteRule \.(jpg|jpeg|png|gif|pdf)$ - [F,NC,L]
+
+# Redirect certain paths for SEO or security purposes
+RewriteRule ^DevCommunity/$ /DevCommunity [R=301,L]
+RewriteRule ^DonatePage/$ /DonatePage [R=301,L]
+RewriteRule ^AboutUs/$ /AboutUs [R=301,L]
+RewriteRule ^employers/$ /employers [R=301,L]
+RewriteRule ^ExploreInterest/$ /ExploreInterest [R=301,L]
+RewriteRule ^ExpertedEarn/$ /ExpertedEarn [R=301,L]
+RewriteRule ^YearsOfExperience/$ /YearsOfExperience [R=301,L]
+RewriteRule ^JobExperience/$ /JobExperience [R=301,L]
+RewriteRule ^LevelOfEducation/$ /LevelOfEducation [R=301,L]
+RewriteRule ^EnglishLevel/$ /EnglishLevel [R=301,L]
+RewriteRule ^LocationOfWork/$ /LocationOfWork [R=301,L]
+RewriteRule ^EmploymentOption/$ /EmploymentOption [R=301,L]
+RewriteRule ^JobListType/$ /JobListType [R=301,L]
+RewriteRule ^WorkSchedule/$ /WorkSchedule [R=301,L]
+RewriteRule ^TeamSetup/$ /TeamSetup [R=301,L]
+RewriteRule ^JoinCommunity/$ /JoinCommunity [R=301,L]
+RewriteRule ^EmailNotification/$ /EmailNotification [R=301,L]
+
+# Allow only GET and POST methods (disallow DELETE, PUT, etc.)
+RewriteCond %{REQUEST_METHOD} !^(GET|POST)$
+RewriteRule .* - [F]

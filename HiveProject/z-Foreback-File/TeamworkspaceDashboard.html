@@ -1,0 +1,586 @@
+{% extends 'Teamworkspace/Teamworkspacebase.html' %}
+
+{% comment %} # Theo worked on this {% endcomment %}
+
+{% load static %}
+{% load custom_filters %}
+{% block title %}Team Workspace Dashboard{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'src/css/TeamworkspaceModals.css' %}">
+{% endblock %}
+
+{% block content %}
+   <!-- IF STATEMENT represent if user belongs to a team then Display the team else(the else statement is in line 210)-->
+    {% if teams %}
+        <main class="p-4">
+            <!-- --------------- Search Bar with Create workspace icon ------------------- -->
+            <div class="flex container mx-auto px-4 pb-2 pt-3 items-center shadow-sm mb-3">  
+                <div class="relative flex-grow">
+                    <svg class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" width="30" height="30" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path opacity="0.16" d="M32.4583 18.7917C32.4583 22.4163 31.0185 25.8925 28.4555 28.4555C25.8925 31.0185 22.4163 32.4583 18.7917 32.4583C15.167 32.4583 11.6909 31.0185 9.12787 28.4555C6.56488 25.8925 5.125 22.4163 5.125 18.7917C5.125 15.167 6.56488 11.6909 9.12787 9.12787C11.6909 6.56488 15.167 5.125 18.7917 5.125C22.4163 5.125 25.8925 6.56488 28.4555 9.12787C31.0185 11.6909 32.4583 15.167 32.4583 18.7917Z" fill="black" fill-opacity="0.7"/>
+                        <path d="M35.8754 35.8749L28.4561 28.4556M28.4561 28.4556C29.7252 27.1865 30.7319 25.6798 31.4187 24.0217C32.1055 22.3635 32.459 20.5863 32.459 18.7915C32.459 16.9968 32.1055 15.2195 31.4187 13.5614C30.7319 11.9032 29.7252 10.3966 28.4561 9.12749C27.187 7.85839 25.6803 6.85168 24.0222 6.16485C22.364 5.47802 20.5868 5.12451 18.792 5.12451C16.9972 5.12451 15.22 5.47802 13.5619 6.16485C11.9037 6.85168 10.3971 7.85839 9.12798 9.12749C6.56491 11.6906 5.125 15.1668 5.125 18.7915C5.125 22.4162 6.56491 25.8925 9.12798 28.4556C11.691 31.0186 15.1673 32.4585 18.792 32.4585C22.4167 32.4585 25.893 31.0186 28.4561 28.4556Z" stroke="black" stroke-opacity="0.7" stroke-width="3.41667" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <input
+                        type="text"
+                        placeholder="Search"
+                        class="w-full pl-10 pr-4 py-2 border-2 border-zinc-950 rounded-md focus:outline-none"
+                    />
+                </div>
+                <!-- ---- This button create Team or Teamworkspace -- -->
+                <button id="OnCreateworkspace-click" class="p-2 ml-4 text-gray-600 hover:text-gray-900">
+                    <svg width="35" height="35" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M8.74963 0.61962C16.2265 -0.209144 23.772 -0.209144 31.2488 0.61962C35.3885 1.08362 38.7284 4.3437 39.2141 8.49795C40.101 16.0814 40.101 23.7424 39.2141 31.3258C38.7284 35.48 35.3885 38.7401 31.2488 39.2041C23.772 40.033 16.2264 40.033 8.74963 39.2041C4.60988 38.7401 1.27004 35.48 0.784293 31.3258C-0.102577 23.7432 -0.102577 16.083 0.784293 8.50037C1.02999 6.48214 1.95004 4.60602 3.39534 3.17608C4.84064 1.74613 6.72647 0.846168 8.74721 0.622037M19.9992 7.84545C20.4799 7.84545 20.9409 8.03641 21.2808 8.37632C21.6208 8.71623 21.8117 9.17725 21.8117 9.65795V18.0994H30.2531C30.7338 18.0994 31.1949 18.2903 31.5348 18.6302C31.8747 18.9701 32.0656 19.4312 32.0656 19.9119C32.0656 20.3926 31.8747 20.8536 31.5348 21.1935C31.1949 21.5334 30.7338 21.7244 30.2531 21.7244H21.8117V30.1658C21.8117 30.6465 21.6208 31.1075 21.2808 31.4474C20.9409 31.7873 20.4799 31.9783 19.9992 31.9783C19.5185 31.9783 19.0575 31.7873 18.7176 31.4474C18.3777 31.1075 18.1867 30.6465 18.1867 30.1658V21.7244H9.74529C9.26459 21.7244 8.80357 21.5334 8.46366 21.1935C8.12375 20.8536 7.93279 20.3926 7.93279 19.9119C7.93279 19.4312 8.12375 18.9701 8.46366 18.6302C8.80357 18.2903 9.26459 18.0994 9.74529 18.0994H18.1867V9.65795C18.1867 9.17725 18.3777 8.71623 18.7176 8.37632C19.0575 8.03641 19.5185 7.84545 19.9992 7.84545Z" fill="black" fill-opacity="0.6"/>
+                    </svg>
+                </button>
+            </div>
+            <!-- ---------------End of Search Bar with and Create workspace icon ------------------- -->
+
+            <!-- --------------------Team workspace card  -------------------- -->
+            <div class="container mx-auto px-36 grid grid-cols-1 md:grid-cols-2 gap-6">
+                {% for team in teams %}
+                    <div class="bg-white p-6 rounded-xl border-2 border-zinc-950">
+                        <a href="{% url 'Team-Workspace-Chat' %}">
+                            <div class="flex items-center mb-4">
+                                <h3 class="text-lg font-semibold">{{ team.name }}</h3>
+                            </div>
+                            <div class="flex justify-between items-center mb-4">
+                                <div class="flex">
+                                    <div class="flex -space-x-5 mr-2 profile-picture">
+                                        <img src="{% static 'images/Employers/kojo (2).jpeg' %}" alt="Member 1" class="w-8 h-8 rounded-full border-2 border-black profile-pic-wrapper" />
+                                        <img src="{% static 'images/Employers/kojo (3).jpeg' %}" alt="Member 3" class="w-8 h-8 rounded-full border-2 border-black profile-pic-wrapper" />
+                                        <img src="{% static 'images/Employers/kojo (2).jpeg' %}" alt="Member 4" class="w-8 h-8 rounded-full border-2 border-black profile-pic-wrapper" />
+                                        <img src="{% static 'images/Employers/kojo (1).jpeg' %}" alt="Member 2" class="w-8 h-8 rounded-full border-2 border-black profile-pic-wrapper" />
+                                    </div>
+                                    <span class="text-sm text-gray-600">5 maximum</span>
+                                </div>
+                            </a>
+                            {% if user_roles|get_item:team.slug == 'admin' %}
+                                {% comment %} <button onclick="deleteTeam('{{ team.slug }}')" class="px-3 py-1 text-sm text-red-600 bg-red-100 rounded-full hover:bg-red-200 transition-colors">
+                                    Deactivate
+                                </button> {% endcomment %}
+                                <button onclick="deleteTeamWorkspace('{{ team.slug }}')" class="px-3 py-1 text-sm text-red-600 bg-red-100 rounded-full hover:bg-red-200 transition-colors"> 
+                                    Deactivate 
+                                </button>
+                            {% endif %}
+                        </div>
+                        <p class="text-sm text-gray-600 mb-4">{{ team.description }}</p>
+                        <div class="flex justify-between items-center">
+                                <button onclick="showViewMembersPopup('{{ team.slug }}')" class=" px-4 py-2 text-sm bg-gray-200 rounded-md hover:bg-gray-300 transition-colors">
+                                View members
+                               </button>
+
+                            {% if user_roles|get_item:team.slug == 'admin' %}
+                            <button onclick="showAddMemberPopup('{{ team.slug }}')" class="px-4 py-2 text-sm bg-yellow-300 rounded-md hover:bg-yellow-400 transition-colors">
+                                Add Members
+                            </button>
+                        {% endif %}
+                        </div>
+                    </div>
+                     <!-- -------------------- End of Team workspace card  the rest are modal functions in the card  -------------------- -->
+
+
+                <!-- --------------------Main modal Section for the card popup  -------------------- -->
+
+                    <!-- ----------------------- The Add Team Member Modal ------------------------------------- -->
+                    <div id="add-member-popup" class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 backdrop-blur modal" style="display: none;">
+                        <div class="bg-white rounded-lg p-6 shadow-lg max-w-md w-full">
+                            <div class="flex justify-end">
+                                <button onclick="closeAddMemberPopup()" class="text-gray-400 hover:text-gray-600">
+                                    &times;
+                                </button>
+                            </div>
+                            <div class="flex items-center justify-center">
+                            <h2 class="text-sm font-medium mb-4">Add Team Member</h2>
+                            </div>
+                            <form id="add-member-form" class="space-y-4" action="#" method="POST" onsubmit="handleAddMemberSubmit(event)">
+                                {% csrf_token %}
+                                <div>
+                                    <label for="user_identifier" class="block text-sm font-medium text-gray-700 mb-2">
+                                        Invite team via email or raventag <span class="text-red-500">*</span>
+                                    </label>
+                                    <input
+                                    type="text"
+                                    id="user_identifier"
+                                    name="user_identifier"
+                                    placeholder="@ravenhive or member@gmail.com"
+                                    class="w-full px-3 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-zinc-400"
+                                    required
+                                    />                        
+
+                                    <span id="user-exists-error" class="text-red-500 text-sm mt-2" style="display:none;">User does not exist.</span>
+                                    <span id="user-in-team-error" class="text-red-500 text-sm mt-2" style="display:none;">User is already a member of this team.</span>                               
+                                </div>
+                                <div>
+                                    <label for="member-role" class="block text-sm font-medium text-gray-700 mt-4 mb-2">Role <span class="text-red-500">*</span></label>
+                                    <select id="member-role" name="role" class="w-full px-3 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-zinc-400" required>
+                                        <option value="member">Member</option>
+                                        <option value="admin">Admin</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="specify-role" class="block text-sm font-medium text-gray-700 mb-2">
+                                        Specify role <span class="text-red-500">*</span>
+                                    </label>
+                                    <input
+                                        type="text"
+                                        id="specify-role"
+                                        name="SpecifyRole"
+                                        placeholder="Eg: Solidity Developer"
+                                        class="w-full px-3 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-zinc-400"
+                                        required
+                                    />
+                                </div>
+                                <div>
+                                    <label for="member-description" class="block text-sm font-medium text-gray-700 mb-2">
+                                        Describe team member role (optional)
+                                    </label>
+                                    <textarea
+                                        id="member-description"
+                                        name="description"
+                                        rows="4"
+                                        class="w-full px-3 py-2 border-2 border-gray-300 rounded-lg focus:outline-none"
+                                    ></textarea>
+                                </div>
+                                <button
+                                    id="submit-button"
+                                    type="submit"
+                                    class="w-full bg-yellow-100 hover:bg-yellow-400 text-black font-medium py-3 px-4 rounded-lg flex items-center justify-center"
+                                    disabled
+                                >
+                                    Add Member to Workspace
+                                </button>
+
+                            </form>
+                            <script>
+                                document.getElementById('user_identifier').addEventListener('input', function() {
+                                    const userIdentifier = this.value;
+                                    const teamSlug = '{{ team.slug }}';  // Assuming you pass the team slug into the template
+                                    const userExistsError = document.getElementById('user-exists-error');
+                                    const userInTeamError = document.getElementById('user-in-team-error');
+                                    const submitButton = document.getElementById('submit-button');
+                                
+                                    if (userIdentifier) {
+                                        fetch(`/Teamworkspace/check_user_exists/?user_identifier=${encodeURIComponent(userIdentifier)}&team_slug=${teamSlug}`)
+                                        .then(response => response.json())
+                                        .then(data => {
+                                            if (data.exists) {
+                                                userExistsError.style.display = 'none';
+                                                if (data.in_team) {
+                                                    userInTeamError.style.display = 'block';
+                                                    submitButton.disabled = true;
+                                                    submitButton.classList.remove('bg-yellow-400', 'hover:bg-yellow-500');
+                                                    submitButton.classList.add('bg-yellow-200');
+                                                } else {
+                                                    userInTeamError.style.display = 'none';
+                                                    submitButton.disabled = false;
+                                                    submitButton.classList.remove('bg-yellow-200');
+                                                    submitButton.classList.add('bg-yellow-400', 'hover:bg-yellow-500');
+                                                }
+                                            } else {
+                                                userExistsError.style.display = 'block';
+                                                userInTeamError.style.display = 'none';
+                                                submitButton.disabled = true;
+                                                submitButton.classList.remove('bg-yellow-400', 'hover:bg-yellow-500');
+                                                submitButton.classList.add('bg-yellow-200');
+                                            }
+                                        })
+                                        .catch(error => {
+                                            console.error('Error checking user existence:', error);
+                                            userExistsError.style.display = 'none';
+                                            userInTeamError.style.display = 'none';
+                                            submitButton.disabled = true;
+                                            submitButton.classList.remove('bg-yellow-400', 'hover:bg-yellow-500');
+                                            submitButton.classList.add('bg-yellow-200');
+                                        });
+                                    } else {
+                                        userExistsError.style.display = 'none';
+                                        userInTeamError.style.display = 'none';
+                                        submitButton.disabled = true;
+                                        submitButton.classList.remove('bg-yellow-500', 'hover:bg-yellow-500');
+                                        submitButton.classList.add('bg-yellow-200');
+                                    }
+                                });
+                                 
+                            </script>
+                        </div>
+                    </div>
+
+
+                    <!------------------------- The View Members Modal ------------------------ -->
+                    <!-- Popup for viewing team members -->
+                    <div id="view-members-popup" class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 backdrop-blur modal" style="display: none;">
+                        <div class="bg-white rounded-lg p-6 shadow-lg max-w-md w-full">
+                            <div class="flex justify-end">
+                                <button onclick="closeViewMembersPopup()" class="text-gray-400 hover:text-gray-600">&times;</button>
+                            </div>
+                            <div id="members-list" class="space-y-2">
+                                <!-- Members list will be populated here -->
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- The Modal For Create Workspace Popup for creating a team -->
+                    <div id="ModalCreateworkspace" class="modal">
+                        <div class="modal-content">
+                            
+                            <main class=" bg-gray-100 flex items-center justify-center p-4">
+                                <div class="bg-white rounded-lg  p-2 w-full max-w-md">
+                                    <h1 class="text-xl font-semibold mb-8 mx-auto text-center">
+                                        <span class="close" id="CloseCreateworkspace">&times;</span>
+                                        <span class="text-center text-sm bg-slate-200 px-4 py-2 rounded-full">Add Team workspace</span>
+                                    </h1> 
+                                        <form class="space-y-7" id="create-team-form" action="{% url 'add_team' %}" method="post" >
+                                        {% csrf_token %}
+                                        <div>
+                                            <label for="team-name" class="block text-sm  font-medium text-gray-700 mb-2">
+                                                Name of Workspace <span class="text-red-500">*</span>
+                                            </label>
+                                            <input
+                                                type="text"
+                                            id="team-name" name="name"
+                                                placeholder="Enter workspace name"
+                                                class="w-full px-3 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-zinc-400"
+                                                required
+                                            />
+                                        </div>
+                                        <div>
+                                            <label for="description" class="block text-sm font-medium text-gray-700 mb-2">
+                                                Describe workspace <span class="text-red-500">*</span>
+                                            </label>
+                                            <textarea
+                                                id="description" name="description"
+                                                rows="4"
+                                                placeholder="Describe your workspace"
+                                                class="w-full px-3 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-zinc-400"
+                                                required
+                                            ></textarea>
+                                        </div>
+                                        <button
+                                            type="submit"
+                                            class="w-full bg-yellow-400 hover:bg-yellow-500 text-black font-medium py-2 px-4 rounded-lg flex items-center justify-center"
+                                        >
+                                            <svg class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 6h18M3 14h18M3 18h18M3 22h18M3 2h18" />
+                                            </svg>
+                                            Create workspace
+                                        </button>
+                                    </form>
+                                </div>
+                            
+                                <script>
+                                    function handleSubmit(event) {
+                                        event.preventDefault();
+                                        const name = document.getElementById('name').value;
+                                        const description = document.getElementById('description').value;
+                            
+                                        // Handle form submission here 
+                                        console.log({ name, description });
+                                    }
+                                </>
+                            </main>  
+                        </div>    
+                    </div>
+
+
+                {% endfor %}
+            </div>
+        </main>
+        <!-- End of main page . The main page will display the teamwork space only IF TEAMWORKSPACE == true else will display the Else statement page there -->
+     <!-- ELSE STATEMET REPRESENT IF user does not have a workspace or in other word TEAM It will Display this Page-->    
+    {% else %} 
+    <div class="bg-gray-100"> 
+        <div class="center-align"> 
+            <main class="pt-56"> 
+                <!-- No workspace section --> 
+                <div class="text-center"> 
+                    <h1 class="mb-4 text-2xl font-bold">No workspace</h1> 
+                    <button id="FirstOnCreateworkspace-click" class="px-6 py-3 text-gray-900 bg-yellow-300 rounded-md hover:bg-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2">
+                        Create a new workspace 
+                    </button> 
+                </div> 
+            </main> 
+        </div>
+    </div>
+
+    <div id="FirstModalCreateworkspace" class="modal"> 
+        <div class="modal-content">
+            <!-- Form content for first modal here --> 
+            <main class=" bg-gray-100 flex items-center justify-center p-4">
+                <div class="bg-white rounded-lg  p-2 w-full max-w-md">
+                    <h1 class="text-xl font-semibold mb-8 mx-auto text-center">
+                        <span class="close" id="CloseCreateworkspace">&times;</span>
+                        <span class="text-center text-sm bg-slate-200 px-4 py-2 rounded-full">Add Team workspace</span>
+                    </h1> 
+                        <form class="space-y-7" id="create-team-form" action="{% url 'add_team' %}" method="post" >
+                        {% csrf_token %}
+                        <div>
+                            <label for="team-name" class="block text-sm font-medium text-gray-200 mb-1">
+                                Name of Workspace <span class="text-red-500">*</span>
+                            </label>
+                            <input
+                                type="text"
+                            id="team-name" name="name"
+                                placeholder="Enter workspace name"
+                                class="w-full px-3 py-2 border-2 border-black rounded-lg focus:outline-none"
+                                required
+                            />
+                        </div>
+                        <div>
+                            <label for="description" class="block text-sm font-medium text-gray-700 mb-1">
+                                Describe workspace <span class="text-red-500">*</span>
+                            </label>
+                            <textarea
+                                id="description" name="description"
+                                rows="4"
+                                placeholder="Describe your workspace"
+                                class="w-full px-3 py-2 border-2 border-black rounded-lg focus:outline-none"
+                                required
+                            ></textarea>
+                        </div>
+                        <button
+                            type="submit"
+                            class="w-full bg-yellow-400 hover:bg-yellow-500 text-black font-medium py-2 px-4 rounded-lg flex items-center justify-center"
+                        >
+                            <svg class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 6h18M3 14h18M3 18h18M3 22h18M3 2h18" />
+                            </svg>
+                            Create workspace
+                        </button>
+                    </form>
+                </div>
+            
+                <script>
+                    function handleSubmit(event) {
+                        event.preventDefault();
+                        const name = document.getElementById('name').value;
+                        const description = document.getElementById('description').value;
+            
+                        // Handle form submission here 
+                        console.log({ name, description });
+                    }
+                </script>
+            </main> 
+            </div> 
+        </div>
+    </div>
+    {% endif %}
+
+
+<!-- Javascript File For the "The Add Team Member Modal" and The The View Team Member Modal  ONLY  All Editing can be done here -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    // Add Team Member Modal
+    document.querySelectorAll("[class^='add-team-member-click']").forEach((button) => {
+        button.addEventListener("click", () => {
+            const teamSlug = button.className.split(' ').find(cls => cls.startsWith("OnAddTeamMember-click-")).replace("OnAddTeamMember-click-", ""); // Extract slug
+            const modal = document.querySelector(`.ModalAddTeamMember-${teamSlug}`);
+            if (modal) modal.style.display = "block";
+        });
+    });
+
+    // View Members Modal
+    document.querySelectorAll("[class^='view-members-click']").forEach((button) => {
+        button.addEventListener("click", () => {
+            const teamSlug = button.className.split(' ').find(cls => cls.startsWith("OnViewMembers-click-")).replace("OnViewMembers-click-", ""); // Extract slug
+            const modal = document.querySelector(`.ModalViewMembers-${teamSlug}`);
+            if (modal) modal.style.display = "block";
+        });
+    });
+
+    // Close modal functionality
+    document.querySelectorAll(".close").forEach((closeBtn) => {
+        closeBtn.addEventListener("click", () => {
+            const modal = closeBtn.closest(".modal");
+            if (modal) modal.style.display = "none";
+        });
+    });
+
+    // Close modals by clicking outside them
+    window.addEventListener("click", (event) => {
+        if (event.target.classList.contains("modal")) {
+            event.target.style.display = "none";
+        }
+    });
+});
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var modalsCreateworkspace = document.getElementById("ModalCreateworkspace");
+        var createWorkspaceButton = document.getElementById("OnCreateworkspace-click");
+        var closeCreateworkspace = document.getElementById("CloseCreateworkspace");
+    
+        var firstModalsCreateworkspace = document.getElementById("FirstModalCreateworkspace");
+        var firstCreateWorkspaceButton = document.getElementById("FirstOnCreateworkspace-click");
+        var firstCloseCreateworkspace = document.getElementById("FirstCloseCreateworkspace");
+    
+        // First Modal
+        if (firstCreateWorkspaceButton && firstModalsCreateworkspace) {
+            firstCreateWorkspaceButton.onclick = function() {
+                firstModalsCreateworkspace.style.display = "block";
+            }
+    
+            firstCloseCreateworkspace.onclick = function() {
+                firstModalsCreateworkspace.style.display = "none";
+            }
+        }
+    
+        // Second Modal
+        if (createWorkspaceButton && modalsCreateworkspace) {
+            createWorkspaceButton.onclick = function() {
+                modalsCreateworkspace.style.display = "block";
+            }
+    
+            closeCreateworkspace.onclick = function() {
+                modalsCreateworkspace.style.display = "none";
+            }
+        }
+    
+        // Close modals by clicking outside them
+        window.onclick = function(event) {
+            if (event.target == modalsCreateworkspace) {
+                modalsCreateworkspace.style.display = "none";
+            }
+            if (event.target == firstModalsCreateworkspace) {
+                firstModalsCreateworkspace.style.display = "none";
+            }
+        }
+    });
+    
+</script>
+
+<script>
+    function showAddMemberPopup(teamSlug) {
+        const form = document.getElementById('add-member-form');
+        form.action = `/Teamworkspace/add_members/${teamSlug}/`;
+        document.getElementById('add-member-popup').style.display = 'flex';
+    }
+    
+    function closeAddMemberPopup() {
+        document.getElementById('add-member-popup').style.display = 'none';
+    }
+    
+    // Ensure the popup closes when clicking outside of it
+    window.onclick = function(event) {
+        const modal = document.getElementById('add-member-popup');
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    };
+    
+</script>
+
+<script>
+    function deleteTeam(teamSlug) {
+        if (confirm("Are you sure you want to deactivate/delete this workspace?")) {
+            window.location.href = `/Teamworkspace/delete_team/${teamSlug}/`;
+        }
+    }
+
+    {% comment %} function showViewMembersPopup(teamSlug) { 
+        fetch(`/Teamworkspace/view_team_members/${teamSlug}/`) 
+        .then(response => response.text()) 
+        .then(html => { 
+            document.getElementById('members-list').innerHTML = html; 
+            document.getElementById('view-members-popup').style.display = 'block'; 
+        }); 
+    } {% endcomment %}
+
+    function showViewMembersPopup(teamSlug) {
+        fetch(`/Teamworkspace/view_team_members/${teamSlug}/`)
+        .then(response => response.text())
+        .then(html => {
+            document.getElementById('members-list').innerHTML = html;
+            document.getElementById('view-members-popup').style.display = 'flex';
+        });
+    }
+    
+    function closeViewMembersPopup() {
+        document.getElementById('view-members-popup').style.display = 'none';
+    }
+    
+    // Ensure the popup closes when clicking outside of it
+    window.onclick = function(event) {
+        const modal = document.getElementById('view-members-popup');
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    };
+    
+        function deleteTeamMember(teamSlug, userId) {
+                if (confirm("Are you sure you want to remove this member from the team?")) {
+                    fetch(`/Teamworkspace/delete_team_member/${teamSlug}/${userId}/`, {
+                        method: 'DELETE',
+                        headers: {
+                            'X-CSRFToken': getCookie('csrftoken')
+                        }
+                    })
+                        .then(response => {
+                            if (response.ok) {
+                                alert('Member removed successfully.');
+                                showViewMembersPopup(teamSlug); // Refresh the member list
+                            } else {
+                                alert('Failed to delete member.');
+                            }
+                        })
+                        .catch(error => console.error('Error deleting member:', error));
+                }
+            }
+
+            function deleteTeamWorkspace(teamSlug) {
+                if (confirm("Are you sure you want to delete this team workspace?")) {
+                    fetch(`/Teamworkspace/delete_team_workspace/${teamSlug}/`, {
+                        method: 'DELETE',
+                        headers: {
+                            'X-CSRFToken': getCookie('csrftoken')
+                        }
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            alert('Team workspace deleted successfully.');
+                            location.reload(); // Refresh the page to update the list of teams
+                        } else {
+                            alert('Failed to delete team workspace.');
+                        }
+                    })
+                    .catch(error => console.error('Error deleting team workspace:', error));
+                }
+            }
+            
+            function getCookie(name) {
+                let cookieValue = null;
+                if (document.cookie && document.cookie !== '') {
+                    const cookies = document.cookie.split(';');
+                    for (let i = 0; i < cookies.length; i++) {
+                        const cookie = cookies[i].trim();
+                        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                            break;
+                        }
+                    }
+                }
+                return cookieValue;
+            }            
+            
+
+    function getCookie(name) { 
+        let cookieValue = null; 
+        if (document.cookie && document.cookie !== '') { 
+            const cookies = document.cookie.split(';'); 
+            for (let i = 0; i < cookies.length; i++) { 
+                const cookie = cookies[i].trim(); 
+                if (cookie.substring(0, name.length + 1) === (name + '=')) { 
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1)); 
+                    break; 
+                }
+            } 
+        } 
+        return cookieValue; 
+    }               
+</script>
+{% endblock %}
+
+
+

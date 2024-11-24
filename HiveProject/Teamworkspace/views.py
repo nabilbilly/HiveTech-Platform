@@ -3,7 +3,7 @@ from django.contrib.auth.models import User, auth
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-
+from django.db import IntegrityError
 from django.core.mail import send_mail
 from django.conf import settings
 from django.urls import reverse
@@ -86,28 +86,63 @@ def add_team(request):
     return redirect('Team-workspace-dashboard')
 
 
+
+from django.contrib import messages
+
 @login_required
 def add_member(request, slug):
     team = get_object_or_404(Team, slug=slug)
     if request.method == 'POST':
-        username = request.POST.get('user_identifier')
+        email_or_username = request.POST.get('user_identifier')
         role = request.POST.get('role')
         description = request.POST.get('description', '')
 
         try:
-            user = User.objects.get(username=username)
-            if team.can_add_member():
-                TeamMembership.objects.create(user=user, team=team, role=role, description=description)
-                messages.success(request, f'Member {username} added successfully!')
+            if "@" in email_or_username:
+                user = User.objects.get(email=email_or_username)
             else:
-                messages.error(request, 'Team already has the maximum number of members.')
+                user = User.objects.get(username=email_or_username)
+
+            if TeamMembership.objects.filter(team=team, user=user).exists():
+                messages.error(request, f"User {email_or_username} is already a member of the team.")
+            else:
+                if team.can_add_member():
+                    TeamMembership.objects.create(user=user, team=team, role=role, description=description)
+                    messages.success(request, f'Member {email_or_username} added successfully!')
+                else:
+                    messages.error(request, 'Team already has the maximum number of members.')
         except User.DoesNotExist:
-            messages.error(request, f'User with username {username} does not exist.')
+            messages.error(request, f'User with identifier {email_or_username} does not exist.')
 
         return redirect('Team-workspace-dashboard')
 
     messages.error(request, 'Invalid request method.')
     return redirect('Team-workspace-dashboard')
+
+
+
+# @login_required
+# def add_member(request, slug):
+#     team = get_object_or_404(Team, slug=slug)
+#     if request.method == 'POST':
+#         username = request.POST.get('user_identifier')
+#         role = request.POST.get('role')
+#         description = request.POST.get('description', '')
+
+#         try:
+#             user = User.objects.get(username=username)
+#             if team.can_add_member():
+#                 TeamMembership.objects.create(user=user, team=team, role=role, description=description)
+#                 messages.success(request, f'Member {username} added successfully!')
+#             else:
+#                 messages.error(request, 'Team already has the maximum number of members.')
+#         except User.DoesNotExist:
+#             messages.error(request, f'User with username {username} does not exist.')
+
+#         return redirect('Team-workspace-dashboard')
+
+#     messages.error(request, 'Invalid request method.')
+#     return redirect('Team-workspace-dashboard')
 
 @login_required
 def add_members(request, slug):
@@ -195,3 +230,48 @@ def delete_team_workspace(request, slug):
     else:
         messages.error(request, 'You do not have permission to delete this team.')
     return redirect('Team-workspace-dashboard')
+
+from django.http import JsonResponse
+
+@login_required
+def check_user_exists(request):
+    email_or_username = request.GET.get('user_identifier')
+    team_slug = request.GET.get('team_slug')
+
+    try:
+        if "@" in email_or_username:
+            user = User.objects.get(email=email_or_username)
+        else:
+            user = User.objects.get(username=email_or_username)
+
+        team = get_object_or_404(Team, slug=team_slug)
+        if TeamMembership.objects.filter(team=team, user=user).exists():
+            return JsonResponse({'exists': True, 'in_team': True})
+        return JsonResponse({'exists': True, 'in_team': False})
+    except User.DoesNotExist:
+        return JsonResponse({'exists': False, 'in_team': False})
+
+
+# @login_required
+# def check_workspace_name(request):
+#     name = request.GET.get('name', '').strip()
+#     if name:  # Simulate workspace name existence check
+#         exists = Team.objects.filter(name=name).exists()
+#         return JsonResponse({'exists': exists})
+#     return JsonResponse({'error': 'Name parameter is required'}, status=400)
+def check_team_exists(request):
+    team_slug = request.GET.get('team_slug', '').strip()
+    return JsonResponse({'team_exists': Team.objects.filter(slug=team_slug).exists()})
+
+
+
+@login_required
+def search_user_workspaces(request):
+    query = request.GET.get('q', '')
+    user = request.user
+    if query:
+        teams = Team.objects.filter(name__icontains=query, created_by=user)
+        results = [{'name': team.name, 'slug': team.slug, 'description': team.description} for team in teams]
+        return JsonResponse(results, safe=False)
+    return JsonResponse([], safe=False)
+
