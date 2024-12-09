@@ -4,6 +4,7 @@ from . import views
 urlpatterns = [
     path('Dashboard/', views.Team_workspace_dashboard, name='Team-workspace-dashboard'),  # Dashboard
     path('Chat/', views.TeamworkspaceChat, name='Team-Workspace-Chat'),
+    path('TeamworkspaceSettings/', views.TeamworkspaceSettings, name='Team-Workspace-Settings'),
     path('create_team/ ', views.add_team, name='add_team'),  # Add new team
     # path('Dashboard/', views.Teamview, name='Teamview-Page'),
    

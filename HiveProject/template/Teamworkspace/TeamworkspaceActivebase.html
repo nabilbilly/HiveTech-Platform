@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Hive Platform{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'src/css/job.css' %}">
+     <!-- Tailwind CSS -->
+     <script src="https://cdn.tailwindcss.com"></script>
+     <!-- Lucide Icons -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/lucide.min.js"></script>
+    {% block extra_css %}{% endblock %}
+    <style>
+        .responsive-menu {
+            display: none;
+            flex-direction: column;
+            width: auto;
+            background-color: white;
+            position: absolute;
+            top: 60px;
+            /* Adjust based on your header height */
+            left: 0;
+            z-index: 10;
+        }
+
+        .responsive-menu.active {
+            display: flex;
+        }
+
+        .responsive-menu a {
+            padding: 16px;
+            text-align: center;
+            display: block;
+            color: black;
+            font-weight: 600;
+        }
+
+        .responsive-menu a:hover {
+            background-color: #f5f5f5;
+            /* Light background for hover effect */
+        }
+
+.profile-pic-wrapper {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    min-height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #ddd;
+}
+
+.profile-pic-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.bell-icon{
+    min-width: 35px;
+    min-height: 35px;
+    width: 35px;
+    height: 35px;
+}
+.logo{
+    min-width: 85px;
+    min-height: 40px;
+    width: 85px;
+    height: 40px;   
+}
+
+.profile-dropdown {
+    z-index: 1000; /* Ensure this value is higher than the z-index of other elements */
+}
+
+.profile-wrapper {
+    position: relative;
+}
+
+.profile-wrapper .profile-dropdown {
+    display: none;
+}
+
+.profile-wrapper:hover .profile-dropdown {
+    display: block;
+}
+
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="flex items-center justify-between bg-white px-4 py-2 border-b-2 border-black  ">
+        <div class="flex items-start pl-7">
+            <a href="">
+                <img src="{% static 'images/logo/CashHivelogo.png' %}" alt="Hive Logo" class="h-10 mr-3 logo">
+            </a>
+        </div>
+        <div class="flex items-center justify-between space-x-4">
+            <nav class="hidden md:flex space-x-14 nav-links">
+                <a href="#" class="text-black font-semibold mt-2 hover:text-yellow-500"
+                    style="text-decoration: none;">Overview</a>
+                <a href="#" class="text-black font-semibold mt-2 hover:text-yellow-500"
+                    style="text-decoration: none;">Balance</a>
+                <a href="{% url 'Team-workspace-dashboard' %}" class="bg-yellow-300 text-black font-semibold rounded-lg px-4 py-2 hover:text-black hover:bg-yellow-300"
+                    style="text-decoration: none;">Team&nbsp;Workspace</a>    
+                <a href="{% url 'Team-workspace-dashboard' %}" class="text-black font-semibold mt-2 hover:text-yellow-500"
+                    style="text-decoration: none;">Job&nbsp;Search</a>
+            </nav>
+          
+        </div>
+        <div class="flex items-center space-x-3 pr-7">
+            <a href="#" class="text-black">
+                <img src="{% static 'images/icons/mode.png' %}" class="bell-icon" alt="Notification Bell"
+                    class="h-10 w-10">
+            </a>
+            <a href="#" class="text-black">
+                <img src="{% static 'images/icons/bell.png' %}" class="bell-icon" alt="Notification Bell"
+                    class="h-10 w-10">
+            </a>
+            {% comment %} <a href="#" class="text-black profile-picture">
+              
+                    <div class="profile-pic-wrapper">
+                        <img src="{% static 'images/Employers/kojo (2).jpeg' %}" alt="User Profile">
+                    </div>
+            </a> {% endcomment %}
+            <div class="relative inline-block text-left profile-wrapper">
+                <a href="#" class="text-black profile-picture">
+                    <div class="profile-pic-wrapper">
+                        <img src="{% static 'images/Employers/kojo (2).jpeg' %}" alt="User Profile" class="w-16 h-16 rounded-full">
+                    </div>
+                </a>
+                 
+        
+                <!-- Profile Dropdown -->
+                <div class="profile-dropdown origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="profile-menu-button">
+                    <div class="py-1" role="none">
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">View Profile</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Settings and Privacy</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Community</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Save</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Log Out</a>
+                    </div>
+                </div>
+            </div>
+             <!-- Hamburger Menu Button -->
+             <button id="hamburger-icon" class="block md:hidden flex items-center cursor-pointer">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+
+            <script>
+                const inputElement = document.getElementById('profilePicInput');
+                const profilePicElement = document.getElementById('profilePic');
+        
+                inputElement.addEventListener('change', function(event) {
+                    const file = event.target.files[0];
+                    if (file) {
+                        const reader = new FileReader();
+                        reader.onload = function(e) {
+                            profilePicElement.src = e.target.result;
+                        }
+                        reader.readAsDataURL(file);
+                    }
+                });
+                
+            </script>
+            
+        </div>
+    </nav>
+
+    {% block content %}{% endblock %}
+
+    <script>
+        document.getElementById('hamburger-icon').addEventListener('click', function () {
+            const menu = document.getElementById('responsive-menu');
+            menu.classList.toggle('active');
+        });
+
+        const minSlider = document.getElementById('min-slider');
+            const maxSlider = document.getElementById('max-slider');
+            const minValue = document.getElementById('min-value');
+            const maxValue = document.getElementById('max-value');
+
+            // Update the values based on the sliders
+            function updateSliderValues() {
+                if (parseInt(minSlider.value) > parseInt(maxSlider.value)) {
+                    minSlider.value = maxSlider.value;
+                }
+                minValue.textContent = `$${minSlider.value}/hr`;
+                maxValue.textContent = `$${maxSlider.value}/hr`;
+            }
+
+            // Add event listeners to sliders
+            minSlider.addEventListener('input', updateSliderValues);
+            maxSlider.addEventListener('input', updateSliderValues);
+
+        </script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const profilePic = document.querySelector('.profile-picture');
+                const profileDropdown = document.querySelector('.profile-dropdown');
+    
+                profilePic.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    profileDropdown.style.display = profileDropdown.style.display === 'block' ? 'none' : 'block';
+                });
+    
+                window.addEventListener('click', function(event) {
+                    if (!profilePic.contains(event.target) && !profileDropdown.contains(event.target)) {
+                        profileDropdown.style.display = 'none';
+                    }
+                });
+            });
+        </script>
+</body>
+
+</html>
+
+  {% comment %} code must be uncommented when logout is to be implemented
+                    <a href="{% url 'LogoutUser' %}">Logout</a> {% endcomment %}

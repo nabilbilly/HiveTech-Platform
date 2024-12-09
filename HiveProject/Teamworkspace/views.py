@@ -28,8 +28,11 @@ from django.http import JsonResponse
 
 @login_required(login_url='Login')
 def TeamworkspaceChat(request):
-    return render(request, 'Job/TeamworkspaceChat.html')
+    return render(request, 'Teamworkspace/TeamworkspaceChat.html')
 
+@login_required(login_url='Login')
+def TeamworkspaceSettings(request):
+    return render(request, 'Teamworkspace/TeamworkspaceSettings.html')
 
 @login_required
 def Team_workspace_dashboard(request):
