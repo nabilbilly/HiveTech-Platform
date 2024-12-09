@@ -104,7 +104,7 @@
 
                 <!-- Workspace Content -->
                 <div class="flex-1 p-4 overflow-y-auto">
-                    <!-- Audio Player -->
+                    {% comment %} <!-- Audio Player -->
                     <div class="bg-gray-50 p-4 rounded-lg mb-6">
                         <p class="text-sm text-gray-600 mb-2">Send a token of transaction to the network protocol for completion</p>
                         <div class="flex items-center space-x-4">
@@ -117,9 +117,9 @@
                             <span class="text-sm text-gray-600">5:30</span>
                             <img src="https://via.placeholder.com/24" alt="User" class="w-6 h-6 rounded-full">
                         </div>
-                    </div>
+                    </div> {% endcomment %}
 
-                    <!-- File Categories -->
+                    {% comment %} <!-- File Categories -->
                     <div class="space-y-3">
                         <div class="flex items-center space-x-2 text-gray-700">
                             <i data-lucide="video" class="w-5 h-5"></i>
@@ -134,13 +134,26 @@
                             <span>Images</span>
                         </div>
                     </div>
+                    <!-- File Categories --> {% endcomment %}
+                    
 
-                    <!-- Content Preview Area -->
+                    {% comment %} <!-- Content Preview Area -->
                     <div class="grid grid-cols-3 gap-4 mt-6">
                         <div class="bg-gray-100 h-40 rounded-lg"></div>
                         <div class="bg-gray-100 h-40 rounded-lg"></div>
                         <div class="bg-gray-100 h-40 rounded-lg"></div>
-                    </div>
+                    
+                    
+                        </div> {% endcomment %}
+                        <div class="chat__item__container" id="id_chat_item_container">
+                    {% for message in messages %}
+                        <div class="message {% if message.user == request.user %}sender{% else %}receiver{% endif %}">
+                            <div class="message-content">
+                                <strong>{{ message.user.username }}</strong>: {{ message.content }}
+                                <div class="timestamp">{{ message.timestamp }}</div>
+                            </div>
+                        </div>
+                    {% endfor %}
                 </div>
 
                 <!-- Chat Input -->
@@ -161,12 +174,12 @@
                             <path d="M15.625 2.5H15.9662C20.0412 2.5 22.0813 2.5 23.4963 3.4975C23.9013 3.7825 24.2613 4.1225 24.565 4.50375C25.625 5.83625 25.625 7.75375 25.625 11.5912V14.7725C25.625 18.4762 25.625 20.3287 25.0388 21.8075C24.0963 24.1862 22.1038 26.0613 19.5763 26.9488C18.005 27.5 16.0387 27.5 12.1012 27.5C9.85375 27.5 8.72875 27.5 7.83125 27.185C6.3875 26.6775 5.24875 25.6062 4.71 24.2475C4.375 23.4025 4.375 22.3437 4.375 20.2275V15" stroke="#6C6C6D" stroke-width="2.33333" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M25.625 15C25.625 16.105 25.1861 17.1647 24.4047 17.946C23.6234 18.7273 22.5637 19.1663 21.4587 19.1663C20.6262 19.1663 19.645 19.0213 18.8363 19.2375C18.483 19.3325 18.1609 19.5186 17.9023 19.7773C17.6436 20.0359 17.4575 20.358 17.3625 20.7113C17.1463 21.52 17.2913 22.5012 17.2913 23.3337C17.2913 23.8809 17.1835 24.4226 16.9741 24.9281C16.7647 25.4336 16.4579 25.8929 16.071 26.2797C15.6841 26.6666 15.2248 26.9735 14.7194 27.1829C14.2139 27.3922 13.6721 27.5 13.125 27.5" stroke="#6C6C6D" stroke-width="2.33333" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
-                        {% comment %} <input type="textarea" class="flex-1 bg-transparent outline-none" placeholder="Type a message..."> {% endcomment %}
-                        <textarea class="flex-1 bg-transparent outline-none h-9 resize-none" placeholder="Type a message..."></textarea>
-
-
+                        
+                        
+                        <input type="text" id="id_message_send_input" class="flex-1 bg-transparent outline-none" placeholder="Type a message...">
+                       
                         <div class="flex items-center space-x-2">
-                            <button class="p-2 hover:bg-gray-200 rounded-full">
+                            <button type="submit" id="id_message_send_button" class="p-2 hover:bg-gray-200 rounded-full">
                                 <svg width="24" height="24" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M15.1655 10.8334L11.9155 14.0834M21.9775 3.28366C22.0803 3.24818 22.191 3.24235 22.2969 3.26681C22.4029 3.29128 22.4998 3.34506 22.5767 3.42201C22.6535 3.49896 22.7071 3.59598 22.7314 3.70197C22.7558 3.80797 22.7498 3.91866 22.7141 4.02141L16.2965 22.3622C16.2581 22.4719 16.1876 22.5674 16.0942 22.6365C16.0008 22.7056 15.8888 22.7451 15.7728 22.7498C15.6567 22.7544 15.5419 22.7241 15.4433 22.6627C15.3446 22.6014 15.2667 22.5118 15.2196 22.4056L11.7324 14.5601C11.6737 14.4296 11.5693 14.3252 11.4388 14.2665L3.59329 10.7782C3.48745 10.7309 3.3982 10.653 3.33709 10.5545C3.27598 10.456 3.2458 10.3414 3.25047 10.2256C3.25514 10.1098 3.29442 9.99801 3.36326 9.90475C3.4321 9.81148 3.52732 9.741 3.63663 9.70241L21.9775 3.28366Z" stroke="#6C6C6D" stroke-width="1.625" stroke-linecap="round" stroke-linejoin="round"/>
                                     </svg>
@@ -182,7 +195,8 @@
                                     </g>
                                     </svg>
                             </button>
-                        </div>
+                        </div> 
+                    </div>
                     </div>
                 </div>
             </div>
@@ -192,6 +206,82 @@
     <script>
         // Initialize Lucide icons
         lucide.createIcons();
+    </script>
+    <script>
+        // JavaScript from above goes here
+        // Function to get the team slug from the URL
+function getTeamSlugFromUrl() {
+  const pathArray = window.location.pathname.split('/');
+  // Assuming the URL structure is like: /team/<team_slug>/
+  return pathArray[pathArray.length - 2]; // Adjust based on your URL structure
+}
+
+// Use the function to set the teamSlug variable
+const teamSlug = getTeamSlugFromUrl();
+const username = '{{ request.user.username }}'; // Dynamically set the username from the template
+const socket = new WebSocket(`ws://${window.location.host}/ws/team/${teamSlug}/`);
+
+socket.onopen = function(event) {
+  console.log('WebSocket is open now.');
+};
+
+socket.onclose = function(event) {
+  console.log('WebSocket is closed now.');
+  // Attempt to reconnect if needed
+};
+
+socket.onmessage = function(event) {
+  const data = JSON.parse(event.data);
+  console.log('WebSocket message received:', data);
+  displayMessage(data.username, data.message, new Date().toLocaleTimeString()); // Pass the current time for the timestamp
+};
+
+socket.onerror = function(event) {
+  console.error('WebSocket error observed:', event);
+};
+
+// Function to send a message
+function sendMessage() {
+  const message = document.getElementById('id_message_send_input').value;
+  if (socket.readyState === WebSocket.OPEN) {
+      socket.send(JSON.stringify({
+          'username': username,
+          'message': message,
+      }));
+      document.getElementById('id_message_send_input').value = ''; // Clear input field after sending
+  } else {
+      console.log('WebSocket is not open. ReadyState:', socket.readyState);
+      // Optionally, try to reopen or handle reconnection
+  }
+}
+
+// Function to append message to chat
+function displayMessage(username, message, timestamp) {
+  const chatContainer = document.getElementById('id_chat_item_container');
+  const messageElement = document.createElement('div');
+  const isSender = username === '{{ request.user.username }}';
+
+  messageElement.classList.add('message');
+  if (isSender) {
+      messageElement.classList.add('sender');
+  } else {
+      messageElement.classList.add('receiver');
+  }
+
+  const messageContent = document.createElement('div');
+  messageContent.classList.add('message-content');
+  messageContent.innerHTML = `<strong>${username}</strong>: ${message}<div class="timestamp">${timestamp}</div>`;
+  
+  messageElement.appendChild(messageContent);
+  chatContainer.appendChild(messageElement);
+
+  // Scroll to the latest message
+  chatContainer.scrollTop = chatContainer.scrollHeight;
+}
+
+// Event listener for send button
+document.getElementById('id_message_send_button').addEventListener('click', sendMessage);
+
     </script>
 {% endblock%}
 {% comment %} </body>

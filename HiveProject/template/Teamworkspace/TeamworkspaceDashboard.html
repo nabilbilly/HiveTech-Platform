@@ -42,7 +42,7 @@
             <div class="container mx-auto px-36 grid grid-cols-1 md:grid-cols-2 gap-6">
                 {% for team in teams %}
                     <div class="bg-white p-6 rounded-xl border-2 border-zinc-950">
-                        <a href="{% url 'Team-Workspace-Chat' %}">
+                        <a href="{% url 'chat-page' team.slug %}">
                             <div class="flex items-center mb-4">
                                 <h3 class="text-lg font-semibold">{{ team.name }}</h3>
                             </div>
@@ -302,12 +302,12 @@
     {% else %} 
 
     <!-- ---------- Main Content IF USER HAS NO WORKSPACE OR WANT TO CREATE FIRST WORKSPACE(firstModalsCreateworkspace) ---------- -->
-    <div class="bg-gray-100"> 
-        <div class="center-align"> 
+    <div class="bg-gray-100 "> 
+        <div class="center-align" style=" max-height: 60vh;"> 
             <main class="pt-56"> 
                 <!-- No workspace section --> 
                 <div class="text-center"> 
-                    <h1 class="mb-4 text-2xl font-bold">No workspace</h1> 
+                    <h1 class="mb-4 text-xl font-bold">No workspace</h1> 
                     <button id="FirstOnCreateworkspace-click" class="px-6 py-3 text-gray-900 bg-yellow-300 rounded-md hover:bg-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2">
                         Create a new workspace 
                     </button> 
@@ -338,6 +338,9 @@
                                 class="w-full px-3 py-2 border-2 border-black rounded-lg focus:outline-none"
                                 required
                             />
+                        </div>
+                        <div id="team-exists-error" style="display: none; color: red;">
+                            This team already exists.
                         </div>
                         <div>
                             <label for="description" class="block text-sm font-medium text-gray-700 mb-1">

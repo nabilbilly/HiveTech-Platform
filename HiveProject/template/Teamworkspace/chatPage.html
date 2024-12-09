@@ -1,0 +1,424 @@
+{% comment %} <!DOCTYPE html>
+<html>
+  <body>
+    <center><h1>Hello , Welcome to my chat site ! {{request.user}}</h1></center>
+    <br>
+    {% if request.user.is_authenticated  %}
+    <center> Logout the chat Page <a href = "{% url 'logout-user' %}">Logout</a></center>
+    {% endif %}
+    <div
+      class="chat__item__container"
+      id="id_chat_item_container"
+      style="font-size: 20px"
+    >
+      <br />
+      <input type="text" id="id_message_send_input" />
+      <button type="submit" id="id_message_send_button">Send Message</button>
+      <br />
+      <br />
+      
+      <!-- Display existing messages -->
+      {% for message in messages %} 
+        <div> <br> {{ message.user.username }} : {{ message.content }} 
+          <span class="text-gray-500 text-sm">{{ message.timestamp }} </span>
+        </div> 
+      {% endfor %}
+
+    </div>
+    <script>
+      const chatSocket = new WebSocket("ws://" + window.location.host + "/");
+      chatSocket.onopen = function (e) {
+        console.log("The connection was setup successfully !");
+      };
+      chatSocket.onclose = function (e) {
+        console.log("Something unexpected happened !");
+      };
+      document.querySelector("#id_message_send_input").focus();
+      document.querySelector("#id_message_send_input").onkeyup = function (e) {
+        if (e.keyCode == 13) {
+          document.querySelector("#id_message_send_button").click();
+        }
+      };
+      document.querySelector("#id_message_send_button").onclick = function (e) {
+        var messageInput = document.querySelector(
+          "#id_message_send_input"
+        ).value;
+        chatSocket.send(JSON.stringify({ message: messageInput, username : "{{request.user.username}}"}));
+      };
+      chatSocket.onmessage = function (e) {
+        const data = JSON.parse(e.data);
+        var div = document.createElement("div");
+        div.innerHTML = data.username + " : " + data.message;
+        document.querySelector("#id_message_send_input").value = "";
+        document.querySelector("#id_chat_item_container").appendChild(div);
+      };
+    </script>
+  </body>
+</html> {% endcomment %}
+{% comment %} <!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .message {
+        display: flex;
+        margin: 10px 0;
+      }
+      .message.sender {
+        justify-content: flex-end;
+      }
+      .message.receiver {
+        justify-content: flex-start;
+      }
+      .message-content {
+        max-width: 60%;
+        padding: 10px;
+        border-radius: 10px;
+        font-size: 16px;
+        word-wrap: break-word;
+      }
+      .message.sender .message-content {
+        background-color: #d1e7dd;
+        text-align: right;
+      }
+      .message.receiver .message-content {
+        background-color: #f8d7da;
+        text-align: left;
+      }
+      .timestamp {
+        font-size: 12px;
+        color: gray;
+        margin-top: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <center><h1>Hello, Welcome to my chat site! {{ request.user }}</h1></center>
+    <br>
+    {% if request.user.is_authenticated %}
+    <center> Logout the chat Page <a href="{% url 'logout-user' %}">Logout</a></center>
+    {% endif %}
+    <div class="chat__item__container" id="id_chat_item_container">
+      <br />
+      <input type="text" id="id_message_send_input" />
+      <button type="submit" id="id_message_send_button">Send Message</button>
+      <br /><br />
+      
+      <!-- Display existing messages -->
+      {% for message in messages %}
+        <div
+          class="message {% if message.user == request.user %}sender{% else %}receiver{% endif %}"
+        >
+          <div class="message-content">
+            <strong>{{ message.user.username }}</strong>: {{ message.content }}
+            <div class="timestamp">{{ message.timestamp }}</div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    <script>
+      const chatSocket = new WebSocket("ws://" + window.location.host + "/");
+      chatSocket.onopen = function (e) {
+        console.log("The connection was setup successfully!");
+      };
+      chatSocket.onclose = function (e) {
+        console.log("Something unexpected happened!");
+      };
+      document.querySelector("#id_message_send_input").focus();
+      document.querySelector("#id_message_send_input").onkeyup = function (e) {
+        if (e.keyCode == 13) {
+          document.querySelector("#id_message_send_button").click();
+        }
+      };
+      document.querySelector("#id_message_send_button").onclick = function (e) {
+        var messageInput = document.querySelector("#id_message_send_input").value;
+        chatSocket.send(
+          JSON.stringify({
+            message: messageInput,
+            username: "{{ request.user.username }}",
+          })
+        );
+      };
+      chatSocket.onmessage = function (e) {
+        const data = JSON.parse(e.data);
+        var div = document.createElement("div");
+        div.className =
+          "message " + (data.username === "{{ request.user.username }}" ? "sender" : "receiver");
+        div.innerHTML = `
+          <div class="message-content">
+            <strong>${data.username}</strong>: ${data.message}
+            <div class="timestamp">Just now</div>
+          </div>`;
+        document.querySelector("#id_message_send_input").value = "";
+        document.querySelector("#id_chat_item_container").appendChild(div);
+      };
+    </script>
+  </body>
+</html> {% endcomment %}
+
+
+{% comment %} 
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .message {
+            display: flex;
+            margin: 10px 0;
+        }
+        .message.sender {
+            justify-content: flex-end;
+        }
+        .message.receiver {
+            justify-content: flex-start;
+        }
+        .message-content {
+            max-width: 60%;
+            padding: 10px;
+            border-radius: 10px;
+            font-size: 16px;
+            word-wrap: break-word;
+        }
+        .message.sender .message-content {
+            background-color: #d1e7dd;
+            text-align: right;
+        }
+        .message.receiver .message-content {
+            background-color: #f8d7da;
+            text-align: left;
+        }
+        .timestamp {
+            font-size: 12px;
+            color: gray;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <center><h1>Hello, Welcome to my chat site! {{ request.user }}</h1></center>
+    <br>
+    {% if request.user.is_authenticated %}
+        <center>Logout the chat Page <a href="{% url 'logout-user' %}">Logout</a></center>
+    {% endif %}
+    <div class="chat__item__container" id="id_chat_item_container">
+        <br />
+        <input type="text" id="id_message_send_input" />
+        <button type="submit" id="id_message_send_button">Send Message</button>
+        <br /><br />
+        
+        <!-- Display existing messages -->
+        {% for message in messages %}
+            <div class="message {% if message.user == request.user %}sender{% else %}receiver{% endif %}">
+                <div class="message-content">
+                    <strong>{{ message.user.username }}</strong>: {{ message.content }}
+                    <div class="timestamp">{{ message.timestamp }}</div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <script>
+        // Function to get the team slug from the URL
+        function getTeamSlugFromUrl() {
+            const pathArray = window.location.pathname.split('/');
+            // Assuming the URL structure is like: /team/<team_slug>/
+            return pathArray[pathArray.length - 2]; // Adjust based on your URL structure
+        }
+
+        // Use the function to set the teamSlug variable
+        const teamSlug = getTeamSlugFromUrl();
+        const username = '{{ request.user.username }}'; // Dynamically set the username from the template
+        const socket = new WebSocket(`ws://${window.location.host}/ws/team/${teamSlug}/`);
+
+        socket.onopen = function(event) {
+            console.log('WebSocket is open now.');
+        };
+
+        socket.onclose = function(event) {
+            console.log('WebSocket is closed now.');
+            // Attempt to reconnect if needed
+        };
+
+        socket.onmessage = function(event) {
+            const data = JSON.parse(event.data);
+            console.log('WebSocket message received:', data);
+            displayMessage(data.username, data.message);
+        };
+
+        socket.onerror = function(event) {
+            console.error('WebSocket error observed:', event);
+        };
+
+        // Function to send a message
+        function sendMessage() {
+            const message = document.getElementById('id_message_send_input').value;
+            if (socket.readyState === WebSocket.OPEN) {
+                socket.send(JSON.stringify({
+                    'username': username,
+                    'message': message,
+                }));
+                document.getElementById('id_message_send_input').value = ''; // Clear input field after sending
+            } else {
+                console.log('WebSocket is not open. ReadyState:', socket.readyState);
+                // Optionally, try to reopen or handle reconnection
+            }
+        }
+
+        // Function to append message to chat
+        function displayMessage(username, message) {
+            const chatContainer = document.getElementById('id_chat_item_container');
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('message');
+            messageElement.innerHTML = `<div class="message-content"><strong>${username}</strong>: ${message}</div>`;
+            
+            chatContainer.appendChild(messageElement);
+
+            // Scroll to the latest message
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+
+        // Event listener for send button
+        document.getElementById('id_message_send_button').addEventListener('click', sendMessage);
+    </script>
+</body>
+</html> {% endcomment %}
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .message {
+            display: flex;
+            margin: 10px 0;
+        }
+        .message.sender {
+            justify-content: flex-end;
+        }
+        .message.receiver {
+            justify-content: flex-start;
+        }
+        .message-content {
+            max-width: 60%;
+            padding: 10px;
+            border-radius: 10px;
+            font-size: 16px;
+            word-wrap: break-word;
+        }
+        .message.sender .message-content {
+            background-color: #d1e7dd;
+            text-align: right;
+        }
+        .message.receiver .message-content {
+            background-color: #f8d7da;
+            text-align: left;
+        }
+        .timestamp {
+            font-size: 12px;
+            color: gray;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <center><h1>Hello, Welcome to my chat site! {{ request.user }}</h1></center>
+    <br>
+    {% if request.user.is_authenticated %}
+        <center>Logout the chat Page <a href="{% url 'logout-user' %}">Logout</a></center>
+    {% endif %}
+    <div class="chat__item__container" id="id_chat_item_container">
+        <br />
+        <input type="text" id="id_message_send_input" />
+        <button type="submit" id="id_message_send_button">Send Message</button>
+        <br /><br />
+        
+        <!-- Display existing messages -->
+        {% for message in messages %}
+            <div class="message {% if message.user == request.user %}sender{% else %}receiver{% endif %}">
+                <div class="message-content">
+                    <strong>{{ message.user.username }}</strong>: {{ message.content }}
+                    <div class="timestamp">{{ message.timestamp }}</div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <script>
+        // JavaScript from above goes here
+        // Function to get the team slug from the URL
+function getTeamSlugFromUrl() {
+  const pathArray = window.location.pathname.split('/');
+  // Assuming the URL structure is like: /team/<team_slug>/
+  return pathArray[pathArray.length - 2]; // Adjust based on your URL structure
+}
+
+// Use the function to set the teamSlug variable
+const teamSlug = getTeamSlugFromUrl();
+const username = '{{ request.user.username }}'; // Dynamically set the username from the template
+const socket = new WebSocket(`ws://${window.location.host}/ws/team/${teamSlug}/`);
+
+socket.onopen = function(event) {
+  console.log('WebSocket is open now.');
+};
+
+socket.onclose = function(event) {
+  console.log('WebSocket is closed now.');
+  // Attempt to reconnect if needed
+};
+
+socket.onmessage = function(event) {
+  const data = JSON.parse(event.data);
+  console.log('WebSocket message received:', data);
+  displayMessage(data.username, data.message, new Date().toLocaleTimeString()); // Pass the current time for the timestamp
+};
+
+socket.onerror = function(event) {
+  console.error('WebSocket error observed:', event);
+};
+
+// Function to send a message
+function sendMessage() {
+  const message = document.getElementById('id_message_send_input').value;
+  if (socket.readyState === WebSocket.OPEN) {
+      socket.send(JSON.stringify({
+          'username': username,
+          'message': message,
+      }));
+      document.getElementById('id_message_send_input').value = ''; // Clear input field after sending
+  } else {
+      console.log('WebSocket is not open. ReadyState:', socket.readyState);
+      // Optionally, try to reopen or handle reconnection
+  }
+}
+
+// Function to append message to chat
+function displayMessage(username, message, timestamp) {
+  const chatContainer = document.getElementById('id_chat_item_container');
+  const messageElement = document.createElement('div');
+  const isSender = username === '{{ request.user.username }}';
+
+  messageElement.classList.add('message');
+  if (isSender) {
+      messageElement.classList.add('sender');
+  } else {
+      messageElement.classList.add('receiver');
+  }
+
+  const messageContent = document.createElement('div');
+  messageContent.classList.add('message-content');
+  messageContent.innerHTML = `<strong>${username}</strong>: ${message}<div class="timestamp">${timestamp}</div>`;
+  
+  messageElement.appendChild(messageContent);
+  chatContainer.appendChild(messageElement);
+
+  // Scroll to the latest message
+  chatContainer.scrollTop = chatContainer.scrollHeight;
+}
+
+// Event listener for send button
+document.getElementById('id_message_send_button').addEventListener('click', sendMessage);
+
+    </script>
+</body>
+</html>

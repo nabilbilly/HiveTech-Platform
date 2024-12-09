@@ -38,11 +38,14 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'daphne',
     'django.contrib.staticfiles',
+    'channels',
     'Mainapp',
     'Accounts',
     'DashboardPages',
     'Teamworkspace',
+    'TeamworkspaceChat',
 ]
 
 MIDDLEWARE = [
@@ -73,8 +76,15 @@ TEMPLATES = [
         },
     },
 ]
+ASGI_APPLICATION = 'HiveProject.asgi.application'
 
 WSGI_APPLICATION = 'HiveProject.wsgi.application'
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels.layers.InMemoryChannelLayer"
+    }
+}
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
@@ -123,8 +133,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Where to redirect after a successful login
 LOGIN_REDIRECT_URL = '/dashboard/'
-LOGOUT_REDIRECT_URL = '/Login/'
-LOGIN_URL = '/Login/'
+LOGOUT_REDIRECT_URL = '/'
+LOGIN_URL = '/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 

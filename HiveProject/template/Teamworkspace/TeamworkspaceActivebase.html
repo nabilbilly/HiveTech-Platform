@@ -89,7 +89,36 @@
 .profile-wrapper:hover .profile-dropdown {
     display: block;
 }
-
+    .message {
+        display: flex;
+        margin: 10px 0;
+    }
+    .message.sender {
+        justify-content: flex-end;
+    }
+    .message.receiver {
+        justify-content: flex-start;
+    }
+    .message-content {
+        max-width: 60%;
+        padding: 10px;
+        border-radius: 10px;
+        font-size: 16px;
+        word-wrap: break-word;
+    }
+    .message.sender .message-content {
+        background-color: #d1e7dd;
+        text-align: right;
+    }
+    .message.receiver .message-content {
+        background-color: #f8d7da;
+        text-align: left;
+    }
+    .timestamp {
+        font-size: 12px;
+        color: gray;
+        margin-top: 5px;
+    }
     </style>
 </head>
 

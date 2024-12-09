@@ -26,6 +26,7 @@ urlpatterns = [
     path('accounts/',include('Accounts.urls')),
     path('dashboard/',include('DashboardPages.urls')),
     path('Teamworkspace/',include('Teamworkspace.urls')),
+    path('TeamworkspaceChat/',include('TeamworkspaceChat.urls')), 
 ]
 
 if settings.DEBUG:
