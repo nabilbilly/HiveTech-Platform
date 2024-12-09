@@ -129,10 +129,17 @@ class JobApplication(models.Model):
         return f"{self.user.username} applied for {self.job.title}"
     
 
+<<<<<<< HEAD
 # class Skill(models.Model):
 #     name = models.CharField(max_length=100, unique=True)
 #     def __str__(self):
 #         return self.name
+=======
+class Skill(models.Model):
+    name = models.CharField(max_length=100, unique=True)
+    def __str__(self):
+        return self.name
+>>>>>>> 771c30136a2e2e1f4690d8a86dbff6d2c77ea7e8
 
 class JobSkill(models.Model):
     job = models.ForeignKey(Job, on_delete=models.CASCADE)
